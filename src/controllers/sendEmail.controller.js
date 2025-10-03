@@ -786,6 +786,8 @@ const getSessionDetails = async (req, res) => {
   }
 };
 
+
+
 const stripeWebhook = async (req, res) => {
   const sig = req.headers["stripe-signature"];
 
@@ -798,11 +800,7 @@ const stripeWebhook = async (req, res) => {
       // Get the orderId from metadata
       const orderId = session.metadata.orderId;
 
-      // Update DB
-      await prisma.order.update({
-        where: { id: orderId },
-        data: { status: "PAID" },
-      });
+     
 
       // Send emails
       const order = await prisma.order.findUnique({ where: { id: orderId } });
