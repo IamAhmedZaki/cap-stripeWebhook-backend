@@ -833,7 +833,7 @@ const stripePayment = async (req, res) => {
   data: {
     customerDetails,
     selectedOptions,
-    totalPrice,
+    totalPrice:parseFloat(totalPrice),
     currency,
     orderNumber,
     orderDate,
