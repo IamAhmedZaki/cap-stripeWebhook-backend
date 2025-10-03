@@ -5,6 +5,10 @@ const Stripe = require('stripe');
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
+
+
+const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET;
+
 // const createEmailTransporter = () => {
 //   return nodemailer.createTransport({
 //     host: "smtp.gmail.com",
@@ -782,36 +786,33 @@ const getSessionDetails = async (req, res) => {
   }
 };
 
-const stripeWebhook=async (req, res) => {
+const stripeWebhook = (req, res) => {
   const sig = req.headers["stripe-signature"];
+  let event;
 
   try {
-    const event = stripe.webhooks.constructEvent(req.body, sig, process.env.STRIPE_WEBHOOK_SECRET);
-
-    if (event.type === "checkout.session.completed") {
-      const session = event.data.object;
-
-      // Get the orderId from metadata
-      const orderId = session.metadata.orderId;
-
-      // Update DB
-      await prisma.order.update({
-        where: { id: orderId },
-        data: { status: "PAID" },
-      });
-
-      // Send emails
-      const order = await prisma.order.findUnique({ where: { id: orderId } });
-      await sendCapEmail({ body: order }, { status: () => ({ json: () => {} }) }); 
-    }
-
-    res.json({ received: true });
+    // Verify the event
+    event = stripe.webhooks.constructEvent(req.body, sig, endpointSecret);
+    console.log("✅ Webhook verified:", event.type);
   } catch (err) {
-    console.error("Webhook error:", err.message);
-    res.status(400).send(`Webhook Error: ${err.message}`);
+    console.error("❌ Webhook signature verification failed:", err.message);
+    return res.status(400).send(`Webhook Error: ${err.message}`);
   }
-}
 
+  // Handle specific event types
+  switch (event.type) {
+    case "checkout.session.completed":
+      const session = event.data.object;
+      console.log("💰 Payment successful:", session);
+      // 👉 Call your email sender, update DB, etc.
+      break;
+
+    default:
+      console.log(`Unhandled event type ${event.type}`);
+  }
+
+  res.json({ received: true });
+};
 module.exports = {
   workflowStatusChange, sendCapEmail, stripePayment, getSessionDetails,stripeWebhook
 };

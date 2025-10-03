@@ -1,10 +1,13 @@
 require('dotenv').config();
 const express = require('express');
 const sendEmailRoutes = require('./routes/sendEmail.routes');
+const webhookRoutes = require("./routes/webHook.routes");
 const cors = require('cors');
 const path = require('path');
 
 const app = express();
+// ⚠️ Important: Stripe webhook must come BEFORE express.json()
+app.use("/api", webhookRoutes);
 
 // Middleware
 app.use(express.json());

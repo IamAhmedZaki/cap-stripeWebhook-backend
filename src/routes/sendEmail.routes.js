@@ -10,7 +10,6 @@ router.put('/workflow/:id', workflowStatusChange);
 router.post('/capconfigurator', sendCapEmail);
 router.post('/create-checkout-session', stripePayment);
 router.get('/checkout-session', getSessionDetails);
-router.post('/webhook', stripeWebhook);
 
 
 module.exports = router;
