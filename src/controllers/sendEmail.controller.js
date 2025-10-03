@@ -1,9 +1,9 @@
-import { PrismaClient } from "@prisma/client";
+const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
-const nodemailer = require('nodemailer');
-const Stripe = require('stripe');
+const nodemailer = require("nodemailer");
+const Stripe = require("stripe");
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 
 
 
