@@ -786,33 +786,37 @@ const getSessionDetails = async (req, res) => {
   }
 };
 
-const stripeWebhook = (req, res) => {
+const stripeWebhook = async (req, res) => {
   const sig = req.headers["stripe-signature"];
-  let event;
 
   try {
-    // Verify the event
-    event = stripe.webhooks.constructEvent(req.body, sig, endpointSecret);
-    console.log("✅ Webhook verified:", event.type);
-  } catch (err) {
-    console.error("❌ Webhook signature verification failed:", err.message);
-    return res.status(400).send(`Webhook Error: ${err.message}`);
-  }
+    const event = stripe.webhooks.constructEvent(req.body, sig, process.env.STRIPE_WEBHOOK_SECRET);
 
-  // Handle specific event types
-  switch (event.type) {
-    case "checkout.session.completed":
+    if (event.type === "checkout.session.completed") {
       const session = event.data.object;
-      console.log("💰 Payment successful:", session);
-      // 👉 Call your email sender, update DB, etc.
-      break;
 
-    default:
-      console.log(`Unhandled event type ${event.type}`);
+      // Get the orderId from metadata
+      const orderId = session.metadata.orderId;
+
+      // Update DB
+      await prisma.order.update({
+        where: { id: orderId },
+        data: { status: "PAID" },
+      });
+
+      // Send emails
+      const order = await prisma.order.findUnique({ where: { id: orderId } });
+      await sendCapEmail({ body: order }, { status: () => ({ json: () => {} }) }); 
+    }
+
+    res.json({ received: true });
+  } catch (err) {
+    console.error("Webhook error:", err.message);
+    res.status(400).send(`Webhook Error: ${err.message}`);
   }
-
-  res.json({ received: true });
 };
+
+
 module.exports = {
   workflowStatusChange, sendCapEmail, stripePayment, getSessionDetails,stripeWebhook
 };
