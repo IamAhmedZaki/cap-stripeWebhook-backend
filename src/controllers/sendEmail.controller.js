@@ -804,7 +804,22 @@ const stripeWebhook = async (req, res) => {
 
       // Send emails
       const order = await prisma.order.findUnique({ where: { id: parseInt(orderId) } });
-      await sendCapEmail({ body: order }, { status: () => ({ json: () => {} }) }); 
+
+await sendCapEmail(
+  {
+    body: {
+      customerDetails: order.customerDetails,
+      selectedOptions: order.selectedOptions,
+      totalPrice: order.totalPrice,
+      currency: order.currency,
+      orderNumber: order.orderNumber,
+      orderDate: order.orderDate,
+      email: order.customerEmail
+    }
+  },
+  { status: () => ({ json: () => {} }) }
+);
+
     }
 
     res.json({ received: true });
