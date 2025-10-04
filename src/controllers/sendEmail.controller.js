@@ -487,7 +487,7 @@ const capOrderAdminEmail = (orderData) => {
             <strong>🚨 ACTION REQUIRED:</strong> New order received and needs to be processed.
           </div>
           <div class="payment-pending">
-            <strong>✅ PAYMENT PAID:</strong> Order has been received but payment is pending.
+            <strong>✅ PAYMENT COMPLETED:</strong> Order has been received but payment is pending.
           </div>
           
           <div class="alert">
@@ -759,8 +759,8 @@ const session = await stripe.checkout.sessions.create({
   ],
   mode: "payment",
   locale: "da",
-  success_url: `http://localhost:5173/studentlife/success?session_id={CHECKOUT_SESSION_ID}`,
-  cancel_url: "http://localhost:5173/studentlife/cancel",
+  success_url: `https://elipsestudio.com/studentlife/success?session_id={CHECKOUT_SESSION_ID}`,
+  cancel_url: "https://elipsestudio.com/studentlife/cancel",
   metadata: {
     orderId: order.id,   // 👈 only store a small reference here
   },
