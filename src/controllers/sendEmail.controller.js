@@ -487,7 +487,7 @@ const capOrderAdminEmail = (orderData) => {
             <strong>🚨 ACTION REQUIRED:</strong> New order received and needs to be processed.
           </div>
           <div class="payment-pending">
-            <strong>✅ PAYMENT COMPLETED:</strong> Order has been received but payment is pending.
+            <strong>✅ PAYMENT COMPLETED:</strong> Order has been received.
           </div>
           
           <div class="alert">
