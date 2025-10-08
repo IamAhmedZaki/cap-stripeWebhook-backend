@@ -41,11 +41,371 @@ const createEmailTransporter = () => {
 
 const workflowStatusChange = async (req, res) => {
 
-  
-    res.status(200).json({ message: 'aight', error: error.message });
- 
+
+  res.status(200).json({ message: 'aight', error: error.message });
+
 }
 
+
+const factoryOrderEmail = (orderData) => {
+  const {
+    customerDetails,
+    selectedOptions,
+    totalPrice,
+    currency,
+    orderNumber,
+    orderDate,
+    packageName
+  } = orderData;
+
+  const formatLabel = (label) => {
+    const labelMap = {
+      // General Cap Options
+      // 'Farve': 'Color',
+      // 'Materiale': 'Material',
+      // 'Hagerem': 'Chinstrap',
+      // 'Hagerem Materiale': 'Chinstrap Material',
+      // 'Broderi farve': 'Embroidery color',
+      // 'Knap farve': 'Button color',
+      // 'år': 'Year',
+      // 'Huebånd': 'Flag ribbon',
+      // 'Topkant': 'Top edging',
+      // 'Kantbånd': 'Edge band',
+      // 'Stjerner': 'Stars',
+      // 'Skyggebånd': 'Shadow band',
+      // 'Svederem': 'Sweatband',
+      // 'Foer': 'Inside color',
+      // 'Sløjfe': 'Bow',
+      // 'Ekstrabetræk': 'Extra cover',
+      // 'Hueæske': 'Cap box',
+      // 'Silkepude': 'Silk cushion',
+      // 'Lyskugle': 'Light ball',
+      // 'Smart Tag': 'Smart Tag',
+      // 'Handsker': 'Gloves',
+      // 'Skolebroderi farve': 'School embroidery color',
+      // 'Broderi': 'Embroidery',
+      // 'BETRÆK': 'Cover',
+      // 'SKYGGE': 'Brim',
+      // 'FOER': 'Inside of the cap',
+      // 'EKSTRABETRÆK': 'Extra cover',
+      // 'TILBEHØR': 'Accessories',
+      // 'STØRRELSE': 'Size',
+
+      // // HHX - KOKARDE Section
+      // 'KOKARDE': 'KOKARDE',
+      // 'Emblem': 'Emblem',
+      // 'Kokarde': 'Kokarde type',
+      // 'Roset farve': 'Rosette color',
+      // 'Type': 'Type',
+
+      // // HHX - UDDANNELSESBÅND Section
+      // 'UDDANNELSESBÅND': 'UDDANNELSESBÅND',
+      // 'Broderi foran': 'Front embroidery',
+      // 'Broderi farve foran': 'Front embroidery color',
+      // 'Hagerem Materiale': 'Chinstrap Material',
+      // 'Hagerem Type': 'Chinstrap Type',
+      // 'Broderi farve bagpå': 'Back embroidery color',
+
+
+      // // HHX - BRODERI Section
+      // 'Broderifarve': 'Embroidery color',
+      // 'Ingen': 'None',
+      // 'Navne broderi': 'Name embroidery',
+      // 'Skolebroderi': 'School embroidery',
+
+      // // HHX - BETRÆK Section
+      // 'BETRÆK Farve': 'Cover color',
+
+      // // HHX - SKYGGE Section
+      // 'Skygge': 'Brim',
+      // 'Skyggegravering Line 1': 'Brim engraving line 1',
+      // 'Skyggegravering Line 2': 'Brim engraving line 2',
+      // 'Skyggegravering Line 3': 'Brim engraving line 3',
+      // 'Skyggegravering': 'Brim engraving',
+      // 'Linje 1': 'Line 1',
+      // 'Linje 2': 'Line 2',
+      // 'Linje 3': 'Line 3',
+
+      // // HHX - FOER Section
+      // 'SatinType': 'Satin type',
+      // 'SilkeType': 'Silk type',
+
+      // // HHX - EKSTRABETRÆK Section
+      // 'Tilvælg': 'Optional',
+
+      // // HHX - TILBEHØR Section
+      // 'Bucketpins': 'Bucket pins',
+      // 'Ekstra korkarde': 'Extra korkarde  ',
+      // 'Ekstra korkarde Text': 'Extra korkarde text',
+      // 'Fløjte': 'Whistle',
+      // 'Huekuglepen': 'Cap pen',
+      // 'Luksus champagneglas': 'Luxury champagne glass',
+      // 'Premium æske': 'Premium box',
+      // 'Store kuglepen': 'Large pen',
+      // 'Trompet': 'Trumpet',
+
+      // // HHX - STØRRELSE Section
+      // 'Millimeter tilpasningssæt': 'Millimeter adjustment set',
+      // 'Vælg størrelse': 'Foam to adjust the size'
+      KOKARDE: "KOKARDE",
+      Emblem: "Emblem",
+      Kokarde: "Kokarde",
+      "Roset farve": "Rosette color",
+      Type: "Type",
+
+      UDDANNELSESBÅND: "Education band",
+      "Broderi farve": "Embroidery color",
+      "Broderi foran": "Front embroidery",
+      Hagerem: "Chin strap",
+      "Hagerem Materiale": "Chin strap material",
+      Huebånd: "Cap band",
+      "Knap farve": "Button color",
+      Materiale: "Material",
+      år: "Year",
+
+      BRODERI: "Embroidery",
+      Broderifarve: "Embroidery color",
+      Ingen: "None",
+      "Navne broderi": "Name embroidery",
+      Skolebroderi: "School embroidery",
+      "Skolebroderi farve": "School embroidery color",
+
+      BETRÆK: "Cover",
+      Farve: "Color",
+      Kantbånd: "Edge band",
+      Stjerner: "Stars",
+      Topkant: "Top edge",
+
+      SKYGGE: "Brim",
+      Materiale: "Material",
+      Skyggebånd: "Brim band",
+      "Skyggegravering Line 1": "Brim engraving line 1",
+      "Skyggegravering Line 2": "Brim engraving line 2",
+      "Skyggegravering Line 3": "Brim engraving line 3",
+      Type: "Type",
+
+      FOER: "Lining",
+      Farve: "Color",
+      Foer: "Lining",
+      Sløjfe: "Bow",
+      Svederem: "Sweatband",
+
+      EKSTRABETRÆK: "Extra cover",
+      Tilvælg: "Optional",
+
+      TILBEHØR: "Accessories",
+      Bucketpins: "Bucket pins",
+      "Ekstra korkarde": "Extra Kokarde",
+      "Ekstra korkarde Text": "Extra Kokarde text",
+      Fløjte: "Whistle",
+      Handsker: "Gloves",
+      Huekuglepen: "Cap pen",
+      Hueæske: "Cap box",
+      "Luksus champagneglas": "Luxury champagne glass",
+      Lyskugle: "Light ball",
+      "Premium æske": "Premium box",
+      Silkepude: "Silk pillow",
+      "Smart Tag": "Smart tag",
+      "Store kuglepen": "Large pen",
+      Trompet: "Trumpet",
+
+      STØRRELSE: "Size",
+      "Millimeter tilpasningssæt": "Millimeter fitting set",
+      "Vælg størrelse": "Choosen size ",
+
+      STX: 'bordaux',
+      HTX: 'Navy Blue',
+      HHX: ' Royal Blue',
+      HF: 'Light Blue',
+      EUX: 'Grey',
+      EUD: 'Purple',
+      Sosuassistent: 'Purple',
+      Sosuhjælper: 'Light purple',
+      Frisør: 'Light pink',
+      Kosmetolog: 'Pink',
+      Pædagog: 'Dark purple',
+      PAU: 'Orange',
+      Ernæringsassisten: 'Yellow',
+
+
+    }
+
+    return labelMap[label] || label;
+  };
+
+
+  const formatValue = (value) => {
+    if (typeof value === 'object' && value !== null) {
+      if (value.name) return value.name;
+      if (value.value) return value.value;
+      return JSON.stringify(value);
+    }
+    if (typeof value === 'boolean') return value ? 'Yes' : 'No';
+    if (value === '') return 'Ikke angivet / Not specified';
+    return value;
+  };
+
+  const formatOptions = (options) => {
+    return Object.entries(options)
+      .map(([key, value]) => {
+        if (!value || value === '' || value === null || value === false) return '';
+
+        if (typeof value === 'object' && value !== null) {
+          if (value.name) {
+            return `<tr><td style="padding: 4px 8px;">${formatLabel(key)}:</td><td style="font-weight: bold;">${formatValue(value.name)}</td></tr>`;
+          }
+          return Object.entries(value)
+            .map(([subKey, subValue]) => {
+              if (subValue && subValue !== '' && subValue !== null && subValue !== false) {
+                return `<tr><td style="padding: 4px 8px;">${formatLabel(subKey)}:</td><td style="font-weight: bold;">${formatValue(subValue)}</td></tr>`;
+              }
+              return '';
+            })
+            .join('');
+        }
+
+        return `<tr><td style="padding: 4px 8px;">${formatLabel(key)}:</td><td style="font-weight: bold;">${formatValue(value)}</td></tr>`;
+      })
+      .join('');
+  };
+
+  const html = `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body { font-family: Arial, sans-serif; color: #333; background: #f9fafb; line-height: 1.6; }
+    .container { max-width: 750px; margin: 0 auto; background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 0 8px rgba(0,0,0,0.1); }
+    .header { background: #111827; color: white; text-align: center; padding: 15px; font-size: 20px; font-weight: bold; }
+    .section { padding: 20px; border-bottom: 1px solid #e5e7eb; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    td { vertical-align: top; padding: 6px 0; }
+    h2 { margin-bottom: 10px; color: #111827; }
+    .highlight { background: #e0f2fe; padding: 10px; border-radius: 5px; }
+        .category { background: #f3f4f6; font-weight: bold; padding: 8px; border-radius: 5px; margin-top: 15px; }
+.option-box {
+      background: #f9fafb;
+      padding: 10px 15px;
+      border-radius: 6px;
+      margin-bottom: 8px;
+    }
+    .option-box p {
+      margin: 0;
+    }
+    .option-box .label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 3px;
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      Kunde ordre oplysninger
+    </div>
+
+    <div class="section">
+      <p><strong>Ordren er oprettet :</strong> ${new Date(orderDate).toLocaleString('da-DK')}</p>
+      <p><strong>Ordre #${orderNumber}</strong> — ${customerDetails.firstName} ${customerDetails.lastName}</p>
+      <p><strong>Customer Name : — ${customerDetails.firstName} ${customerDetails.lastName}</p>
+      <p><strong>School :</strong> ${customerDetails.Skolenavn || 'Ikke angivet / Not specified'}</p>
+    </div>
+
+    <div class="section">
+      <h2>Ordre detaljer</h2>
+      <p><strong>Pakke:</strong> ${packageName || 'Hue Pakke'}</p>
+    </div>
+
+    <div class="section">
+      <h2>Information about the Cap</h2>  
+      ${Object.entries(selectedOptions)
+      .map(([category, options]) => {
+        const hasOptions = Object.values(options).some(
+          val => val && val !== '' && val !== null && val !== false
+        );
+        if (!hasOptions) return '';
+        return `
+            <div class="category">${formatLabel(category)}</div>
+            ${Object.entries(options)
+            .map(([key, value]) => {
+              if (!value || value === '' || value === null || value === false) return '';
+              let displayValue =
+                typeof value === 'object' && value.name ? value.name : value;
+              return `
+                  <div class="option-box">
+                    <p class="label">${formatLabel(key)}</p>
+                    <p>${displayValue}</p>
+                  </div>`;
+            })
+            .join('')}
+          `;
+      })
+      .join('')}
+    </div>
+  </div>
+</body>
+</html>
+`;
+
+  const text = `
+Kunde ordre oplysninger (Customer Order Information)
+====================================================
+
+Ordren er oprettet (Order created): ${new Date(orderDate).toLocaleString('da-DK')}
+Ordre #${orderNumber} — ${customerDetails.firstName} ${customerDetails.lastName}
+Skole (School): ${customerDetails.Skolenavn || 'Ikke angivet / Not specified'}
+
+Ordre detaljer (Order details)
+------------------------------
+Pakke: ${packageName || 'Hue Pakke'}
+Total pris: ${totalPrice} ${currency}
+
+Information om huen (Information about the Cap)
+-----------------------------------------------
+${Object.entries(selectedOptions)
+      .map(([category, options]) => {
+        const hasOptions = Object.values(options).some(val =>
+          val && val !== '' && val !== null && val !== false &&
+          !(typeof val === 'object' && Object.keys(val).length === 0)
+        );
+        if (!hasOptions) return '';
+
+        const optionsText = Object.entries(options)
+          .map(([key, value]) => {
+            if (!value || value === '' || value === null || value === false) return '';
+
+            if (typeof value === 'object' && value !== null) {
+              if (value.name) {
+                return `${formatLabel(key)}: ${formatValue(value.name)}`;
+              }
+              return Object.entries(value)
+                .map(([subKey, subValue]) => `${formatLabel(subKey)}: ${formatValue(subValue)}`)
+                .join('\n');
+            }
+            return `${formatLabel(key)}: ${formatValue(value)}`;
+          })
+          .join('\n');
+
+        return `${formatLabel(category).toUpperCase()}\n${optionsText}\n`;
+      })
+      .join('\n')}
+
+NOTE TIL FABRIK / NOTE TO FACTORY
+---------------------------------
+- Kontroller broderi tekstlængde og farver.
+- Check color consistency with emblem.
+- Bekræft størrelse, materiale og hagerem-type.
+`;
+
+  return {
+    subject: `FACTORY ORDER – #${orderNumber} (${customerDetails.firstName} ${customerDetails.lastName})`,
+    html,
+    text
+  };
+};
 
 
 
@@ -56,7 +416,8 @@ const capOrderEmail = (orderData) => {
     totalPrice,
     currency,
     orderNumber,
-    orderDate
+    orderDate,
+    packageName
   } = orderData;
 
   // Enhanced formatOptions to handle different value structures
@@ -183,99 +544,194 @@ const capOrderEmail = (orderData) => {
   };
 
   const html = `
-    <!DOCTYPE html>
-    <html>
-    <head>
-      <meta charset="utf-8">
-      <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-        .header { background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 20px; text-align: center; border-radius: 10px 10px 0 0; }
-        .content { background: #f9fafb; padding: 20px; border-radius: 0 0 10px 10px; }
-        .section { background: white; padding: 15px; margin: 10px 0; border-radius: 8px; border: 1px solid #e5e7eb; }
-        .total { background: #d1fae5; padding: 15px; border-radius: 8px; text-align: center; font-weight: bold; }
-        table { width: 100%; border-collapse: collapse; }
-        .category-header { background: #f3f4f6; padding: 8px 12px; margin: 15px 0 8px 0; border-radius: 4px; font-weight: bold; }
-      </style>
-    </head>
-    <body>
-      <div class="container">
-        <div class="header">
-          <h1>🎩 Din Tilpassede Hue Ordre</h1>
-          <p>Ordrenummer: ${orderNumber}</p>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; background: #f9fafb; }
+    .container { max-width: 700px; margin: 0 auto; background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+
+    .header img { width: 100%; max-width: 400px; border-radius: 8px; margin-bottom: 10px; }
+    .content { padding: 25px; }
+    h1, h2, h3 { color: #111827; }
+    p { margin: 6px 0; }
+    .section { margin: 25px 0; padding: 15px; border: 1px solid #e5e7eb; border-radius: 8px; background: #f9fafb; }
+    .total { background: #d1fae5; padding: 20px; border-radius: 8px; text-align: center; font-weight: bold; }
+    .label { font-weight: bold; color: #111827; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    td { padding: 6px 0; vertical-align: top; }
+    .category { background: #f3f4f6; font-weight: bold; padding: 8px; border-radius: 5px; margin-top: 15px; }
+    .option-box {
+      background: #f9fafb;
+      padding: 10px 15px;
+      border-radius: 6px;
+      margin-bottom: 8px;
+    }
+    .option-box p {
+      margin: 0;
+    }
+    .option-box .label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 3px;
+    }
+    
+    /* Two-column layout for billing + shipping */
+    .two-column { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .two-column .section { flex: 1; min-width: 300px; }
+
+    /* Category item styling (Roset farve → Royal Blue layout) */
+    .option-item { margin-bottom: 10px; }
+    .option-item .option-label { font-weight: bold; display: block; color: #111827; }
+    .option-item .option-value { margin-left: 0; color: #333; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header" style="background: #fff; color: #111; text-align: center; padding: 0; border-bottom: 1px solid #e5e7eb;">
+      <img src="https://elipsestudio.com/studentlife/studentlifeemail.jpg" 
+           alt="Studentlife caps" 
+           style="width: 100%; max-width: 700px; display: block; margin: 0 auto; border-radius: 0;">
+
+      <div style="background: #f9fafb; padding: 15px 0; border-top: 1px solid #e5e7eb; text-align: center;">
+        <span style="font-size: 16px; font-weight: bold; color: #111827; display: inline-block; margin: 0 10px;">
+          ✓ Premium kvalitet
+        </span>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style="font-size: 16px; font-weight: bold; color: #111827; display: inline-block; margin: 0 10px;">
+          ✓ Personligt design
+        </span>
+      </div>
+    </div>
+
+    <div class="content">
+      <p>Kære <strong>${customerDetails.firstName} ${customerDetails.lastName}</strong>,</p>
+      <p>Tak for din bestilling hos Studentlife.</p>
+      <p>Din bestilling med ordrenummer <strong>${orderNumber}</strong> er nu betalt.</p>
+
+      <p><strong>Bemærk:</strong> Husk at tjekke, at alle detaljer er korrekte, herunder leveringstid (3 måneder fra bestilling, medmindre det er ekspres), skolens logo samt skolebroderi.</p>
+      <p>Vi håber, at du kommer til at elske din studenterhue.</p>
+
+      <div class="section">
+        <h2>Din ordre oplysninger</h2>
+        <p><span class="label">Ordren er oprettet:</span> ${new Date(orderDate).toLocaleString('da-DK')}</p>
+        <p><span class="label">Ordrenummer:</span> ${orderNumber}</p>
+      </div>
+
+      <div class="two-column">
+        <div class="section">
+          <h2>Betalingsinformation</h2>
+          <p><span class="label">Navn</span><br>${customerDetails.firstName} ${customerDetails.lastName}</p>
+          <p><span class="label">Adresse</span><br>${customerDetails.address}</p>
+          <p><span class="label">Post & By</span><br>${customerDetails.postalCode} ${customerDetails.city}</p>
         </div>
-        
-        <div class="content">
-          <div class="section">
-            <h2>Kundeinformation</h2>
-            <p><strong>Navn:</strong> ${customerDetails.firstName} ${customerDetails.lastName}</p>
-            <p><strong>E-mail:</strong> ${customerDetails.email}</p>
-            <p><strong>Telefon:</strong> ${customerDetails.phone}</p>
-            ${customerDetails.Skolenavn ? `<p><strong>Skolenavn:</strong> ${customerDetails.Skolenavn}</p>` : ''}
-            <p><strong>Adresse:</strong> ${customerDetails.address}, ${customerDetails.city}, ${customerDetails.postalCode}, ${customerDetails.country}</p>
-            ${customerDetails.notes ? `<p><strong>Bemærkninger:</strong> ${customerDetails.notes}</p>` : ''}
-            ${customerDetails.deliverToSchool ? `<p><strong>Leveres til skole:</strong> Ja</p>` : ''}
-          </div>
 
-          <div class="section">
-            <h2>Hue Konfiguration</h2>
-            ${Object.entries(selectedOptions)
-      .map(([category, options]) => {
-        const hasOptions = Object.values(options).some(val => 
-          val && val !== '' && val !== null && val !== false && 
-          !(typeof val === 'object' && Object.keys(val).length === 0)
-        );
-        if (!hasOptions) return '';
-
-        return `
-                  <div class="category-header">${formatLabel(category)}</div>
-                  <table>
-                    ${formatOptions(options)}
-                  </table>
-                `;
-      })
-      .join('')}
-          </div>
-
-          <div class="total">
-            <h2>Total Beløb</h2>
-            <p style="font-size: 24px; margin: 0;">${totalPrice} ${currency}</p>
-          </div>
-
-          <div class="section">
-            <p><strong>Ordredato:</strong> ${new Date(orderDate).toLocaleDateString('da-DK')}</p>
-            <p>Tak for din ordre! Vi behandler den snarest og kontakter dig, hvis vi har brug for yderligere oplysninger.</p>
-          </div>
+        <div class="section">
+          <h2>Leveringsinformation</h2>
+          <p><span class="label">Navn</span><br>${customerDetails.firstName} ${customerDetails.lastName}</p>
+          <p><span class="label">Adresse</span><br>${customerDetails.address}</p>
+          <p><span class="label">Post & By</span><br>${customerDetails.postalCode} ${customerDetails.city}</p>
+          ${customerDetails.notes ? `<p><span class="label">Leveringsnote</span><br>${customerDetails.notes}</p>` : ''}
         </div>
       </div>
-    </body>
-    </html>
-  `;
+
+      <div class="section">
+        <h2>Ordre detaljer</h2>
+        <p><strong>Package</strong><br>${packageName || 'Hue Pakke'}</p>
+        <p><strong>Pris</strong><br>${totalPrice || ''} DKK</p>
+
+        <div class="category">Information om huen</div>
+        ${Object.entries(selectedOptions)
+      .map(([category, options]) => {
+        const hasOptions = Object.values(options).some(
+          val => val && val !== '' && val !== null && val !== false
+        );
+        if (!hasOptions) return '';
+        return `
+            <div class="category">${formatLabel(category)}</div>
+            ${Object.entries(options)
+            .map(([key, value]) => {
+              if (!value || value === '' || value === null || value === false) return '';
+              let displayValue =
+                typeof value === 'object' && value.name ? value.name : value;
+              return `
+                  <div class="option-box">
+                    <p class="label">${formatLabel(key)}</p>
+                    <p>${displayValue}</p>
+                  </div>`;
+            })
+            .join('')}
+          `;
+      })
+      .join('')}
+      </div>
+
+      <div class="total">
+        <p>Total: <strong>${totalPrice} ${currency}</strong></p>
+        <p>Inklusiv moms</p>
+        <p>LEVERING: 0 DKK</p>
+        <p>MOMS: 20% af totalbeløbet</p>
+      </div>
+
+      <div class="section" style="text-align:center;">
+        <p>Tak for din ordre ❤️</p>
+        <p>Vi behandler den snarest og kontakter dig, hvis vi har brug for yderligere oplysninger.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+`;
+
 
   // Enhanced text version formatting
   const text = `
-    TILPASSET HUE ORDRE BEKRÆFTELSE
-    ================================
+PREMIUM KVALITET & PERSONLIGT DESIGN
+=====================================
 
-    Ordrenummer: ${orderNumber}
-    Ordredato: ${new Date(orderDate).toLocaleDateString('da-DK')}
+Kære ${customerDetails.firstName} ${customerDetails.lastName},
 
-    KUNDEINFORMATION:
-    -----------------
-    Navn: ${customerDetails.firstName} ${customerDetails.lastName}
-    E-mail: ${customerDetails.email}
-    Telefon: ${customerDetails.phone}
-    ${customerDetails.Skolenavn ? `Skolenavn: ${customerDetails.Skolenavn}` : ''}
-    Adresse: ${customerDetails.address}, ${customerDetails.city}, ${customerDetails.postalCode}, ${customerDetails.country}
-    ${customerDetails.notes ? `Bemærkninger: ${customerDetails.notes}` : ''}
-    ${customerDetails.deliverToSchool ? `Leveres til skole: Ja` : ''}
+Tak for din bestilling hos Studentlife.
 
-    HUE KONFIGURATION:
-    ------------------
-    ${Object.entries(selectedOptions)
+Din bestilling med ordrenummer: ${orderNumber} er nu betalt.
+Husk at tjekke, at alle detaljer er korrekte, herunder leveringstid (3 måneder fra bestilling, medmindre det er ekspres), skolens logo samt skolebroderi.
+
+Vi håber, at du kommer til at elske din studenterhue.
+
+
+ORDREOPLYSNINGER
+-----------------
+Ordren er oprettet: ${new Date(orderDate).toLocaleString('da-DK')}
+Ordrenummer: ${orderNumber}
+
+
+BETALINGSINFORMATION
+---------------------
+Navn: ${customerDetails.firstName} ${customerDetails.lastName}
+Adresse: ${customerDetails.address}
+Post & By: ${customerDetails.postalCode} ${customerDetails.city}
+
+
+LEVERINGSINFORMATION
+---------------------
+Navn: ${customerDetails.firstName} ${customerDetails.lastName}
+Adresse: ${customerDetails.address}
+Post & By: ${customerDetails.postalCode} ${customerDetails.city}
+${customerDetails.notes ? `Leveringsnote: ${customerDetails.notes}` : ''}
+
+
+ORDRE DETALJER
+---------------
+${selectedOptions?.pakke?.name ? `Valgt pakke: ${selectedOptions.pakke.name}` : ''}
+${selectedOptions?.pakke?.price ? `Pris: ${selectedOptions.pakke.price} DKK` : ''}
+
+Information om huen:
+--------------------
+${Object.entries(selectedOptions)
       .map(([category, options]) => {
-        const hasOptions = Object.values(options).some(val => 
-          val && val !== '' && val !== null && val !== false && 
+        const hasOptions = Object.values(options).some(val =>
+          val && val !== '' && val !== null && val !== false &&
           !(typeof val === 'object' && Object.keys(val).length === 0)
         );
         if (!hasOptions) return '';
@@ -308,15 +764,22 @@ const capOrderEmail = (orderData) => {
       .filter(Boolean)
       .join('\n')}
 
-    TOTAL BELØB:
-    ------------
-    ${totalPrice} ${currency}
 
-    Tak for din ordre! Vi behandler den snarest.
-  `;
+TOTAL
+------
+Total: ${totalPrice} ${currency}
+Inklusiv moms
+LEVERING: 0 DKK
+MOMS: 20% af totalbeløbet
+
+
+Tak for din ordre ❤️
+Vi behandler den snarest og kontakter dig, hvis vi har brug for yderligere oplysninger.
+`;
+
 
   return {
-    subject: `🎩 Hue Ordre Bekræftelse - ${orderNumber}`,
+    subject: `Tak for din bestilling hos Studentlife`,
     html,
     text
   };
@@ -329,21 +792,25 @@ const capOrderAdminEmail = (orderData) => {
     currency,
     orderNumber,
     orderDate,
-    email
+    packageName
   } = orderData;
 
-  // Enhanced formatOptions for admin email
+  // Enhanced formatOptions to handle different value structures
   const formatOptions = (options) => {
     return Object.entries(options)
       .map(([key, value]) => {
+        // Skip if value is empty, null, or false
         if (!value || value === '' || value === null || value === false) {
           return '';
         }
 
+        // Handle nested objects with name/value properties
         if (typeof value === 'object' && value !== null) {
+          // If it's an object with name property (like Roset farve)
           if (value.name) {
             return `<tr><td style="padding: 4px 8px; border-bottom: 1px solid #eee;">${formatLabel(key)}:</td><td style="padding: 4px 8px; border-bottom: 1px solid #eee; font-weight: bold;">${formatValue(value.name)}</td></tr>`;
           }
+          // If it's an object with multiple properties, format each one
           return Object.entries(value)
             .map(([subKey, subValue]) => {
               if (subValue && subValue !== '' && subValue !== null && subValue !== false) {
@@ -354,6 +821,7 @@ const capOrderAdminEmail = (orderData) => {
             .join('');
         }
 
+        // Handle simple values
         return `<tr><td style="padding: 4px 8px; border-bottom: 1px solid #eee;">${formatLabel(key)}:</td><td style="padding: 4px 8px; border-bottom: 1px solid #eee; font-weight: bold;">${formatValue(value)}</td></tr>`;
       })
       .join('');
@@ -361,17 +829,17 @@ const capOrderAdminEmail = (orderData) => {
 
   const formatLabel = (label) => {
     const labelMap = {
-      'firstName': 'First Name',
-      'lastName': 'Last Name',
-      'email': 'Email',
-      'phone': 'Phone',
-      'Skolenavn': 'School Name',
-      'address': 'Address',
-      'city': 'City',
-      'postalCode': 'Postal Code',
-      'country': 'Country',
-      'notes': 'Notes',
-      'deliverToSchool': 'Deliver to School',
+      'firstName': 'Fornavn',
+      'lastName': 'Efternavn',
+      'email': 'E-mail',
+      'phone': 'Telefon',
+      'Skolenavn': 'Skolenavn',
+      'address': 'Adresse',
+      'city': 'By',
+      'postalCode': 'Postnummer',
+      'country': 'Land',
+      'notes': 'Bemærkninger',
+      'deliverToSchool': 'Leveres til skole',
       'KOKARDE': 'KOKARDE',
       'Roset farve': 'Roset farve',
       'Kokarde': 'Kokarde',
@@ -429,144 +897,227 @@ const capOrderAdminEmail = (orderData) => {
 
   const formatValue = (value) => {
     if (typeof value === 'object' && value !== null) {
+      // Prefer showing "name" if it exists
       if (value.name) return value.name;
       if (value.value) return value.value;
-      return JSON.stringify(value);
+      return JSON.stringify(value); // fallback
     }
     if (typeof value === 'boolean') {
-      return value ? 'Yes' : 'No';
+      return value ? 'Ja' : 'Nej';
     }
     if (value === '') {
-      return 'Not specified';
+      return 'Ikke angivet';
     }
-    if (value === 'No') return 'No';
-    if (value === 'Yes') return 'Yes';
+    if (value === 'No') return 'Nej';
+    if (value === 'Yes') return 'Ja';
     if (value === 'Standard') return 'Standard';
     if (value === 'NONE') return 'NONE';
     if (value === 'INGEN') return 'INGEN';
-    if (value === false) return 'No';
-    if (value === true) return 'Yes';
+    if (value === false) return 'Nej';
+    if (value === true) return 'Ja';
     return value;
   };
 
   const html = `
-    <!DOCTYPE html>
-    <html>
-    <head>
-      <meta charset="utf-8">
-      <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-        .header { background: linear-gradient(135deg, #1e40af, #3b82f6); color: white; padding: 20px; text-align: center; border-radius: 10px 10px 0 0; }
-        .content { background: #f9fafb; padding: 20px; border-radius: 0 0 10px 10px; }
-        .section { background: white; padding: 15px; margin: 10px 0; border-radius: 8px; border: 1px solid #e5e7eb; }
-        .total { background: #dbeafe; padding: 15px; border-radius: 8px; text-align: center; font-weight: bold; }
-        table { width: 100%; border-collapse: collapse; }
-        .category-header { background: #f3f4f6; padding: 8px 12px; margin: 15px 0 8px 0; border-radius: 4px; font-weight: bold; }
-        .alert { background: #fef3c7; padding: 10px; border-radius: 5px; border-left: 4px solid #f59e0b; margin-bottom: 15px; }
-        .priority { background: #fee2e2; padding: 10px; border-radius: 5px; border-left: 4px solid #ef4444; margin-bottom: 15px; }
-        .payment-pending {
-          background: #ddffcdff;
-          padding: 12px;
-          border-radius: 6px;
-          border-left: 4px solid #30ff07ff;
-          margin-bottom: 15px;
-          color: #088504ff;
-        }
-      </style>
-    </head>
-    <body>
-      <div class="container">
-        <div class="header">
-          <h1>🎩 NEW GRADUATION CAP ORDER RECEIVED</h1>
-          <p>Order Number: ${orderNumber} | ${new Date(orderDate).toLocaleDateString('en-US')}</p>
-        </div>
-        
-        <div class="content">
-          <div class="priority">
-            <strong>🚨 ACTION REQUIRED:</strong> New order received and needs to be processed.
-          </div>
-          <div class="payment-pending">
-            <strong>✅ PAYMENT COMPLETED:</strong> Order has been received.
-          </div>
-          
-          <div class="alert">
-            <strong>📧 Customer Email:</strong> ${customerDetails.email}
-          </div>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: #f9fafb;
+    }
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .header {
+      background: #fff;
+      text-align: left;
+      padding: 15px 25px;
+      font-weight: bold;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .section {
+      padding: 20px;
+      border-bottom: 1px solid #eee;
+    }
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .info-box {
+      flex: 1;
+      background: #f9fafb;
+      padding: 15px;
+      border-radius: 6px;
+    }
+    .info-box h2 {
+      margin-bottom: 10px;
+      font-size: 16px;
+      color: #111827;
+    }
+    .info-box p {
+      margin: 4px 0;
+    }
+    .category {
+      font-weight: bold;
+      background: #f3f4f6;
+      padding: 10px;
+      border-radius: 6px;
+      margin-top: 15px;
+      margin-bottom: 10px;
+    }
+    .option-box {
+      background: #f9fafb;
+      padding: 10px 15px;
+      border-radius: 6px;
+      margin-bottom: 8px;
+    }
+    .option-box p {
+      margin: 0;
+    }
+    .option-box .label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 3px;
+    }
+    .total {
+      background: #d1fae5;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
 
-          <div class="section">
-            <h2>👤 Customer Information</h2>
-            <p><strong>Name:</strong> ${customerDetails.firstName} ${customerDetails.lastName}</p>
-            <p><strong>Email:</strong> ${customerDetails.email}</p>
-            <p><strong>Phone:</strong> ${customerDetails.phone}</p>
-            ${customerDetails.Skolenavn ? `<p><strong>School Name:</strong> ${customerDetails.Skolenavn}</p>` : ''}
-            <p><strong>Address:</strong> ${customerDetails.address}, ${customerDetails.city}, ${customerDetails.postalCode}, ${customerDetails.country}</p>
-            ${customerDetails.notes ? `<p><strong>Customer Notes:</strong> ${customerDetails.notes}</p>` : ''}
-            ${customerDetails.deliverToSchool ? `<p><strong>Deliver to School:</strong> Yes</p>` : ''}
-          </div>
+    <div class="header">Kunde ordre oplysninger</div>
 
-          <div class="section">
-            <h2>⚙️ Cap Configuration</h2>
-            ${Object.entries(selectedOptions)
+    <div class="section">
+      <p><strong>Ordren er oprettet:</strong> ${new Date(orderDate).toLocaleString('da-DK')} (Date and time for order)</p>
+      <p><strong>Order #${orderNumber}</strong></p>
+    </div>
+
+    <div class="section info-row">
+      <div class="info-box">
+        <h2>Betalingsinformation</h2>
+        <p><strong>Information about the payer</strong></p>
+        <p>Name: ${customerDetails.firstName} ${customerDetails.lastName}</p>
+        <p>Address: ${customerDetails.address}</p>
+        <p>Post and City: ${customerDetails.postalCode} ${customerDetails.city}</p>
+      </div>
+      <div class="info-box">
+        <h2>Leveringsinformation (Delivery information)</h2>
+        <p>Name: ${customerDetails.firstName} ${customerDetails.lastName}</p>
+        <p>Address: ${customerDetails.address}</p>
+        <p>Post and City: ${customerDetails.postalCode} ${customerDetails.city}</p>
+        ${customerDetails.notes ? `<p>Levering (Note): ${customerDetails.notes}</p>` : ''}
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Order Details</h2>
+      <p><strong>Package:</strong> ${packageName || 'Hue Pakke'}</p>
+      <p><strong>Price:</strong> ${totalPrice} ${currency}</p>
+
+      ${Object.entries(selectedOptions)
       .map(([category, options]) => {
-        const hasOptions = Object.values(options).some(val => 
-          val && val !== '' && val !== null && val !== false && 
-          !(typeof val === 'object' && Object.keys(val).length === 0)
+        const hasOptions = Object.values(options).some(
+          val => val && val !== '' && val !== null && val !== false
         );
         if (!hasOptions) return '';
-
-        return `
-                  <div class="category-header">${formatLabel(category)}</div>
-                  <table>
-                    ${formatOptions(options)}
-                  </table>
-                `;
+        return `  
+            <div class="category">${formatLabel(category)}</div>
+            ${Object.entries(options)
+            .map(([key, value]) => {
+              if (!value || value === '' || value === null || value === false) return '';
+              let displayValue =
+                typeof value === 'object' && value.name ? value.name : value;
+              return `
+                  <div class="option-box">
+                    <p class="label">${formatLabel(key)}</p>
+                    <p>${displayValue}</p>
+                  </div>`;
+            })
+            .join('')}
+          `;
       })
       .join('')}
-          </div>
+    </div>
 
-          <div class="total">
-            <h2>💰 Total Amount</h2>
-            <p style="font-size: 24px; margin: 0;">${totalPrice} ${currency}</p>
-          </div>
+    <div class="total">
+      <p>Total: ${totalPrice} ${currency}</p>
+      <p>Inklusiv moms</p>
+      <p>---------------------</p>
+      <p>SUM: ${totalPrice} ${currency}</p>
+      <p>LEVERING: 0 DKK</p>
+      <p>MOMS: 20% of the total price DKK (vat)</p>
+    </div>
 
-          <div class="section">
-            <p><strong>📅 Order Date:</strong> ${new Date(orderDate).toLocaleString('en-US')}</p>
-            <p><strong>🔢 Order Number:</strong> ${orderNumber}</p>
-            <p><strong>📧 Customer Contact:</strong> ${customerDetails.email}</p>
-          </div>
-        </div>
-      </div>
-    </body>
-    </html>
-  `;
+  </div>
+</body>
+</html>
+`;
 
+
+  // Enhanced text version formatting
   const text = `
-    NEW GRADUATION CAP ORDER NOTIFICATION - ACTION REQUIRED
-    ======================================================
+PREMIUM KVALITET & PERSONLIGT DESIGN
+=====================================
 
-    Order Number: ${orderNumber}
-    Order Date: ${new Date(orderDate).toLocaleString('en-US')}
-    Customer Email: ${email}
+Kære ${customerDetails.firstName} ${customerDetails.lastName},
 
-    🚨 ACTION REQUIRED: New order received and needs to be processed.
+Tak for din bestilling hos Studentlife.
 
-    CUSTOMER INFORMATION:
-    ---------------------
-    Name: ${customerDetails.firstName} ${customerDetails.lastName}
-    Email: ${customerDetails.email}
-    Phone: ${customerDetails.phone}
-    ${customerDetails.Skolenavn ? `School Name: ${customerDetails.Skolenavn}` : ''}
-    Address: ${customerDetails.address}, ${customerDetails.city}, ${customerDetails.postalCode}, ${customerDetails.country}
-    ${customerDetails.notes ? `Customer Notes: ${customerDetails.notes}` : ''}
-    ${customerDetails.deliverToSchool ? `Deliver to School: Yes` : ''}
+Din bestilling med ordrenummer: ${orderNumber} er nu betalt.
+Husk at tjekke, at alle detaljer er korrekte, herunder leveringstid (3 måneder fra bestilling, medmindre det er ekspres), skolens logo samt skolebroderi.
 
-    CAP CONFIGURATION:
-    ------------------
-    ${Object.entries(selectedOptions)
+Vi håber, at du kommer til at elske din studenterhue.
+
+
+ORDREOPLYSNINGER
+-----------------
+Ordren er oprettet: ${new Date(orderDate).toLocaleString('da-DK')}
+Ordrenummer: ${orderNumber}
+
+
+BETALINGSINFORMATION
+---------------------
+Navn: ${customerDetails.firstName} ${customerDetails.lastName}
+Adresse: ${customerDetails.address}
+Post & By: ${customerDetails.postalCode} ${customerDetails.city}
+
+
+LEVERINGSINFORMATION
+---------------------
+Navn: ${customerDetails.firstName} ${customerDetails.lastName}
+Adresse: ${customerDetails.address}
+Post & By: ${customerDetails.postalCode} ${customerDetails.city}
+${customerDetails.notes ? `Leveringsnote: ${customerDetails.notes}` : ''}
+
+
+ORDRE DETALJER
+---------------
+${selectedOptions?.pakke?.name ? `Valgt pakke: ${selectedOptions.pakke.name}` : ''}
+${selectedOptions?.pakke?.price ? `Pris: ${selectedOptions.pakke.price} DKK` : ''}
+
+Information om huen:
+--------------------
+${Object.entries(selectedOptions)
       .map(([category, options]) => {
-        const hasOptions = Object.values(options).some(val => 
-          val && val !== '' && val !== null && val !== false && 
+        const hasOptions = Object.values(options).some(val =>
+          val && val !== '' && val !== null && val !== false &&
           !(typeof val === 'object' && Object.keys(val).length === 0)
         );
         if (!hasOptions) return '';
@@ -599,16 +1150,24 @@ const capOrderAdminEmail = (orderData) => {
       .filter(Boolean)
       .join('\n')}
 
-    TOTAL AMOUNT:
-    -------------
-    ${totalPrice} ${currency}
 
-    ACTION REQUIRED: Please process this order as soon as possible.
-    Customer Contact: ${customerDetails.email}
-  `;
+TOTAL
+------
+Total: ${totalPrice} ${currency}
+Inklusiv moms
+------
+SUM: ${totalPrice} ${currency}
+Inklusiv moms
+LEVERING: 0 DKK
+MOMS: 20% of the total price DKK (vat)
+
+
+
+`;
+
 
   return {
-    subject: `🎩 NEW ORDER: Graduation Cap Order : ${orderNumber} - ${customerDetails.firstName} ${customerDetails.lastName}`,
+    subject: `Tak for din bestilling hos Studentlife`,
     html,
     text
   };
@@ -623,7 +1182,8 @@ const sendCapEmail = async (req, res) => {
       currency,
       orderNumber,
       orderDate,
-      email
+      email,
+      packageName
     } = req.body;
 
     // Validate required fields
@@ -640,7 +1200,8 @@ const sendCapEmail = async (req, res) => {
       totalPrice: totalPrice || '299.00',
       currency: currency || 'DKK',
       orderNumber: orderNumber || `CAP-${Date.now()}`,
-      orderDate: orderDate || new Date().toISOString()
+      orderDate: orderDate || new Date().toISOString(),
+      packageName: packageName
     });
     const emailContentAdmin = capOrderAdminEmail({
       customerDetails,
@@ -648,7 +1209,17 @@ const sendCapEmail = async (req, res) => {
       totalPrice: totalPrice || '299.00',
       currency: currency || 'DKK',
       orderNumber: orderNumber || `CAP-${Date.now()}`,
-      orderDate: orderDate || new Date().toISOString()
+      orderDate: orderDate || new Date().toISOString(),
+      packageName: packageName
+    });
+    const emailContentFactory = factoryOrderEmail({
+      customerDetails,
+      selectedOptions,
+      totalPrice: totalPrice || '299.00',
+      currency: currency || 'DKK',
+      orderNumber: orderNumber || `CAP-${Date.now()}`,
+      orderDate: orderDate || new Date().toISOString(),
+      packageName: packageName
     });
 
     const mailOptions = {
@@ -666,9 +1237,18 @@ const sendCapEmail = async (req, res) => {
       html: emailContentAdmin.html,
       text: emailContentAdmin.text
     };
+
+    const mailOptionsFactory = {
+      from: process.env.EMAIL_FROM || process.env.EMAIL_USER,
+      to: "salg@studentlife.dk",
+      subject: emailContentFactory.subject,
+      html: emailContentFactory.html,
+      text: emailContentFactory.text
+    };
     // Send email
     const emailResult = await transporter.sendMail(mailOptions);
     const emailResultAdmin = await transporter.sendMail(mailOptionsAdmin);
+    const emailResultFactory = await transporter.sendMail(mailOptionsFactory);
 
     // Optionally save to database using Prisma
     try {
@@ -719,52 +1299,54 @@ const sendCapEmail = async (req, res) => {
 };
 
 const stripePayment = async (req, res) => {
-  const { 
-    customerDetails,
-      selectedOptions,
-      totalPrice,
-      currency,
-      orderNumber,
-      orderDate,
-      email } = req.body;
-
-  try {
-   const order = await prisma.order.create({
-  data: {
+  const {
     customerDetails,
     selectedOptions,
-    totalPrice:parseFloat(totalPrice),
+    totalPrice,
     currency,
     orderNumber,
     orderDate,
-    customerEmail: email,
-    status: 'PENDING'
-  }
-});
+    email,
+    packageName } = req.body;
 
-const session = await stripe.checkout.sessions.create({
-  payment_method_types: ["card"],
-  customer_email: email,
-  line_items: [
-    {
-      price_data: {
-        currency: "dkk",
-        product_data: {
-          name: `Cap Order : ${order.orderNumber}`,
+  try {
+    const order = await prisma.order.create({
+      data: {
+        customerDetails,
+        selectedOptions,
+        totalPrice: parseFloat(totalPrice),
+        currency,
+        orderNumber,
+        orderDate,
+        customerEmail: email,
+        status: 'PENDING',
+        packageName: packageName
+      }
+    });
+
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ["card"],
+      customer_email: email,
+      line_items: [
+        {
+          price_data: {
+            currency: "dkk",
+            product_data: {
+              name: `Cap Order : ${order.orderNumber}`,
+            },
+            unit_amount: totalPrice * 100,
+          },
+          quantity: 1,
         },
-        unit_amount: totalPrice * 100,
+      ],
+      mode: "payment",
+      locale: "da",
+      success_url: `https://elipsestudio.com/studentlife/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: "https://elipsestudio.com/studentlife/cancel",
+      metadata: {
+        orderId: order.id,   // 👈 only store a small reference here
       },
-      quantity: 1,
-    },
-  ],
-  mode: "payment",
-  locale: "da",
-  success_url: `https://elipsestudio.com/studentlife/success?session_id={CHECKOUT_SESSION_ID}`,
-  cancel_url: "https://elipsestudio.com/studentlife/cancel",
-  metadata: {
-    orderId: order.id,   // 👈 only store a small reference here
-  },
-});
+    });
     res.json({ id: session.id });
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -800,25 +1382,26 @@ const stripeWebhook = async (req, res) => {
       // Get the orderId from metadata
       const orderId = session.metadata.orderId;
 
-     
+
 
       // Send emails
       const order = await prisma.order.findUnique({ where: { id: parseInt(orderId) } });
 
-await sendCapEmail(
-  {
-    body: {
-      customerDetails: order.customerDetails,
-      selectedOptions: order.selectedOptions,
-      totalPrice: order.totalPrice,
-      currency: order.currency,
-      orderNumber: order.orderNumber,
-      orderDate: order.orderDate,
-      email: order.customerEmail
-    }
-  },
-  { status: () => ({ json: () => {} }) }
-);
+      await sendCapEmail(
+        {
+          body: {
+            customerDetails: order.customerDetails,
+            selectedOptions: order.selectedOptions,
+            totalPrice: order.totalPrice,
+            currency: order.currency,
+            orderNumber: order.orderNumber,
+            orderDate: order.orderDate,
+            email: order.customerEmail,
+            packageName: order.packageName
+          }
+        },
+        { status: () => ({ json: () => { } }) }
+      );
 
     }
 
@@ -831,5 +1414,5 @@ await sendCapEmail(
 
 
 module.exports = {
-  workflowStatusChange, sendCapEmail, stripePayment, getSessionDetails,stripeWebhook
+  workflowStatusChange, sendCapEmail, stripePayment, getSessionDetails, stripeWebhook
 };
