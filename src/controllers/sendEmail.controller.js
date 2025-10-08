@@ -323,15 +323,15 @@ const factoryOrderEmail = (orderData) => {
       <h2>Information about the Cap</h2>  
       ${Object.entries(selectedOptions)
       .map(([category, options]) => {
-        const hasOptions = Object.values(options).some(
-          val => val && val !== null && val !== false
-        );
-        if (!hasOptions) return '';
+        // const hasOptions = Object.values(options).some(
+        //   val => val && val !== null && val !== false
+        // );
+        // if (!hasOptions) return '';
         return `
             <div class="category">${formatLabel(category)}</div>
             ${Object.entries(options)
             .map(([key, value]) => {
-              if (!value || value === null || value === false) return '';
+              // if (!value || value === null || value === false) return '';
               const displayValue =
       (typeof value === 'object' && value.name) ? value.name :
       (value === '' ? 'Ikke angivet / Not specified' : value);
