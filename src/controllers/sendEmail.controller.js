@@ -332,13 +332,15 @@ const factoryOrderEmail = (orderData) => {
             ${Object.entries(options)
             .map(([key, value]) => {
               if (!value || value === null || value === false) return '';
-              let displayValue =
-                typeof value === 'object' && value.name ? value.name : value;
-              return `
-                  <div class="option-box">
-                    <p class="label">${formatLabel(key)}</p>
-                    <p>${displayValue}</p>
-                  </div>`;
+              const displayValue =
+      (typeof value === 'object' && value.name) ? value.name :
+      (value === '' ? 'Ikke angivet / Not specified' : value);
+
+    return `
+      <div class="option-box">
+        <p class="label">${formatLabel(key)}</p>
+        <p>${displayValue}</p>
+      </div>`;
             })
             .join('')}
           `;
