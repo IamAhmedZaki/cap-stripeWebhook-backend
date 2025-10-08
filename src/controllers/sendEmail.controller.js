@@ -331,7 +331,7 @@ const factoryOrderEmail = (orderData) => {
             <div class="category">${formatLabel(category)}</div>
             ${Object.entries(options)
             .map(([key, value]) => {
-              if (!value || value === '' || value === null || value === false) return '';
+              if (!value || value === null || value === false) return '';
               let displayValue =
                 typeof value === 'object' && value.name ? value.name : value;
               return `
