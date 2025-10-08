@@ -324,7 +324,7 @@ const factoryOrderEmail = (orderData) => {
       ${Object.entries(selectedOptions)
       .map(([category, options]) => {
         const hasOptions = Object.values(options).some(
-          val => val && val !== '' && val !== null && val !== false
+          val => val && val !== null && val !== false
         );
         if (!hasOptions) return '';
         return `
@@ -645,7 +645,7 @@ const capOrderEmail = (orderData) => {
         ${Object.entries(selectedOptions)
       .map(([category, options]) => {
         const hasOptions = Object.values(options).some(
-          val => val && val !== '' && val !== null && val !== false
+          val => val && val !== null && val !== false
         );
         if (!hasOptions) return '';
         return `
@@ -1034,7 +1034,7 @@ const capOrderAdminEmail = (orderData) => {
       ${Object.entries(selectedOptions)
       .map(([category, options]) => {
         const hasOptions = Object.values(options).some(
-          val => val && val !== '' && val !== null && val !== false
+          val => val && val !== null && val !== false
         );
         if (!hasOptions) return '';
         return `  
