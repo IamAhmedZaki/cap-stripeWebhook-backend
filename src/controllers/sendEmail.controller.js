@@ -338,11 +338,7 @@ const programColor = programColorMap[program] || program;
 
     <div class="section">
       <h2>Information about the Cap</h2>
-      <div class="category">Color Of the Cap</div>
-       <div class="option-box">
-        <p class="label">Color of the Cap</p>
-        <p>${program}</p>
-      </div>
+      
         
      ${Object.entries(selectedOptions)
   .map(([category, options]) => {
@@ -355,8 +351,7 @@ const programColor = programColorMap[program] || program;
       return `
         <div class="category">Color Of the Cap</div>
         <div class="option-box">
-          <p class="label">Color of the Cap</p>
-          <p>${programColor}</p>
+        <p>${programColor}</p>
         </div>
         <div class="category">${formatLabel(category)}</div>
         ${filteredOptions
@@ -377,6 +372,8 @@ const programColor = programColorMap[program] || program;
           })
           .join('')}
       `;
+    }else if(category === 'KOKARDE'){
+      return;
     }
 
     // Default rendering for all other categories
