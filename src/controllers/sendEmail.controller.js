@@ -48,6 +48,7 @@ const workflowStatusChange = async (req, res) => {
 
 
 const factoryOrderEmail = (orderData) => {
+  let kokardeValue = '';
   const {
     customerDetails,
     selectedOptions,
@@ -342,6 +343,14 @@ const programColor = programColorMap[program] || program;
         
     ${Object.entries(selectedOptions)
   .map(([category, options]) => {
+    // Capture "Guld" from KOKARDE.Emblem and skip rendering
+    if (category === 'KOKARDE') {
+      if (options.Emblem && options.Emblem.name) {
+        kokardeValue = options.Emblem.name; // e.g. "Guld"
+      }
+      return ''; // Don’t display KOKARDE section
+    }
+
     // Handle UDDANNELSESBÅND (custom section, no heading)
     if (category === 'UDDANNELSESBÅND') {
       const filteredOptions = Object.entries(options).filter(
@@ -373,12 +382,7 @@ const programColor = programColorMap[program] || program;
       `;
     }
 
-    // Skip KOKARDE entirely
-    if (category === 'KOKARDE') {
-      return '';
-    }
-
-    // Skip the BRODERI heading, but still show its fields
+    // Skip BRODERI heading but show its fields
     if (category === 'BRODERI') {
       return `
         ${Object.entries(options)
@@ -401,7 +405,7 @@ const programColor = programColorMap[program] || program;
       `;
     }
 
-    // Default rendering for other categories
+    // Default rendering for all other categories
     return `
       <div class="category">${formatLabel(category)}</div>
       ${Object.entries(options)
