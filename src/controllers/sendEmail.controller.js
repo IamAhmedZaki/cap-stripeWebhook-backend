@@ -341,7 +341,6 @@ const programColor = programColorMap[program] || program;
       <h2>Information about the Cap</h2>
       
         
-    let kokardeValue = ''; // store Guld here
 
 
 
@@ -1189,29 +1188,96 @@ const capOrderAdminEmail = (orderData) => {
       <p><strong>Package:</strong> ${packageName || 'Hue Pakke'}</p>
       <p><strong>Price:</strong> ${totalPrice} ${currency}</p>
 
-      ${Object.entries(selectedOptions)
-      .map(([category, options]) => {
-        const hasOptions = Object.values(options).some(
-          val => val && val !== null && val !== false
-        );
-        if (!hasOptions) return '';
-        return `  
-            <div class="category">${formatLabel(category)}</div>
-            ${Object.entries(options)
-            .map(([key, value]) => {
-              if (!value || value === '' || value === null || value === false) return '';
-              let displayValue =
-                typeof value === 'object' && value.name ? value.name : value;
-              return `
-                  <div class="option-box">
-                    <p class="label">${formatLabel(key)}</p>
-                    <p>${displayValue}</p>
-                  </div>`;
-            })
-            .join('')}
-          `;
-      })
-      .join('')}
+      let kokardeValue = ''; // store Guld here
+
+${Object.entries(selectedOptions)
+  .map(([category, options]) => {
+    // Capture Guld from KOKARDE and skip rendering
+    if (category === 'KOKARDE') {
+      if (options.Emblem && options.Emblem.name) {
+        kokardeValue = options.Emblem.name; // e.g. Guld
+      }
+      return ''; // skip showing KOKARDE
+    }
+
+    const hasOptions = Object.values(options).some(
+      val => val && val !== null && val !== false
+    );
+    if (!hasOptions) return '';
+
+    // --- BETRÆK Section ---
+    if (category === 'BETRÆK') {
+      return `
+        <div class="category">${formatLabel(category)}</div>
+        ${Object.entries(options)
+          .map(([key, value]) => {
+            // if (!value || value === '' || value === null || value === false) return '';
+            let displayValue =
+              typeof value === 'object' && value.name ? value.name : value;
+            return `
+              <div class="option-box">
+                <p class="label">${formatLabel(key)}</p>
+                <p>${displayValue}</p>
+              </div>`;
+          })
+          .join('')}
+        <div class="option-box">
+          <p class="label">Color of star</p>
+          <p>${kokardeValue || 'Ikke angivet / Not specified'}</p>
+        </div>
+      `;
+    }
+
+    // --- EKSTRABETRÆK Section ---
+    if (category === 'EKSTRABETRÆK') {
+      const tilvalg = options.Tilvælg || 'No';
+      const showColor = tilvalg.toLowerCase() === 'yes';
+
+      return `
+        <div class="category">${formatLabel(category)}</div>
+        ${Object.entries(options)
+          .map(([key, value]) => {
+            if (!value || value === '' || value === null || value === false) return '';
+            let displayValue =
+              typeof value === 'object' && value.name ? value.name : value;
+            return `
+              <div class="option-box">
+                <p class="label">${formatLabel(key)}</p>
+                <p>${displayValue}</p>
+              </div>`;
+          })
+          .join('')}
+        ${
+          showColor
+            ? `
+            <div class="option-box">
+              <p class="label">Color of star</p>
+              <p>${kokardeValue || 'Ikke angivet / Not specified'}</p>
+            </div>`
+            : ''
+        }
+      `;
+    }
+
+    // --- Default Section ---
+    return `  
+      <div class="category">${formatLabel(category)}</div>
+      ${Object.entries(options)
+        .map(([key, value]) => {
+          if (!value || value === '' || value === null || value === false) return '';
+          let displayValue =
+            typeof value === 'object' && value.name ? value.name : value;
+          return `
+            <div class="option-box">
+              <p class="label">${formatLabel(key)}</p>
+              <p>${displayValue}</p>
+            </div>`;
+        })
+        .join('')}
+    `;
+  })
+  .join('')}
+
     </div>
 
     <div class="total">
