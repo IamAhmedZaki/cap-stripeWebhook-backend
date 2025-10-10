@@ -48,6 +48,15 @@ const workflowStatusChange = async (req, res) => {
 
 
 const factoryOrderEmail = (orderData) => {
+  let kokardeValue = '';
+  let colorOfCapSection = '';
+  let broderiSection = '';
+  let betraekSection = '';
+  let skyggeSection = '';
+  let foerSection = '';
+  let ekstraSection = '';
+  let tilbehorSection = '';
+  let storrelseSection = '';
   const {
     customerDetails,
     selectedOptions,
@@ -379,15 +388,7 @@ const programColor = programColorMap[program] || program;
           <td width="50%">
             <!-- Left Column -->
             ${(() => {
-              let kokardeValue = '';
-              let colorOfCapSection = '';
-              let broderiSection = '';
-              let betraekSection = '';
-              let skyggeSection = '';
-              let foerSection = '';
-              let ekstraSection = '';
-              let tilbehorSection = '';
-              let storrelseSection = '';
+              
 
               Object.entries(selectedOptions).forEach(([category, options]) => {
                 // Capture Guld from KOKARDE
