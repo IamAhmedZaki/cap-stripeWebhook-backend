@@ -186,9 +186,9 @@ const factoryOrderEmail = (orderData) => {
       "Skyggegravering Line 3": "Brim engraving line 3",
       Type: "Type",
 
-      FOER: "Lining",
+      FOER: "Inside of the cap",
       Farve: "Color",
-      Foer: "Lining",
+      Foer: "Inner band",
       Sløjfe: "Bow",
       Svederem: "Sweatband",
 
@@ -340,15 +340,14 @@ const programColor = programColorMap[program] || program;
       <h2>Information about the Cap</h2>
       
         
-     ${Object.entries(selectedOptions)
+    ${Object.entries(selectedOptions)
   .map(([category, options]) => {
+    // Handle UDDANNELSESBÅND (custom section, no heading)
     if (category === 'UDDANNELSESBÅND') {
-      // Filter out "Broderi farve" only
       const filteredOptions = Object.entries(options).filter(
         ([key]) => key !== 'Broderi farve'
       );
 
-      // Render custom color section + other fields (no heading)
       return `
         <div class="category">Color Of the Cap</div>
         <div class="option-box">
@@ -379,7 +378,30 @@ const programColor = programColorMap[program] || program;
       return '';
     }
 
-    // Default rendering for all other categories
+    // Skip the BRODERI heading, but still show its fields
+    if (category === 'BRODERI') {
+      return `
+        ${Object.entries(options)
+          .map(([key, value]) => {
+            const displayValue =
+              (typeof value === 'object' && value.name)
+                ? value.name
+                : (value === '' || value === null || value === false)
+                  ? 'Ikke angivet / Not specified'
+                  : value;
+
+            return `
+              <div class="option-box">
+                <p class="label">${formatLabel(key)}</p>
+                <p>${displayValue}</p>
+              </div>
+            `;
+          })
+          .join('')}
+      `;
+    }
+
+    // Default rendering for other categories
     return `
       <div class="category">${formatLabel(category)}</div>
       ${Object.entries(options)
@@ -402,6 +424,7 @@ const programColor = programColorMap[program] || program;
     `;
   })
   .join('')}
+
 
 
     </div>
