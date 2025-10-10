@@ -343,17 +343,17 @@ const programColor = programColorMap[program] || program;
      ${Object.entries(selectedOptions)
   .map(([category, options]) => {
     if (category === 'UDDANNELSESBÅND') {
-      // Custom section for UDDANNELSESBÅND
+      // Filter out "Broderi farve" only
       const filteredOptions = Object.entries(options).filter(
         ([key]) => key !== 'Broderi farve'
       );
 
+      // Render custom color section + other fields (no heading)
       return `
         <div class="category">Color Of the Cap</div>
         <div class="option-box">
-        <p>${programColor}</p>
+          <p>${programColor}</p>
         </div>
-        <div class="category">${formatLabel(category)}</div>
         ${filteredOptions
           .map(([key, value]) => {
             const displayValue =
@@ -372,8 +372,11 @@ const programColor = programColorMap[program] || program;
           })
           .join('')}
       `;
-    }else if(category === 'KOKARDE'){
-      return;
+    }
+
+    // Skip KOKARDE entirely
+    if (category === 'KOKARDE') {
+      return '';
     }
 
     // Default rendering for all other categories
@@ -399,6 +402,7 @@ const programColor = programColorMap[program] || program;
     `;
   })
   .join('')}
+
 
     </div>
   </div>
