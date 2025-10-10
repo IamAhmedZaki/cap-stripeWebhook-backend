@@ -524,6 +524,7 @@ const programColor = programColorMap[program] || program;
                 ${colorOfCapSection}
                 ${broderiSection}
                 ${betraekSection}
+                ${storrelseSection}
               `;
             })()}
           </td>
@@ -535,7 +536,7 @@ const programColor = programColorMap[program] || program;
                 ${foerSection}
                 ${ekstraSection}
                 ${tilbehorSection}
-                ${storrelseSection}
+                
               `;
             })()}
           </td>
