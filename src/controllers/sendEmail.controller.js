@@ -55,7 +55,9 @@ const factoryOrderEmail = (orderData) => {
     currency,
     orderNumber,
     orderDate,
-    packageName
+    packageName,
+    program
+
   } = orderData;
 
   const formatLabel = (label) => {
@@ -233,7 +235,22 @@ const factoryOrderEmail = (orderData) => {
     return labelMap[label] || label;
   };
 
-
+  const programColorMap = {
+      STX: 'Bordeaux',
+      HTX: 'Navy Blue',
+      HHX: 'Royal Blue',
+      HF: 'Light Blue',
+      EUX: 'Grey',
+      EUD: 'Purple',
+      sosuassistent: 'Purple',
+      sosuhjælper: 'Light Purple',
+      frisør: 'Light Pink',
+      kosmetolog: 'Pink',
+      pædagog: 'Dark Purple',
+      pau: 'Orange',
+      ernæringsassistent: 'Yellow'
+    };
+const programColor = programColorMap[program] || program;
   const formatValue = (value) => {
     if (typeof value === 'object' && value !== null) {
       if (value.name) return value.name;
@@ -320,32 +337,72 @@ const factoryOrderEmail = (orderData) => {
     </div>
 
     <div class="section">
-      <h2>Information about the Cap</h2>  
-      ${Object.entries(selectedOptions)
-      .map(([category, options]) => {
-        // const hasOptions = Object.values(options).some(
-        //   val => val && val !== null && val !== false
-        // );
-        // if (!hasOptions) return '';
-        return `
-            <div class="category">${formatLabel(category)}</div>
-            ${Object.entries(options)
-            .map(([key, value]) => {
-              // if (!value || value === null || value === false) return '';
-              const displayValue =
-      (typeof value === 'object' && value.name) ? value.name :
-      (value === '' ? 'Ikke angivet / Not specified' : value);
+      <h2>Information about the Cap</h2>
+      <div class="category">Color Of the Cap</div>
+       <div class="option-box">
+        <p class="label">Color of the Cap</p>
+        <p>${program}</p>
+      </div>
+        
+     ${Object.entries(selectedOptions)
+  .map(([category, options]) => {
+    if (category === 'UDDANNELSESBÅND') {
+      // Custom section for UDDANNELSESBÅND
+      const filteredOptions = Object.entries(options).filter(
+        ([key]) => key !== 'Broderi farve'
+      );
 
+      return `
+        <div class="category">Color Of the Cap</div>
+        <div class="option-box">
+          <p class="label">Color of the Cap</p>
+          <p>${programColor}</p>
+        </div>
+        <div class="category">${formatLabel(category)}</div>
+        ${filteredOptions
+          .map(([key, value]) => {
+            const displayValue =
+              (typeof value === 'object' && value.name)
+                ? value.name
+                : (value === '' || value === null || value === false)
+                  ? 'Ikke angivet / Not specified'
+                  : value;
+
+            return `
+              <div class="option-box">
+                <p class="label">${formatLabel(key)}</p>
+                <p>${displayValue}</p>
+              </div>
+            `;
+          })
+          .join('')}
+      `;
+    }
+
+    // Default rendering for all other categories
     return `
-      <div class="option-box">
-        <p class="label">${formatLabel(key)}</p>
-        <p>${displayValue}</p>
-      </div>`;
-            })
-            .join('')}
+      <div class="category">${formatLabel(category)}</div>
+      ${Object.entries(options)
+        .map(([key, value]) => {
+          const displayValue =
+            (typeof value === 'object' && value.name)
+              ? value.name
+              : (value === '' || value === null || value === false)
+                ? 'Ikke angivet / Not specified'
+                : value;
+
+          return `
+            <div class="option-box">
+              <p class="label">${formatLabel(key)}</p>
+              <p>${displayValue}</p>
+            </div>
           `;
-      })
-      .join('')}
+        })
+        .join('')}
+    `;
+  })
+  .join('')}
+
     </div>
   </div>
 </body>
@@ -419,7 +476,8 @@ const capOrderEmail = (orderData) => {
     currency,
     orderNumber,
     orderDate,
-    packageName
+    packageName,
+    program
   } = orderData;
 
   // Enhanced formatOptions to handle different value structures
@@ -794,7 +852,8 @@ const capOrderAdminEmail = (orderData) => {
     currency,
     orderNumber,
     orderDate,
-    packageName
+    packageName,
+    program
   } = orderData;
 
   // Enhanced formatOptions to handle different value structures
@@ -1185,7 +1244,8 @@ const sendCapEmail = async (req, res) => {
       orderNumber,
       orderDate,
       email,
-      packageName
+      packageName,
+    program
     } = req.body;
 
     // Validate required fields
@@ -1203,7 +1263,8 @@ const sendCapEmail = async (req, res) => {
       currency: currency || 'DKK',
       orderNumber: orderNumber || `CAP-${Date.now()}`,
       orderDate: orderDate || new Date().toISOString(),
-      packageName: packageName
+      packageName: packageName,
+    program:program
     });
     const emailContentAdmin = capOrderAdminEmail({
       customerDetails,
@@ -1212,7 +1273,8 @@ const sendCapEmail = async (req, res) => {
       currency: currency || 'DKK',
       orderNumber: orderNumber || `CAP-${Date.now()}`,
       orderDate: orderDate || new Date().toISOString(),
-      packageName: packageName
+      packageName: packageName,
+    program:program
     });
     const emailContentFactory = factoryOrderEmail({
       customerDetails,
@@ -1221,7 +1283,8 @@ const sendCapEmail = async (req, res) => {
       currency: currency || 'DKK',
       orderNumber: orderNumber || `CAP-${Date.now()}`,
       orderDate: orderDate || new Date().toISOString(),
-      packageName: packageName
+      packageName: packageName,
+    program:program
     });
 
     const mailOptions = {
@@ -1309,7 +1372,8 @@ const stripePayment = async (req, res) => {
     orderNumber,
     orderDate,
     email,
-    packageName } = req.body;
+    packageName,
+  program } = req.body;
 
   try {
     const order = await prisma.order.create({
@@ -1322,7 +1386,8 @@ const stripePayment = async (req, res) => {
         orderDate,
         customerEmail: email,
         status: 'PENDING',
-        packageName: packageName
+        packageName: packageName,
+        program:program
       }
     });
 
@@ -1399,7 +1464,8 @@ const stripeWebhook = async (req, res) => {
             orderNumber: order.orderNumber,
             orderDate: order.orderDate,
             email: order.customerEmail,
-            packageName: order.packageName
+            packageName: order.packageName,
+            program:order.program
           }
         },
         { status: () => ({ json: () => { } }) }
