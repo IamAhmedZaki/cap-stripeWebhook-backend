@@ -367,18 +367,17 @@ const programColor = programColorMap[program] || program;
     <div class="section">
       <p><strong>Ordren er oprettet:</strong> ${new Date(orderDate).toLocaleString('da-DK')} (Date and time for order)</p>
       <p><strong>Order #${orderNumber}</strong></p>
-    </div>
-
-    <div class="section">
-      <h2>Customer Information</h2>
       <p><strong>Name:</strong> ${customerDetails.firstName} ${customerDetails.lastName}</p>
       <p><strong>Address:</strong> ${customerDetails.address}</p>
       <p><strong>Post and City:</strong> ${customerDetails.postalCode} ${customerDetails.city}</p>
       ${customerDetails.notes ? `<p><strong>Note:</strong> ${customerDetails.notes}</p>` : ''}
     </div>
 
+    
+    
+
     <div class="section">
-      <h2>Order Details</h2>
+      <h2>Ordre detaljer</h2>
       <p><strong>Package:</strong> ${packageName || 'Hue Pakke'}</p>
       <p><strong>Price:</strong> ${totalPrice} ${currency}</p>
 
@@ -546,14 +545,7 @@ const programColor = programColorMap[program] || program;
 
     </div>
 
-    <div class="total">
-      <p>Total: ${totalPrice} ${currency}</p>
-      <p>Inklusiv moms</p>
-      <p>---------------------</p>
-      <p>SUM: ${totalPrice} ${currency}</p>
-      <p>LEVERING: 0 DKK</p>
-      <p>MOMS: 20% af total pris DKK (VAT)</p>
-    </div>
+   
 
   </div>
 </body>
