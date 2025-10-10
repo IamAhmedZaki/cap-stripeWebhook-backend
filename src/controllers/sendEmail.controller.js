@@ -522,20 +522,21 @@ const programColor = programColorMap[program] || program;
               return `
                 ${colorOfCapSection}
                 ${broderiSection}
-                ${betraekSection}
-                ${storrelseSection}
-                ${ekstraSection}
-              `;
-            })()}
-          </td>
-          <td width="50%">
-            <!-- Right Column -->
-            ${(() => {
-              return `
                 ${skyggeSection}
+                ${ekstraSection}
+                ${storrelseSection}
+                `;
+              })()}
+              </td>
+              <td width="50%">
+              <!-- Right Column -->
+              ${(() => {
+                return `
+                ${betraekSection}
                 ${foerSection}
-               
                 ${tilbehorSection}
+
+               
                 
               `;
             })()}
