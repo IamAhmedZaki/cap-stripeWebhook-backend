@@ -341,17 +341,21 @@ const programColor = programColorMap[program] || program;
       <h2>Information about the Cap</h2>
       
         
-    ${Object.entries(selectedOptions)
+    let kokardeValue = ''; // store Guld here
+
+
+
+${Object.entries(selectedOptions)
   .map(([category, options]) => {
     // Capture "Guld" from KOKARDE.Emblem and skip rendering
     if (category === 'KOKARDE') {
       if (options.Emblem && options.Emblem.name) {
         kokardeValue = options.Emblem.name; // e.g. "Guld"
       }
-      return ''; // Don’t display KOKARDE section
+      return ''; // Skip displaying KOKARDE
     }
 
-    // Handle UDDANNELSESBÅND (custom section, no heading)
+    // Handle UDDANNELSESBÅND (no heading)
     if (category === 'UDDANNELSESBÅND') {
       const filteredOptions = Object.entries(options).filter(
         ([key]) => key !== 'Broderi farve'
@@ -382,7 +386,7 @@ const programColor = programColorMap[program] || program;
       `;
     }
 
-    // Skip BRODERI heading but show its fields
+    // Handle BRODERI (no heading)
     if (category === 'BRODERI') {
       return `
         ${Object.entries(options)
@@ -402,6 +406,70 @@ const programColor = programColorMap[program] || program;
             `;
           })
           .join('')}
+      `;
+    }
+
+    // Handle BETRÆK (always add color of star)
+    if (category === 'BETRÆK') {
+      return `
+        <div class="category">${formatLabel(category)}</div>
+        ${Object.entries(options)
+          .map(([key, value]) => {
+            const displayValue =
+              (typeof value === 'object' && value.name)
+                ? value.name
+                : (value === '' || value === null || value === false)
+                  ? 'Ikke angivet / Not specified'
+                  : value;
+
+            return `
+              <div class="option-box">
+                <p class="label">${formatLabel(key)}</p>
+                <p>${displayValue}</p>
+              </div>
+            `;
+          })
+          .join('')}
+        <div class="option-box">
+          <p class="label">Color of star</p>
+          <p>${kokardeValue || 'Ikke angivet / Not specified'}</p>
+        </div>
+      `;
+    }
+
+    // Handle EKSTRABETRÆK (conditionally add color of star)
+    if (category === 'EKSTRABETRÆK') {
+      const tilvalg = options.Tilvælg || 'No';
+      const showColor = tilvalg.toLowerCase() === 'yes';
+
+      return `
+        <div class="category">${formatLabel(category)}</div>
+        ${Object.entries(options)
+          .map(([key, value]) => {
+            const displayValue =
+              (typeof value === 'object' && value.name)
+                ? value.name
+                : (value === '' || value === null || value === false)
+                  ? 'Ikke angivet / Not specified'
+                  : value;
+
+            return `
+              <div class="option-box">
+                <p class="label">${formatLabel(key)}</p>
+                <p>${displayValue}</p>
+              </div>
+            `;
+          })
+          .join('')}
+        ${
+          showColor
+            ? `
+            <div class="option-box">
+              <p class="label">Color of star</p>
+              <p>${kokardeValue || 'Ikke angivet / Not specified'}</p>
+            </div>`
+            : ''
+        }
       `;
     }
 
@@ -428,6 +496,7 @@ const programColor = programColorMap[program] || program;
     `;
   })
   .join('')}
+
 
 
 
