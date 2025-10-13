@@ -365,7 +365,7 @@ const factoryOrderEmail = (orderData) => {
 }
   </style>
 </head>
-<body style="margin:0;  padding:0; font-family:Arial, sans-serif; background-color:#e7e7e7b9; width:732px;">
+<body style="margin:0;  padding:0; font-family:Arial, sans-serif; background-color:#e7e7e7b9;">
 
     <div class="wrapper">
     <div class="infoBlock">
