@@ -599,6 +599,7 @@ const factoryOrderEmail = (orderData) => {
         <tr class="gap"></tr>
         <tr class="gap"></tr>
         <tr class="gap"></tr>
+        <tr class="gap"></tr>
         
         <!-- Inside of the cap -->
         <tr><th>Inside of the cap </th></tr>
