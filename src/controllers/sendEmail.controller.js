@@ -365,16 +365,16 @@ const factoryOrderEmail = (orderData) => {
 }
   </style>
 </head>
-<body style="margin:0;  padding:0; font-family:Arial, sans-serif; background-color:#e7e7e7b9;">
+<body style="margin:0;  padding:0; font-family:Arial, sans-serif;">
 
     <div class="wrapper">
     <div class="infoBlock">
     <div >Kunde ordre oplysninger:</div>
   <div >Ordren er oprettet: </div>
-  <div>Order XXXX (Order nr) , name of customer and
-    school.</div>
+  <div>Order nr:${orderNumber} , Name of Customer:${customerDetails.firstName} ${customerDetails.lastName} and
+        School:${customerDetails.Skolenavn}</div>
   <div >Ordre detaljer</div>
-  <div style="margin-left: 327px; margin-bottom: 10px; margin-top: 4px;">XXXX ( The package choosed)
+  <div style="margin-left: 327px; margin-bottom: 10px; margin-top: 4px;">The package choosed:${packageName}
 
   </div>
   <div style="margin-left: 327px;">
@@ -540,10 +540,10 @@ const factoryOrderEmail = (orderData) => {
         <!-- Size -->
         <tr><th>Size</th></tr>
         <tr><td class="subheading">Choosen size (Size)</td></tr>
-        <tr><td class="value">${selectedOptions["Millimeter tilpasningssæt"]}</td></tr> 
+        <tr><td class="value">${selectedOptions.STØRRELSE["Millimeter tilpasningssæt"]}</td></tr> 
         <tr class="gap"></tr>
         <tr><td class="subheading">Foam to adjust the size</td></tr>
-        <tr><td class="value">${selectedOptions["Vælg størrelse"]}</td></tr>
+        <tr><td class="value">${selectedOptions.STØRRELSE["Vælg størrelse"]}</td></tr>
         <tr class="gap"></tr>
         <tr class="gap"></tr>
         
