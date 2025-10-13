@@ -245,21 +245,21 @@ const factoryOrderEmail = (orderData) => {
   };
 
   const programColorMap = {
-      STX: 'Bordeaux',
-      HTX: 'Navy Blue',
-      HHX: 'Royal Blue',
-      HF: 'Light Blue',
-      EUX: 'Grey',
-      EUD: 'Purple',
-      sosuassistent: 'Purple',
-      sosuhjælper: 'Light Purple',
-      frisør: 'Light Pink',
-      kosmetolog: 'Pink',
-      pædagog: 'Dark Purple',
-      pau: 'Orange',
-      ernæringsassistent: 'Yellow'
-    };
-const programColor = programColorMap[program] || program;
+    STX: 'Bordeaux',
+    HTX: 'Navy Blue',
+    HHX: 'Royal Blue',
+    HF: 'Light Blue',
+    EUX: 'Grey',
+    EUD: 'Purple',
+    sosuassistent: 'Purple',
+    sosuhjælper: 'Light Purple',
+    frisør: 'Light Pink',
+    kosmetolog: 'Pink',
+    pædagog: 'Dark Purple',
+    pau: 'Orange',
+    ernæringsassistent: 'Yellow'
+  };
+  const programColor = programColorMap[program] || program;
   const formatValue = (value) => {
     if (typeof value === 'object' && value !== null) {
       if (value.name) return value.name;
@@ -299,259 +299,344 @@ const programColor = programColorMap[program] || program;
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <title>Two Tables Side by Side</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      line-height: 1.6;
-      color: #333;
-      background: #f9fafb;
+      /* text-align: center; */
       margin: 0;
-      padding: 0;
+      padding: 50px 0;
     }
-    .container {
-      width: 100%;
-      max-width: 700px;
+
+    .table-container {
+      display: inline-block; /* allows side-by-side placement */
+      /* space between tables */
+      vertical-align: top; /* align tops evenly */
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 328px;
+      /* border: 1px solid #ccc; */
       margin: 0 auto;
-      background: #fff;
-      border-radius: 10px;
-      border: 1px solid #e5e7eb;
     }
-    .header {
-      background: #fff;
-      text-align: left;
-      padding: 15px 25px;
-      font-weight: bold;
-      border-bottom: 1px solid #e5e7eb;
-    }
-    .section {
-      padding: 20px;
-      border-bottom: 1px solid #eee;
-    }
-    .category {
-      font-weight: bold;
-      background: #f3f4f6;
+
+    th {
+      font-size: 20px;
       padding: 10px;
-      border-radius: 6px;
-      margin-top: 10px;
-      margin-bottom: 5px;
+      text-align: left;
+      /* background-color: #f2f2f2; */
     }
-    .option-box {
-      background: #f9fafb;
-      padding: 10px 15px;
-      border-radius: 6px;
-      margin-bottom: 8px;
+
+    td {
+      padding: 9px;
+      font-size: 16px;
+      /* border-top: 1px solid #ddd; */
     }
-    .option-box p {
-      margin: 0;
-    }
-    .option-box .label {
+
+    .subheading {
       font-weight: bold;
-      display: block;
-      margin-bottom: 3px;
+      background-color: #ffffff;
+       text-align: left;
     }
-    .total {
-      background: #d1fae5;
-      padding: 20px;
-      border-radius: 8px;
-      margin: 20px;
-      font-weight: bold;
+
+    .value {
+      font-size: 18px;
+      /* color: #0074D9; */
+      background-color: #ffffff;
+       text-align: left;
+    }
+
+    .gap{
+        height: 20px;
+    }
+    .infoBlock{
+        margin-left: 42px;
+        font-weight: bold;
     }
   </style>
 </head>
-<body>
-  <div class="container">
-
-    <div class="header">Kunde ordre oplysninger</div>
-
-    <div class="section">
-      <p><strong>Ordren er oprettet:</strong> ${new Date(orderDate).toLocaleString('da-DK')} (Date and time for order)</p>
-      <p><strong>Order #${orderNumber}</strong></p>
-      <p><strong>Name:</strong> ${customerDetails.firstName} ${customerDetails.lastName}</p>
-      <p><strong>Address:</strong> ${customerDetails.address}</p>
-      <p><strong>Post and City:</strong> ${customerDetails.postalCode} ${customerDetails.city}</p>
-      ${customerDetails.notes ? `<p><strong>Note:</strong> ${customerDetails.notes}</p>` : ''}
-    </div>
-
-    
-    
-
-    <div class="section">
-      <h2>Ordre detaljer</h2>
-      <p><strong>Package:</strong> ${packageName || 'Hue Pakke'}</p>
-      <p><strong>Price:</strong> ${totalPrice} ${currency}</p>
-
-      <!-- Start Table Layout -->
-      <table width="100%" cellspacing="0" cellpadding="10" style="border-collapse: collapse;">
-        <tr valign="top">
-          <td width="50%">
-            <!-- Left Column -->
-            ${(() => {
-              
-
-              Object.entries(selectedOptions).forEach(([category, options]) => {
-                // Capture Guld from KOKARDE
-                if (category === 'KOKARDE') {
-                  if (options.Emblem && options.Emblem.name) {
-                    kokardeValue = options.Emblem.name;
-                  }
-                  return;
-                }
-
-                // Color Of the Cap (from UDDANNELSESBÅND)
-                if (category === 'UDDANNELSESBÅND') {
-                  const filtered = Object.entries(options).filter(([k]) => k !== 'Broderi farve');
-                  colorOfCapSection = `
-                    <div class="category">Color Of the Cap</div>
-                    <div class="option-box">
-                      <p>${programColor}</p>
-                    </div>
-                    ${filtered
-                      .map(([k, v]) => `
-                        <div class="option-box">
-                          <p class="label">${formatLabel(k)}</p>
-                          <p>${v || 'Ikke angivet / Not specified'}</p>
-                        </div>`).join('')}
-                  `;
-                  return;
-                }
-
-                if (category === 'BRODERI') {
-                  broderiSection = `
-                    ${Object.entries(options)
-                      .map(([k, v]) => `
-                        <div class="option-box">
-                          <p class="label">${formatLabel(k)}</p>
-                          <p>${v || 'Ikke angivet / Not specified'}</p>
-                        </div>`).join('')}
-                  `;
-                  return;
-                }
-
-                if (category === 'BETRÆK') {
-                  betraekSection = `
-                    <div class="category">${formatLabel(category)}</div>
-                    ${Object.entries(options)
-                      .map(([k, v]) => `
-                        <div class="option-box">
-                          <p class="label">${formatLabel(k)}</p>
-                          <p>${v || 'Ikke angivet / Not specified'}</p>
-                        </div>`).join('')}
-                    <div class="option-box">
-                      <p class="label">Color of star</p>
-                      <p>${kokardeValue || 'Ikke angivet / Not specified'}</p>
-                    </div>
-                  `;
-                  return;
-                }
-
-                if (category === 'SKYGGE') {
-                  skyggeSection = `
-                    <div class="category">${formatLabel(category)}</div>
-                    ${Object.entries(options)
-                      .map(([k, v]) => `
-                        <div class="option-box">
-                          <p class="label">${formatLabel(k)}</p>
-                          <p>${v || 'Ikke angivet / Not specified'}</p>
-                        </div>`).join('')}
-                  `;
-                  return;
-                }
-
-                if (category === 'FOER') {
-                  foerSection = `
-                    <div class="category">${formatLabel(category)}</div>
-                    ${Object.entries(options)
-                      .map(([k, v]) => `
-                        <div class="option-box">
-                          <p class="label">${formatLabel(k)}</p>
-                          <p>${v || 'Ikke angivet / Not specified'}</p>
-                        </div>`).join('')}
-                  `;
-                  return;
-                }
-
-                if (category === 'EKSTRABETRÆK') {
-                  const tilvalg = options.Tilvælg || 'No';
-                  const showColor = tilvalg.toLowerCase() === 'yes';
-                  ekstraSection = `
-                    <div class="category">${formatLabel(category)}</div>
-                    ${Object.entries(options)
-                      .map(([k, v]) => `
-                        <div class="option-box">
-                          <p class="label">${formatLabel(k)}</p>
-                          <p>${v || 'Ikke angivet / Not specified'}</p>
-                        </div>`).join('')}
-                    ${showColor
-                      ? `<div class="option-box">
-                          <p class="label">Color of star</p>
-                          <p>${kokardeValue || 'Ikke angivet / Not specified'}</p>
-                        </div>`
-                      : ''}
-                  `;
-                  return;
-                }
-
-                if (category === 'TILBEHØR') {
-                  tilbehorSection = `
-                    <div class="category">${formatLabel(category)}</div>
-                    ${Object.entries(options)
-                      .map(([k, v]) => `
-                        <div class="option-box">
-                          <p class="label">${formatLabel(k)}</p>
-                          <p>${v || 'Ikke angivet / Not specified'}</p>
-                        </div>`).join('')}
-                  `;
-                  return;
-                }
-
-                if (category === 'STØRRELSE') {
-                  storrelseSection = `
-                    <div class="category">${formatLabel(category)}</div>
-                    ${Object.entries(options)
-                      .map(([k, v]) => `
-                        <div class="option-box">
-                          <p class="label">${formatLabel(k)}</p>
-                          <p>${v || 'Ikke angivet / Not specified'}</p>
-                        </div>`).join('')}
-                  `;
-                  return;
-                }
-              });
-
-              return `
-                ${colorOfCapSection}
-                ${broderiSection}
-                ${skyggeSection}
-                ${ekstraSection}
-                ${storrelseSection}
-                `;
-              })()}
-              </td>
-              <td width="50%">
-              <!-- Right Column -->
-              ${(() => {
-                return `
-                ${betraekSection}
-                ${foerSection}
-                ${tilbehorSection}
-
-               
-                
-              `;
-            })()}
-          </td>
-        </tr>
-      </table>
-      <!-- End Table Layout -->
-
-    </div>
-
-   
+<body style="margin:0;  padding:0; font-family:Arial, sans-serif; background-color:#e7e7e7b9; ">
+    <div class="infoBlock">
+    <div style="margin-left:143px; margin-bottom: 10px; margin-top: 4px;">Kunde ordre oplysninger:</div>
+  <div style="margin-left: 143px; margin-bottom: 10px; margin-top: 4px;">Ordren er oprettet: </div>
+  <div style="margin-left: 143px; margin-bottom: 10px; margin-top: 4px;">Order XXXX (Order nr) , name of customer and
+    school.</div>
+  <div style="margin-left: 143px; margin-bottom: 10px; margin-top: 4px;">Ordre detaljer</div>
+  <div style="margin-left: 450px; margin-bottom: 10px; margin-top: 4px;">The package choosed:${packageName}
 
   </div>
+  <div style="margin-left: 450px;">
+    Information about the Cap
+  </div>
+  </div>
+  <!-- First row of tables -->
+  <div style="text-align:center;">
+    <div class="table-container">
+      <table>
+       
+      </table>
+    </div>
+
+    <div class="table-container">
+      <table>
+        <tr><th>The cap</th></tr>
+        <tr><td class="subheading">Color of the cap</td></tr>
+        <tr><td class="value">${programColor}</td></tr>
+        
+        <tr class="gap"></tr>
+
+        <tr><td class="subheading">Material</td></tr>
+        <tr><td class="value">${selectedOptions.UDDANNELSESBÅND.Materiale}</td></tr>
+        <tr class="gap"></tr>
+
+        <tr><td class="subheading">Chinstrap</td></tr>
+        <tr><td class="value">${selectedOptions.UDDANNELSESBÅND.Hagerem}</td></tr>
+        
+       
+
+      </table>
+    </div>
+  </div>
+
+  <!-- Second row (another set of side-by-side tables) -->
+  <div style="text-align:center; margin-top:40px;">
+    <div class="table-container">
+      <table>
+        <!-- Embroidery on frontside -->
+        <tr><th>Embroidery on frontside</th></tr>
+     
+        
+        
+       <tr><td class="subheading">Tekst maks. 20 tegn</td></tr>
+<tr><td class="value">${selectedOptions.UDDANNELSESBÅND["Broderi foran"] === ''
+      ? 'Not specified'
+      : selectedOptions.UDDANNELSESBÅND["Broderi foran"]
+    }</td></tr>
+
+<tr class="gap"></tr>
+
+
+        <tr><td class="subheading">Embroidery color</td></tr>
+        <tr><td class="value">${selectedOptions.UDDANNELSESBÅND["Broderi farve"]}</td></tr>
+        <tr class="gap"></tr>
+         
+        <!-- Embroidery on the backside of the cap -->
+        <tr><th> Embroidery on the backside of the cap</th></tr>
+       <tr><td class="subheading">Name embroidery (Writing) maks. 26</td></tr>
+<tr><td class="value">${selectedOptions.BRODERI["Navne broderi"] === ''
+      ? 'Not specified'
+      : selectedOptions.BRODERI["Navne broderi"]
+    }</td></tr>
+<tr class="gap"></tr>
+
+        <tr><td class="subheading">Embroidery color </td></tr>
+        <tr><td class="value">${selectedOptions.BRODERI.Broderifarve}</td></tr>
+        <tr class="gap"></tr>
+        <tr><td class="subheading">School embroidery (Writing) maks. 35</td></tr>
+<tr><td class="value">${selectedOptions.BRODERI.Skolebroderi === ''
+      ? 'Not specified'
+      : selectedOptions.BRODERI.Skolebroderi
+    }</td></tr>
+<tr class="gap"></tr>
+
+        <tr><td class="subheading">Embroidery color </td></tr>
+        <tr><td class="value">${selectedOptions.BRODERI['Skolebroderi farve']}</td></tr>
+        <tr class="gap"></tr>
+        <tr><td class="subheading">Buttons color</td></tr>
+        <tr><td class="value">${selectedOptions.UDDANNELSESBÅND['Knap farve']}</td></tr>
+        <tr class="gap"></tr>
+        <tr><td class="subheading">Year</td></tr>
+        <tr><td class="value">${selectedOptions.UDDANNELSESBÅND.år}</td></tr>
+        <tr class="gap"></tr>
+        
+        <!-- brim -->
+        <tr><th>Brim</th></tr>
+        <tr><td class="subheading">Type</td></tr>
+        <tr><td class="value">${selectedOptions.SKYGGE.Type}</td></tr> 
+        <tr class="gap"></tr>
+        <tr><td class="subheading">Material </td></tr>
+        <tr><td class="value">${selectedOptions.SKYGGE.Materiale}</td></tr>
+        <tr class="gap"></tr>
+        <tr><td class="subheading">Shadow band</td></tr>
+        <tr><td class="value">${selectedOptions.SKYGGE.Skyggebånd}</td></tr>
+        <tr class="gap"></tr>
+       <tr><td class="subheading">Linje 1</td></tr>
+<tr><td class="value">${selectedOptions.SKYGGE["Skyggegravering Line 1"] === ''
+      ? 'Not specified'
+      : selectedOptions.SKYGGE["Skyggegravering Line 1"]
+    }</td></tr>
+<tr class="gap"></tr>
+
+<tr><td class="subheading">Linje 3</td></tr>
+<tr><td class="value">${selectedOptions.SKYGGE["Skyggegravering Line 3"] === ''
+      ? 'Not specified'
+      : selectedOptions.SKYGGE["Skyggegravering Line 3"]
+    }</td></tr>
+<tr class="gap"></tr>
+
+       
+        <tr class="gap"></tr>
+        <tr class="gap"></tr>
+        <tr class="gap"></tr>
+        <tr class="gap"></tr>
+        <tr class="gap"></tr>
+        <tr class="gap"></tr>
+        <tr class="gap"></tr>
+        <tr class="gap"></tr>
+        <tr class="gap"></tr>
+        <tr class="gap"></tr>
+       
+        
+
+        <!-- Extra Cover -->
+        <tr><th>Extra Cover</th></tr>
+        <tr><td class="subheading">Option</td></tr>
+        <tr><td class="value">${selectedOptions.EKSTRABETRÆK.Tilvælg}</td></tr> 
+        <tr class="gap"></tr>
+        
+          ${selectedOptions.EKSTRABETRÆK.Tilvælg === 'Yes'
+      ? `
+        <tr><td class="subheading">Color</td></tr>
+        <tr><td class="value">${selectedOptions.EKSTRABETRÆK.Farve}</td></tr>
+        <tr class="gap"></tr>
+        <tr><td class="subheading">Top edging</td></tr>
+        <tr><td class="value">${selectedOptions.EKSTRABETRÆK.Topkant}</td></tr>
+        <tr class="gap"></tr>
+        <tr><td class="subheading">Edge ribbon</td></tr>
+        <tr><td class="value">${selectedOptions.EKSTRABETRÆK.Kantbånd}</td></tr>
+        <tr class="gap"></tr>
+        <tr><td class="subheading">Flag ribbon</td></tr>
+        <tr><td class="value">NOT SPECIFIED</td></tr>
+        <tr class="gap"></tr>
+        <tr><td class="subheading">Stars (Color matches the emblem)</td></tr>
+        <tr><td class="value">${selectedOptions.KOKARDE.Emblem.name}</td></tr>
+        <tr class="gap"></tr>
+        <tr><td class="subheading">School embroidery</td></tr>
+        <tr><td class="value">${selectedOptions.BRODERI.Skolebroderi}</td></tr>
+        <tr class="gap"></tr>
+        <tr><td class="subheading">Color (color of embroidery)</td></tr>
+        <tr><td class="value">${selectedOptions.BRODERI['Skolebroderi farve']}</td></tr>
+        <tr class="gap"></tr>
+      `
+      : ''
+    }
+
+        
+        
+        
+        
+        <!-- Size -->
+        <tr><th>Size</th></tr>
+        <tr><td class="subheading">Choosen size (Size)</td></tr>
+        <tr><td class="value">${selectedOptions["Millimeter tilpasningssæt"]}</td></tr> 
+        <tr class="gap"></tr>
+        <tr><td class="subheading">Foam to adjust the size</td></tr>
+        <tr><td class="value">${selectedOptions["Vælg størrelse"]}</td></tr>
+        <tr class="gap"></tr>
+        <tr class="gap"></tr>
+        
+       
+
+        
+      </table>
+    </div>
+
+    <div class="table-container">
+      <table>
+        <!-- Cover -->
+        <tr><th>Cover</th></tr>
+        <tr><td class="subheading">Color </td></tr>
+        <tr><td class="value">${selectedOptions.BETRÆK.Farve}</td></tr>
+        
+        <tr class="gap"></tr>
+
+        <tr><td class="subheading">Top edgning</td></tr>
+        <tr><td class="value">${selectedOptions.BETRÆK.Topkant}</td></tr>
+        <tr class="gap"></tr>
+
+        <tr><td class="subheading">Edge band</td></tr>
+        <tr><td class="value">${selectedOptions.BETRÆK.Kantbånd}</td></tr>
+        <tr class="gap"></tr>
+        
+        <tr><td class="subheading">Stjerner</td></tr>
+        <tr><td class="value">${selectedOptions.BETRÆK.Stjerner}</td></tr>
+        <tr class="gap"></tr>
+        
+        <tr><td class="subheading">Color of star </td></tr>
+        <tr><td class="value">${selectedOptions.KOKARDE.Emblem.name}</td></tr>
+        <tr class="gap"></tr>
+        <tr><td class="subheading">Flag ribbon </td></tr>
+        <tr><td class="value">${'NOT SPECIFIED'}</td></tr>
+        <tr class="gap"></tr>
+        
+        <tr class="gap"></tr>
+        <tr class="gap"></tr>
+        <tr class="gap"></tr>
+        <tr class="gap"></tr>
+        <tr class="gap"></tr>
+        <tr class="gap"></tr>
+        <tr class="gap"></tr>
+        <tr class="gap"></tr>
+        <tr class="gap"></tr>
+        <tr class="gap"></tr>
+        <tr class="gap"></tr>
+        <tr class="gap"></tr>
+        <tr class="gap"></tr>
+        
+        <!-- Inside of the cap -->
+        <tr><th>Inside of the cap </th></tr>
+        <tr><td class="subheading">Sweatband </td></tr>
+        <tr><td class="value">${selectedOptions.FOER.Svederem}</td></tr>
+        
+        <tr class="gap"></tr>
+
+        <tr><td class="subheading">Color</td></tr>
+        <tr><td class="value">${selectedOptions.FOER.Farve}</td></tr>
+        <tr class="gap"></tr>
+
+        <tr><td class="subheading">Bow</td></tr>
+        <tr><td class="value">${selectedOptions.FOER.Sløjfe}</td></tr>
+        <tr class="gap"></tr>
+        
+       
+
+        <tr><td class="subheading">Linje 2</td></tr>
+        <tr><td class="value">${selectedOptions.SKYGGE["Skyggegravering Line 2"] === ''
+              ? 'Not specified'
+              : selectedOptions.SKYGGE["Skyggegravering Line 2"]
+            }</td></tr>
+        <tr class="gap"></tr>
+
+        <tr><td class="subheading">Inner band</td></tr>
+        <tr><td class="value">${selectedOptions.FOER.Foer}</td></tr>
+        <tr class="gap"></tr>
+        <tr><td class="subheading">Silk Type</td></tr>
+        <tr><td class="value">${selectedOptions.FOER['Silk Type']}</td></tr>
+        <tr class="gap"></tr>
+        <tr><td class="subheading">Satin Type</td></tr>
+        <tr><td class="value">${selectedOptions.FOER['Satin Type']}</td></tr>
+        <tr class="gap"></tr>
+        
+        <!-- Tilbehør -->
+        <tr><th>Tilbehør</th></tr>
+        <tr><td class="subheading">Silk cushion</td></tr>
+        <tr><td class="value">${selectedOptions.TILBEHØR.Silkepude}</td></tr>
+        
+        <tr class="gap"></tr>
+
+        <tr><td class="subheading">Small flag</td></tr>
+        <tr><td class="value">${'selectedOptions.TILBEHØR'}</td></tr>
+        <tr class="gap"></tr>
+      
+    </table>
+    </div>
+  </div>
+
 </body>
 </html>
+
 `;
 
 
@@ -1241,92 +1326,91 @@ const capOrderAdminEmail = (orderData) => {
       let kokardeValue = ''; // store Guld here
 
 ${Object.entries(selectedOptions)
-  .map(([category, options]) => {
-    // Capture Guld from KOKARDE and skip rendering
-    if (category === 'KOKARDE') {
-      if (options.Emblem && options.Emblem.name) {
-        kokardeValue = options.Emblem.name; // e.g. Guld
-      }
-      return ''; // skip showing KOKARDE
-    }
+      .map(([category, options]) => {
+        // Capture Guld from KOKARDE and skip rendering
+        if (category === 'KOKARDE') {
+          if (options.Emblem && options.Emblem.name) {
+            kokardeValue = options.Emblem.name; // e.g. Guld
+          }
+          return ''; // skip showing KOKARDE
+        }
 
-    const hasOptions = Object.values(options).some(
-      val => val && val !== null && val !== false
-    );
-    if (!hasOptions) return '';
+        const hasOptions = Object.values(options).some(
+          val => val && val !== null && val !== false
+        );
+        if (!hasOptions) return '';
 
-    // --- BETRÆK Section ---
-    if (category === 'BETRÆK') {
-      return `
+        // --- BETRÆK Section ---
+        if (category === 'BETRÆK') {
+          return `
         <div class="category">${formatLabel(category)}</div>
         ${Object.entries(options)
-          .map(([key, value]) => {
-            // if (!value || value === '' || value === null || value === false) return '';
-            let displayValue =
-              typeof value === 'object' && value.name ? value.name : value;
-            return `
+              .map(([key, value]) => {
+                // if (!value || value === '' || value === null || value === false) return '';
+                let displayValue =
+                  typeof value === 'object' && value.name ? value.name : value;
+                return `
               <div class="option-box">
                 <p class="label">${formatLabel(key)}</p>
                 <p>${displayValue}</p>
               </div>`;
-          })
-          .join('')}
+              })
+              .join('')}
         <div class="option-box">
           <p class="label">Color of star</p>
           <p>${kokardeValue || 'Ikke angivet / Not specified'}</p>
         </div>
       `;
-    }
+        }
 
-    // --- EKSTRABETRÆK Section ---
-    if (category === 'EKSTRABETRÆK') {
-      const tilvalg = options.Tilvælg || 'No';
-      const showColor = tilvalg.toLowerCase() === 'yes';
+        // --- EKSTRABETRÆK Section ---
+        if (category === 'EKSTRABETRÆK') {
+          const tilvalg = options.Tilvælg || 'No';
+          const showColor = tilvalg.toLowerCase() === 'yes';
 
-      return `
+          return `
         <div class="category">${formatLabel(category)}</div>
         ${Object.entries(options)
-          .map(([key, value]) => {
-            if (!value || value === '' || value === null || value === false) return '';
-            let displayValue =
-              typeof value === 'object' && value.name ? value.name : value;
-            return `
+              .map(([key, value]) => {
+                if (!value || value === '' || value === null || value === false) return '';
+                let displayValue =
+                  typeof value === 'object' && value.name ? value.name : value;
+                return `
               <div class="option-box">
                 <p class="label">${formatLabel(key)}</p>
                 <p>${displayValue}</p>
               </div>`;
-          })
-          .join('')}
-        ${
-          showColor
-            ? `
+              })
+              .join('')}
+        ${showColor
+              ? `
             <div class="option-box">
               <p class="label">Color of star</p>
               <p>${kokardeValue || 'Ikke angivet / Not specified'}</p>
             </div>`
-            : ''
-        }
+              : ''
+            }
       `;
-    }
+        }
 
-    // --- Default Section ---
-    return `  
+        // --- Default Section ---
+        return `  
       <div class="category">${formatLabel(category)}</div>
       ${Object.entries(options)
-        .map(([key, value]) => {
-          if (!value || value === '' || value === null || value === false) return '';
-          let displayValue =
-            typeof value === 'object' && value.name ? value.name : value;
-          return `
+            .map(([key, value]) => {
+              if (!value || value === '' || value === null || value === false) return '';
+              let displayValue =
+                typeof value === 'object' && value.name ? value.name : value;
+              return `
             <div class="option-box">
               <p class="label">${formatLabel(key)}</p>
               <p>${displayValue}</p>
             </div>`;
-        })
-        .join('')}
+            })
+            .join('')}
     `;
-  })
-  .join('')}
+      })
+      .join('')}
 
     </div>
 
@@ -1458,7 +1542,7 @@ const sendCapEmail = async (req, res) => {
       orderDate,
       email,
       packageName,
-    program
+      program
     } = req.body;
 
     // Validate required fields
@@ -1477,7 +1561,7 @@ const sendCapEmail = async (req, res) => {
       orderNumber: orderNumber || `CAP-${Date.now()}`,
       orderDate: orderDate || new Date().toISOString(),
       packageName: packageName,
-    program:program
+      program: program
     });
     const emailContentAdmin = capOrderAdminEmail({
       customerDetails,
@@ -1487,7 +1571,7 @@ const sendCapEmail = async (req, res) => {
       orderNumber: orderNumber || `CAP-${Date.now()}`,
       orderDate: orderDate || new Date().toISOString(),
       packageName: packageName,
-    program:program
+      program: program
     });
     const emailContentFactory = factoryOrderEmail({
       customerDetails,
@@ -1497,7 +1581,7 @@ const sendCapEmail = async (req, res) => {
       orderNumber: orderNumber || `CAP-${Date.now()}`,
       orderDate: orderDate || new Date().toISOString(),
       packageName: packageName,
-    program:program
+      program: program
     });
 
     const mailOptions = {
@@ -1586,7 +1670,7 @@ const stripePayment = async (req, res) => {
     orderDate,
     email,
     packageName,
-  program } = req.body;
+    program } = req.body;
 
   try {
     const order = await prisma.order.create({
@@ -1600,7 +1684,7 @@ const stripePayment = async (req, res) => {
         customerEmail: email,
         status: 'PENDING',
         packageName: packageName,
-        program:program
+        program: program
       }
     });
 
@@ -1678,7 +1762,7 @@ const stripeWebhook = async (req, res) => {
             orderDate: order.orderDate,
             email: order.customerEmail,
             packageName: order.packageName,
-            program:order.program
+            program: order.program
           }
         },
         { status: () => ({ json: () => { } }) }
