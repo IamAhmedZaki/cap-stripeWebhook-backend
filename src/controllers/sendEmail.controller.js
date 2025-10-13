@@ -351,7 +351,7 @@ const factoryOrderEmail = (orderData) => {
     }
 
     .gap{
-        height: 20px;
+        height: 23px;
     }
     .infoBlock{
         margin-left: 42px;
@@ -599,7 +599,6 @@ const factoryOrderEmail = (orderData) => {
         <tr class="gap"></tr>
         <tr class="gap"></tr>
         <tr class="gap"></tr>
-        <tr class="gap"></tr>
         
         <!-- Inside of the cap -->
         <tr><th>Inside of the cap </th></tr>
@@ -633,7 +632,9 @@ const factoryOrderEmail = (orderData) => {
         <tr class="gap"></tr>
         <tr><td class="subheading">Satin Type</td></tr>
         <tr><td class="value">${selectedOptions.FOER['Satin Type']}</td></tr>
-        <tr class="gap"></tr>
+        
+        
+        <tr style='height:26px;'></tr>
         
         <!-- Tilbehør -->
         <tr><th>Tilbehør</th></tr>
