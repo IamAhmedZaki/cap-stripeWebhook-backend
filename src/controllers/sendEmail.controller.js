@@ -364,17 +364,21 @@ const factoryOrderEmail = (orderData) => {
   background-color: #e7e7e7b9;
   margin: 0 auto; 
 }
+  .downgap{
+  margin-bottom: 10px;
+}
+  
   </style>
 </head>
 <body style="margin:0;  padding:0; font-family:Arial, sans-serif;">
 
     <div class="wrapper">
     <div class="infoBlock">
-    <div >Kunde ordre oplysninger:</div>
-  <div >Ordren er oprettet: </div>
-  <div>Order nr:${orderNumber} , Name of Customer:${customerDetails.firstName} ${customerDetails.lastName} and
-        School:${customerDetails.Skolenavn}</div>
-  <div >Ordre detaljer</div>
+    <div  class="downgap" >Kunde ordre oplysninger:</div>
+  <div  class="downgap" >Ordren er oprettet: </div>
+  <div><div class="downgap">Order nr:${orderNumber}</div> <div  class="downgap">Name of Customer:${customerDetails.firstName} ${customerDetails.lastName}</div> <div class="downgap">
+        School:${customerDetails.Skolenavn}</div></div>
+  <div class="downgap">Ordre detaljer</div>
   <div style="margin-left: 327px; margin-bottom: 10px; margin-top: 4px;">The package choosed:${packageName}
 
   </div>
