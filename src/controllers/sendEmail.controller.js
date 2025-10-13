@@ -307,6 +307,8 @@ const factoryOrderEmail = (orderData) => {
       /* text-align: center; */
       margin: 0;
       padding: 50px 0;
+          display: flex;
+          justify-content: center;
     }
 
     .table-container {
@@ -359,7 +361,7 @@ const factoryOrderEmail = (orderData) => {
   width: 732px;
   overflow-x: hidden;
   background-color: #e7e7e7b9;
-  margin: 0 auto; /* This centers the wrapper */
+  margin: 0 auto; 
 }
   </style>
 </head>
