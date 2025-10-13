@@ -296,13 +296,7 @@ const factoryOrderEmail = (orderData) => {
   };
 
   const html = `
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Two Tables Side by Side</title>
-  <style>
-    body {
+ body {
       font-family: Arial, sans-serif;
       /* text-align: center; */
       margin: 0;
@@ -352,22 +346,30 @@ const factoryOrderEmail = (orderData) => {
         height: 20px;
     }
     .infoBlock{
+      position: relative;
         margin-left: 42px;
         font-weight: bold;
+        
     }
+    .wrapper{
+      width: 732px;
+      overflow-x: hidden;
+    }
+    
   </style>
 </head>
 <body style="margin:0;  padding:0; font-family:Arial, sans-serif; background-color:#e7e7e7b9; ">
+  <div class="wrapper">
     <div class="infoBlock">
-    <div style="margin-left:143px; margin-bottom: 10px; margin-top: 4px;">Kunde ordre oplysninger:</div>
-  <div style="margin-left: 143px; margin-bottom: 10px; margin-top: 4px;">Ordren er oprettet: </div>
-  <div style="margin-left: 143px; margin-bottom: 10px; margin-top: 4px;">Order XXXX (Order nr) , name of customer and
+    <div >Kunde ordre oplysninger:</div>
+  <div >Ordren er oprettet: </div>
+  <div>Order XXXX (Order nr) , name of customer and
     school.</div>
-  <div style="margin-left: 143px; margin-bottom: 10px; margin-top: 4px;">Ordre detaljer</div>
-  <div style="margin-left: 450px; margin-bottom: 10px; margin-top: 4px;">The package choosed:${packageName}
+  <div >Ordre detaljer</div>
+  <div style="margin-left: 327px; margin-bottom: 10px; margin-top: 4px;">XXXX ( The package choosed)
 
   </div>
-  <div style="margin-left: 450px;">
+  <div style="margin-left: 327px;">
     Information about the Cap
   </div>
   </div>
@@ -632,6 +634,7 @@ const factoryOrderEmail = (orderData) => {
       
     </table>
     </div>
+  </div>
   </div>
 
 </body>
