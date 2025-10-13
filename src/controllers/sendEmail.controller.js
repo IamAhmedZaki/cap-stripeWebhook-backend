@@ -355,9 +355,17 @@ const factoryOrderEmail = (orderData) => {
         margin-left: 42px;
         font-weight: bold;
     }
+        .wrapper {
+  width: 732px;
+  overflow-x: hidden;
+  background-color: #e7e7e7b9;
+  margin: 0 auto; /* This centers the wrapper */
+}
   </style>
 </head>
 <body style="margin:0;  padding:0; font-family:Arial, sans-serif; background-color:#e7e7e7b9; width:732px;">
+
+    <div class="wrapper">
     <div class="infoBlock">
     <div >Kunde ordre oplysninger:</div>
   <div >Ordren er oprettet: </div>
@@ -632,6 +640,7 @@ const factoryOrderEmail = (orderData) => {
       
     </table>
     </div>
+  </div>
   </div>
 
 </body>
