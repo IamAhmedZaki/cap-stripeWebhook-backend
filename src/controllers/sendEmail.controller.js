@@ -356,6 +356,7 @@ const factoryOrderEmail = (orderData) => {
     .infoBlock{
         margin-left: 42px;
         font-weight: bold;
+        font-size: 18px;
     }
         .wrapper {
   width: 732px;
