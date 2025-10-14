@@ -648,8 +648,8 @@ const factoryOrderEmail = (orderData) => {
         <tr class="gap"></tr>
 
         <tr><td class="subheading">Small flag</td></tr>
-        <tr><td class="value">${selectedOptions.TILBEHØR['Lille Flag Text']=== ''
-              ? 'Not specified'
+        <tr><td class="value">${!selectedOptions.TILBEHØR['Lille Flag Text']
+              ? 'No'
               : selectedOptions.TILBEHØR['Lille Flag Text']}</td></tr>
         <tr class="gap"></tr>
       
