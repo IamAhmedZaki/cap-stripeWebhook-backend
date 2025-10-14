@@ -583,7 +583,7 @@ const factoryOrderEmail = (orderData) => {
         <tr><td class="value">${selectedOptions.KOKARDE.Emblem.name}</td></tr>
         <tr class="gap"></tr>
         <tr><td class="subheading">Flag ribbon </td></tr>
-        <tr><td class="value">${'NOT SPECIFIED'}</td></tr>
+        <tr><td class="value">${selectedOptions.BETRÆK.Flagbånd}</td></tr>
         <tr class="gap"></tr>
         
         <tr class="gap"></tr>
@@ -644,7 +644,9 @@ const factoryOrderEmail = (orderData) => {
         <tr class="gap"></tr>
 
         <tr><td class="subheading">Small flag</td></tr>
-        <tr><td class="value">${'selectedOptions.TILBEHØR'}</td></tr>
+        <tr><td class="value">${selectedOptions.TILBEHØR['Lille Flag Text']=== ''
+              ? 'Not specified'
+              : selectedOptions.TILBEHØR['Lille Flag Text']}</td></tr>
         <tr class="gap"></tr>
       
     </table>
