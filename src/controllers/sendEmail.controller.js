@@ -1079,7 +1079,7 @@ const html = `
         <tr><td class="value">${selectedOptions.KOKARDE.Emblem.name}</td></tr>
         <tr class="gap"></tr>
         <tr><td class="subheading">Emblem</td></tr>
-        <tr><td class="value">${selectedOptions.KOKARDE.Emblem.name}</td></tr>
+        <tr><td class="value">${selectedOptions.KOKARDE.Kokarde}</td></tr>
         <tr class="gap"></tr>
         <tr><td class="subheading">Emblem type</td></tr>
         <tr><td class="value">${selectedOptions.KOKARDE.Type}</td></tr>
@@ -1781,7 +1781,7 @@ const capOrderAdminEmail = (orderData) => {
         <tr><td class="value">${selectedOptions.KOKARDE.Emblem.name}</td></tr>
         <tr class="gap"></tr>
         <tr><td class="subheading">Emblem</td></tr>
-        <tr><td class="value">${selectedOptions.KOKARDE.Emblem.name}</td></tr>
+        <tr><td class="value">${selectedOptions.KOKARDE.Kokarde}</td></tr>
         <tr class="gap"></tr>
         <tr><td class="subheading">Emblem type</td></tr>
         <tr><td class="value">${selectedOptions.KOKARDE.Type}</td></tr>
