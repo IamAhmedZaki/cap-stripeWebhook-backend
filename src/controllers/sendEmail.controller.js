@@ -1073,7 +1073,7 @@ const html = `
         <!-- Kokarde -->
         <tr><th>Kokarde</th></tr>
         <tr><td class="subheading">Roset farve</td></tr>
-        <tr><td class="value">${selectedOptions.KOKARDE['Roset Farve'].name}</td></tr>
+        <tr><td class="value">${selectedOptions.KOKARDE['Roset farve'].name}</td></tr>
         <tr class="gap"></tr>
         <tr><td class="subheading">Kokarde type</td></tr>
         <tr><td class="value">${selectedOptions.KOKARDE.Emblem.name}</td></tr>
