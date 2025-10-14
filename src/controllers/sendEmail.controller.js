@@ -1325,7 +1325,7 @@ ${selectedOptions.EKSTRABETRÆK.Tilvælg === 'Yes' ? `
     </div>
   </div>
   </div>
-  div class="gap"></div>
+  <div class="gap"></div>
   <div class="gap"></div>
   <div class="gap"></div>
   <div class="footer">
@@ -2027,7 +2027,7 @@ ${selectedOptions.EKSTRABETRÆK.Tilvælg === 'Yes' ? `
     </div>
   </div>
   </div>
-  div class="gap"></div>
+  <div class="gap"></div>
   <div class="gap"></div>
   <div class="gap"></div>
   <div class="footer">
