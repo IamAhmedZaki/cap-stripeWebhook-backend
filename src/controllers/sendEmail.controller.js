@@ -966,6 +966,12 @@ const html = `
     width: 657px;
 }
     
+.footer{
+    background-color: #e7e7e7;
+    padding: 17px;
+    /* width: 657px; */
+    font-weight: bold;
+}
   </style>
 </head>
 <body style="margin:0;  padding:0; font-family:Arial, sans-serif;  ">
@@ -1347,7 +1353,7 @@ MOMS: 20% of the total price DKK (vat)<br>
   <div class="gap"></div>
   <div class="gap"></div>
   
-  <div style="font-weight: bold; padding: 17px;">
+  <div style="font-weight: bold; padding: 17px; font-size: 20px;">
       
 
 Er du i tvivl om noget? Kundeservice altid klar, hvis du har brug for hjælp.<br>
@@ -1690,6 +1696,13 @@ const capOrderAdminEmail = (orderData) => {
     background-color: #e7e7e7;
     padding: 17px;
     width: 657px;
+}
+    .footer{
+    background-color: #e7e7e7;
+    padding: 17px;
+    /* width: 657px; */
+    font-weight: bold;
+    font-size: 20px;
 }
     
   </style>
