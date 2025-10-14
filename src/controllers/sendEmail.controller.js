@@ -971,7 +971,7 @@ const html = `
     padding: 17px;
     /* width: 657px; */
     font-weight: bold;
-    font-size: 20px;"
+    font-size: 20px;
 }
   </style>
 </head>
