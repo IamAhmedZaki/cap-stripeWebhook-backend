@@ -1301,7 +1301,7 @@ ${selectedOptions.EKSTRABETRÆK.Tilvælg === 'Yes' ? `
 <tr><td class="value">${selectedOptions.TILBEHØR.Silkepude}</td></tr>
 <tr class="gap"></tr>
 <tr><td class="subheading">Ekstra Kokarde</td></tr>
-<tr><td class="value">${selectedOptions.TILBEHØR['Ekstra korkarde Text']? 'No' : selectedOptions.TILBEHØR['Ekstra korkarde Text']}</td></tr>
+<tr><td class="value">${selectedOptions.TILBEHØR['Ekstra korkarde Text']==''? 'No' : selectedOptions.TILBEHØR['Ekstra korkarde Text']}</td></tr>
 <tr class="gap"></tr>
 <tr><td class="subheading">Handsker</td></tr>
 <tr><td class="value">${selectedOptions.TILBEHØR.Handsker}</td></tr>
