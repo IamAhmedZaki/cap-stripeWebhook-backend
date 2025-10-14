@@ -858,147 +858,470 @@ const capOrderEmail = (orderData) => {
     return value;
   };
 
-  const html = `
+  const programColorMap = {
+    STX: 'Bordeaux',
+    HTX: 'Navy Blue',
+    HHX: 'Royal Blue',
+    HF: 'Light Blue',
+    EUX: 'Grey',
+    EUD: 'Purple',
+    sosuassistent: 'Purple',
+    sosuhjælper: 'Light Purple',
+    frisør: 'Light Pink',
+    kosmetolog: 'Pink',
+    pædagog: 'Dark Purple',
+    pau: 'Orange',
+    ernæringsassistent: 'Yellow'
+  };
+  const programColor = programColorMap[program] || program;
+  
+const html = `
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <title>Two Tables Side by Side</title>
   <style>
-    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; background: #f9fafb; }
-    .container { max-width: 700px; margin: 0 auto; background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-
-    .header img { width: 100%; max-width: 400px; border-radius: 8px; margin-bottom: 10px; }
-    .content { padding: 25px; }
-    h1, h2, h3 { color: #111827; }
-    p { margin: 6px 0; }
-    .section { margin: 25px 0; padding: 15px; border: 1px solid #e5e7eb; border-radius: 8px; background: #f9fafb; }
-    .total { background: #d1fae5; padding: 20px; border-radius: 8px; text-align: center; font-weight: bold; }
-    .label { font-weight: bold; color: #111827; }
-    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-    td { padding: 6px 0; vertical-align: top; }
-    .category { background: #f3f4f6; font-weight: bold; padding: 8px; border-radius: 5px; margin-top: 15px; }
-    .option-box {
-      background: #f9fafb;
-      padding: 10px 15px;
-      border-radius: 6px;
-      margin-bottom: 8px;
-    }
-    .option-box p {
+    body {
+      font-family: Arial, sans-serif;
+      /* text-align: center; */
       margin: 0;
+      padding: 50px 0;
     }
-    .option-box .label {
+
+    .table-container {
+      display: inline-block; /* allows side-by-side placement */
+      /* space between tables */
+      vertical-align: top; /* align tops evenly */
+    }
+    .table-container2 {
+      display: inline-block; /* allows side-by-side placement */
+      /* space between tables */
+      vertical-align: top; /* align tops evenly */
+      background:#e7e7e7;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 342px;
+      /* border: 1px solid #ccc; */
+      margin: 0 auto;
+    }
+
+    th {
+      font-size: 20px;
+      padding: 10px;
+      text-align: left;
+      /* background-color: #f2f2f2; */
+    }
+
+    td {
+      padding: 9px;
+      font-size: 16px;
+      /* border-top: 1px solid #ddd; */
+    }
+
+    .subheading {
       font-weight: bold;
-      display: block;
-      margin-bottom: 3px;
+      background-color: #ffffff;
+        text-align: left;
     }
     
-    /* Two-column layout for billing + shipping */
-    .two-column { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
-    .two-column .section { flex: 1; min-width: 300px; }
+    .subheading2 {
+      font-weight: bold;
+     
+       text-align: left;
+    }
 
-    /* Category item styling (Roset farve → Royal Blue layout) */
-    .option-item { margin-bottom: 10px; }
-    .option-item .option-label { font-weight: bold; display: block; color: #111827; }
-    .option-item .option-value { margin-left: 0; color: #333; }
+    .value {
+      font-size: 18px;
+      /* color: #0074D9; */
+      background-color: #ffffff;
+       text-align: left;
+    }
+
+    .gap{
+        height: 20px;
+    }
+    .infoBlock{
+      position: relative;
+       
+        font-weight: bold;
+        font-size: 18px;
+        
+    }
+    .wrapper {
+  width: 732px;
+  overflow-x: hidden;
+  background-color: #ffffff;
+  margin: 0 auto; /* This centers the wrapper */
+}
+
+.downgap{
+  margin-bottom: 10px;
+}
+.orderNumber{
+    background-color: #e7e7e7;
+    padding: 17px;
+    width: 657px;
+}
+    
   </style>
 </head>
-<body>
-  <div class="container">
-    <div class="header" style="background: #fff; color: #111; text-align: center; padding: 0; border-bottom: 1px solid #e5e7eb;">
-      <img src="https://elipsestudio.com/studentlife/studentlifeemail.jpg" 
+<body style="margin:0;  padding:0; font-family:Arial, sans-serif;  ">
+  <div class="wrapper">
+    <div class="infoBlock">
+        <img src="https://elipsestudio.com/studentlife/studentlifeemail.jpg" 
            alt="Studentlife caps" 
            style="width: 100%; max-width: 700px; display: block; margin: 0 auto; border-radius: 0;">
-
-      <div style="background: #f9fafb; padding: 15px 0; border-top: 1px solid #e5e7eb; text-align: center;">
+        <div style="background: #f9fafb; padding: 15px 0; border-top: 1px solid #e5e7eb; text-align: center;">
         <span style="font-size: 16px; font-weight: bold; color: #111827; display: inline-block; margin: 0 10px;">
           ✓ Premium kvalitet
         </span>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <span style="font-size: 16px; font-weight: bold; color: #111827; display: inline-block; margin: 0 10px;">
           ✓ Personligt design
         </span>
       </div>
+      <div class="gap"></div>
+    <div class="downgap" >Kære:${customerDetails.firstName} ${customerDetails.lastName}</div>
+    <div class="gap"></div>
+    <div class="downgap" >Tak for din bestilling hos Studentlife.</div>
+    <div class="gap"></div>
+    <div class="downgap" >Din bestilling med ordre nummer:${orderNumber} er nu betalt. </div>
+    <div class="gap"></div>
+    
+    <div class="downgap" >Husk at tjekke alle detaljer er korrekte, herunder også leveringstid (delievery time should be 3 months, from ordering, unless its express), skolens logo samt skolebroderi.</div>
+    <div class="gap"></div>
+    <div class="downgap" >Vi håber at  du kommer til at elske din studenterhue.</div>
+    <div class="gap"></div>
+    <div class="gap"></div>
+    <div class="downgap" >Din ordre oplysninger:</div>
+  <div class="gap"></div>
+    <div class="downgap" >Ordren er oprettet: </div>
+    <div class="gap"></div>
+  <div><div class="downgap orderNumber">Order nr: ${orderNumber}</div></div>
+  <div class="table-container2">
+      <table>
+        <tr><th>Betalingsinformation</th></tr>
+         <tr class="gap"></tr>
+        <tr><td class="subheading2">Information about the payer </td></tr>
+         <tr class="gap"></tr>
+        <tr><td class="subheading2">Name: ${customerDetails.firstName} ${customerDetails.lastName} </td></tr>
+        <tr><td class="subheading2">Address: ${customerDetails.address} </td></tr>
+        <tr><td class="subheading2">Post and City: ${customerDetails.postalCode} ${customerDetails.city} </td></tr>
+         <tr class="gap"></tr>        
+         <tr class="gap"></tr>        
+         <tr class="gap"></tr>        
+        
+
+      </table>
     </div>
 
-    <div class="content">
-      <p>Kære <strong>${customerDetails.firstName} ${customerDetails.lastName}</strong>,</p>
-      <p>Tak for din bestilling hos Studentlife.</p>
-      <p>Din bestilling med ordrenummer <strong>${orderNumber}</strong> er nu betalt.</p>
+    <div class="table-container2">
+      <table>
+        <tr><th>Leverings information  (Delievery informaton)</th></tr>
+         <tr class="gap"></tr>
+        <tr><td class="subheading2">Name: ${customerDetails.firstName} ${customerDetails.lastName} </td></tr>
+        <tr><td class="subheading2">Address: ${customerDetails.address} </td></tr>
+        <tr><td class="subheading2">Post And City: ${customerDetails.postalCode} ${customerDetails.city} </td></tr>
+         <tr class="gap"></tr>
+        ${customerDetails.notes ? `<tr><td class="subheading2">Levering (Note): ${customerDetails.notes} </td></tr>` : ''}
+        
+       
+        
+       
 
-      <p><strong>Bemærk:</strong> Husk at tjekke, at alle detaljer er korrekte, herunder leveringstid (3 måneder fra bestilling, medmindre det er ekspres), skolens logo samt skolebroderi.</p>
-      <p>Vi håber, at du kommer til at elske din studenterhue.</p>
+      </table>
+    </div>
 
-      <div class="section">
-        <h2>Din ordre oplysninger</h2>
-        <p><span class="label">Ordren er oprettet:</span> ${new Date(orderDate).toLocaleString('da-DK')}</p>
-        <p><span class="label">Ordrenummer:</span> ${orderNumber}</p>
-      </div>
+    <div class="gap"></div> 
+    <div class="gap"></div> 
+    <div class="gap"></div> 
+    <div class="gap"></div> 
+  
+  
+    <div >Ordre detaljer</div>
+  <div  class="downgap" style="margin-left: 370px; margin-bottom: 10px; margin-top: 4px;">The package choosed: ${packageName}
 
-      <div class="two-column">
-        <div class="section">
-          <h2>Betalingsinformation</h2>
-          <p><span class="label">Navn</span><br>${customerDetails.firstName} ${customerDetails.lastName}</p>
-          <p><span class="label">Adresse</span><br>${customerDetails.address}</p>
-          <p><span class="label">Post & By</span><br>${customerDetails.postalCode} ${customerDetails.city}</p>
-        </div>
+  </div>
+  <div  class="downgap" style="margin-left: 370px; margin-bottom: 10px; margin-top: 4px;">Price: ${totalPrice} DKK
 
-        <div class="section">
-          <h2>Leveringsinformation</h2>
-          <p><span class="label">Navn</span><br>${customerDetails.firstName} ${customerDetails.lastName}</p>
-          <p><span class="label">Adresse</span><br>${customerDetails.address}</p>
-          <p><span class="label">Post & By</span><br>${customerDetails.postalCode} ${customerDetails.city}</p>
-          ${customerDetails.notes ? `<p><span class="label">Leveringsnote</span><br>${customerDetails.notes}</p>` : ''}
-        </div>
-      </div>
+  </div>
+  <div class="gap"></div>
+  <div style="margin-left:370px;">
+    Information about the Cap
+  </div>
+  <div class="gap"></div>
+  <div class="gap"></div>
+  <div class="gap"></div>
+  </div>
+  <!-- First row of tables -->
+  
+  <!-- kok -->
+   <div style="background-color: #e7e7e7;">
+     <div class="gap"></div>
+     <div class="gap"></div>
+     <div class="gap"></div>
+  
 
-      <div class="section">
-        <h2>Ordre detaljer</h2>
-        <p><strong>Package</strong><br>${packageName || 'Hue Pakke'}</p>
-        <p><strong>Pris</strong><br>${totalPrice || ''} DKK</p>
+  
+  <!-- Second row (another set of side-by-side tables) -->
+  <div style="text-align:center; margin-top:40px;">
+    <div class="table-container">
+      <table>
+        <!-- Kokarde -->
+        <tr><th>Kokarde</th></tr>
+        <tr><td class="subheading">Roset farve</td></tr>
+        <tr><td class="value">${selectedOptions.KOKARDE['Roset Farve'].name}</td></tr>
+        <tr class="gap"></tr>
+        <tr><td class="subheading">Kokarde type</td></tr>
+        <tr><td class="value">${selectedOptions.KOKARDE.Emblem.name}</td></tr>
+        <tr class="gap"></tr>
+        <tr><td class="subheading">Emblem</td></tr>
+        <tr><td class="value">${selectedOptions.KOKARDE.Emblem}</td></tr>
+        <tr class="gap"></tr>
+        <tr><td class="subheading">Emblem type</td></tr>
+        <tr><td class="value">${selectedOptions.KOKARDE.Type}</td></tr>
+        <tr class="gap"></tr>
+        
+        <!-- Embroidery on frontside -->
+        <tr><th>Broderi foran</th></tr>
+        <tr><td class="subheading">Tekst maks. 20 tegn</td></tr>
+        <tr><td class="value">${selectedOptions.UDDANNELSESBÅND["Broderi foran"] === ''
+      ? 'Not specified'
+      : selectedOptions.UDDANNELSESBÅND["Broderi foran"]
+    }</td></tr>
+        
+        <tr class="gap"></tr>
 
-        <div class="category">Information om huen</div>
-        ${Object.entries(selectedOptions)
-      .map(([category, options]) => {
-        const hasOptions = Object.values(options).some(
-          val => val && val !== null && val !== false
-        );
-        if (!hasOptions) return '';
-        return `
-            <div class="category">${formatLabel(category)}</div>
-            ${Object.entries(options)
-            .map(([key, value]) => {
-              if (!value || value === '' || value === null || value === false) return '';
-              let displayValue =
-                typeof value === 'object' && value.name ? value.name : value;
-              return `
-                  <div class="option-box">
-                    <p class="label">${formatLabel(key)}</p>
-                    <p>${displayValue}</p>
-                  </div>`;
-            })
-            .join('')}
-          `;
-      })
-      .join('')}
-      </div>
+        <tr><td class="subheading">Broderi farve</td></tr>
+        <tr><td class="value">${selectedOptions.UDDANNELSESBÅND["Broderi farve"]}</td></tr>
+        <tr class="gap"></tr>
+         
+        <!-- Embroidery on the backside of the cap -->
+        <tr><th> Broderi Bagpå</th></tr>
+        <tr><td class="subheading">Navne broderi (Writing) maks. 26</td></tr>
+        <tr><td class="value">${selectedOptions.BRODERI["Navne broderi"] === ''
+      ? 'Not specified'
+      : selectedOptions.BRODERI["Navne broderi"]
+    }</td></tr> 
+        <tr class="gap"></tr>
+        <tr><td class="subheading">Broderi farve </td></tr>
+        <tr><td class="value">${selectedOptions.BRODERI.Broderifarve}</td></tr>
+        <tr class="gap"></tr>
+        <tr><td class="subheading">Skolebroderi ( Writing) maks. 35</td></tr>
+        <tr><td class="value">${selectedOptions.BRODERI.Skolebroderi === ''
+      ? 'Not specified'
+      : selectedOptions.BRODERI.Skolebroderi
+    }</td></tr>
+        <tr class="gap"></tr>
+        <tr><td class="subheading">Broderi farve </td></tr>
+        <tr><td class="value">${selectedOptions.BRODERI['Skolebroderi farve']}</td></tr>
+        <tr class="gap"></tr>
+        <tr><td class="subheading">Knap Farve</td></tr>
+        <tr><td class="value">${selectedOptions.UDDANNELSESBÅND['Knap farve']}</td></tr>
+        <tr class="gap"></tr>
+        <tr><td class="subheading">År</td></tr>
+        <tr><td class="value">${selectedOptions.UDDANNELSESBÅND.år}</td></tr>
+        <tr class="gap"></tr>
+        
+        <!-- brim -->
+<tr><th>Skygge</th></tr>
+<tr><td class="subheading">Type</td></tr>
+<tr><td class="value">${selectedOptions.SKYGGE.Type}</td></tr> 
+<tr class="gap"></tr>
+<tr><td class="subheading">Material </td></tr>
+<tr><td class="value">${selectedOptions.SKYGGE.Materiale}</td></tr>
+<tr class="gap"></tr>
+<tr><td class="subheading">Skyggebånd</td></tr>
+<tr><td class="value">${selectedOptions.SKYGGE.Skyggebånd}</td></tr>
+<tr class="gap"></tr>
+<tr><td class="subheading">Linje 1</td></tr>
+<tr><td class="value">${selectedOptions.SKYGGE["Skyggegravering Line 1"] === '' ? 'Not specified' : selectedOptions.SKYGGE["Skyggegravering Line 1"]}</td></tr>
+<tr class="gap"></tr>
+<tr><td class="subheading">Linje 3</td></tr>
+<tr><td class="value">${selectedOptions.SKYGGE["Skyggegravering Line 3"] === '' ? 'Not specified' : selectedOptions.SKYGGE["Skyggegravering Line 3"]}</td></tr>
+<tr class="gap"></tr>
+<tr class="gap"></tr>
+<tr class="gap"></tr>
+<tr class="gap"></tr>
+<tr class="gap"></tr>
+<tr class="gap"></tr>
+<tr class="gap"></tr>
+<tr class="gap"></tr>
+<tr class="gap"></tr>
+<tr class="gap"></tr>
 
-      <div class="total">
-        <p>Total: <strong>${totalPrice} ${currency}</strong></p>
-        <p>Inklusiv moms</p>
-        <p>LEVERING: 0 DKK</p>
-        <p>MOMS: 20% af totalbeløbet</p>
-      </div>
+<!-- Extra Cover -->
+<tr><th>Extra Cover</th></tr>
+<tr><td class="subheading">Tilvælg </td></tr>
+<tr><td class="value">${selectedOptions.EKSTRABETRÆK.Tilvælg}</td></tr> 
+<tr class="gap"></tr>
 
-      <div class="section" style="text-align:center;">
-        <p>Tak for din ordre ❤️</p>
-        <p>Vi behandler den snarest og kontakter dig, hvis vi har brug for yderligere oplysninger.</p>
-      </div>
+${selectedOptions.EKSTRABETRÆK.Tilvælg === 'Yes' ? `
+<tr><td class="subheading">Farve</td></tr>
+<tr><td class="value">${selectedOptions.EKSTRABETRÆK.Farve}</td></tr>
+<tr class="gap"></tr>
+<tr><td class="subheading">Topkant</td></tr>
+<tr><td class="value">${selectedOptions.EKSTRABETRÆK.Topkant}</td></tr>
+<tr class="gap"></tr>
+<tr><td class="subheading">Kantbånd</td></tr>
+<tr><td class="value">${selectedOptions.EKSTRABETRÆK.Kantbånd}</td></tr>
+<tr class="gap"></tr>
+<tr><td class="subheading">Flagbånd</td></tr>
+<tr><td class="value">${!selectedOptions.EKSTRABETRÆK.Flagbånd?'No':selectedOptions.EKSTRABETRÆK.Flagbånd}</td></tr>
+<tr class="gap"></tr>
+<tr><td class="subheading">Stjerner </td></tr>
+<tr><td class="value">${selectedOptions.KOKARDE.Emblem.name}</td></tr>
+<tr class="gap"></tr>
+<tr><td class="subheading">Skolebroderi  </td></tr>
+<tr><td class="value">${selectedOptions.BRODERI.Skolebroderi}</td></tr>
+<tr class="gap"></tr>
+<tr><td class="subheading">Farve ( color of embodery)</td></tr>
+<tr><td class="value">${selectedOptions.BRODERI['Skolebroderi farve']}</td></tr>
+<tr class="gap"></tr>
+<tr><td class="subheading">Lyskugle</td></tr>
+<tr><td class="value">${selectedOptions.TILBEHØR.Lyskugle}</td></tr>
+<tr class="gap"></tr>
+<tr><td class="subheading">Luksus champagneglas</td></tr>
+<tr><td class="value">${selectedOptions.TILBEHØR['Luksus champagneglas']}</td></tr>
+<tr class="gap"></tr>
+<tr><td class="subheading">Fløjte</td></tr>
+<tr><td class="value">${selectedOptions.TILBEHØR.Fløjte}</td></tr>
+<tr class="gap"></tr>
+` : '' }
+
+<!-- Size -->
+<tr><th>Størrelse</th></tr>
+<tr><td class="subheading">Vælg størrelse (Size)</td></tr>
+<tr><td class="value">${selectedOptions.STØRRELSE["Vælg størrelse"]}</td></tr> 
+<tr class="gap"></tr>
+<tr><td class="subheading">Millimeter tilpasningssæt</td></tr>
+<tr><td class="value">${selectedOptions.STØRRELSE["Millimeter tilpasningssæt"]}</td></tr>
+<tr class="gap"></tr>
+<tr class="gap"></tr>
+</table>
+</div>
+
+    <div class="table-container">
+      <table>
+                <tr><th>Uddannelsesbånd</th></tr>
+        <tr><td class="subheading">Huebånd</td></tr>
+        <tr><td class="value">${selectedOptions.UDDANNELSESBÅND.Huebånd}</td></tr>
+        <tr class="gap"></tr>
+        <tr><td class="subheading">Materiale</td></tr>
+        <tr><td class="value">${selectedOptions.UDDANNELSESBÅND.Materiale}</td></tr>
+        <tr class="gap"></tr>
+        <tr><td class="subheading">Hagerem</td></tr>
+        <tr><td class="value">${selectedOptions.UDDANNELSESBÅND.Hagerem}</td></tr>
+        <tr class="gap"></tr>
+        <tr class="gap"></tr>
+        <tr class="gap"></tr>
+        <tr class="gap"></tr>
+        <tr class="gap"></tr>
+        <tr class="gap"></tr>
+        
+        <!-- Cover -->
+        <tr><th>Betræk </th></tr>
+        <tr><td class="subheading">Farve</td></tr>
+        <tr><td class="value">${selectedOptions.BETRÆK.Farve}</td></tr>
+        <tr class="gap"></tr>
+        <tr><td class="subheading">Topkant</td></tr>
+        <tr><td class="value">${selectedOptions.BETRÆK.Topkant}</td></tr>
+        <tr class="gap"></tr>
+        <tr><td class="subheading">Kantbånd</td></tr>
+        <tr><td class="value">${selectedOptions.BETRÆK.Kantbånd}</td></tr>
+        <tr class="gap"></tr>
+        <tr><td class="subheading">Stjerner</td></tr>
+        <tr><td class="value">${selectedOptions.BETRÆK.Stjerner}</td></tr>
+        <tr class="gap"></tr>
+        <tr><td class="subheading">Stjerner farve</td></tr>
+        <tr><td class="value">${selectedOptions.KOKARDE.Emblem.name}</td></tr>
+        <tr class="gap"></tr>
+        <tr><td class="subheading">Flagbånd</td></tr>
+        <tr><td class="value">${!selectedOptions.BETRÆK.Flagbånd?'No':selectedOptions.BETRÆK.Flagbånd}</td></tr>
+        <tr class="gap"></tr>
+        <tr class="gap"></tr>
+        <tr class="gap"></tr>
+        <tr class="gap"></tr>
+        <tr class="gap"></tr>
+        <tr class="gap"></tr>
+        <tr class="gap"></tr>
+        <tr class="gap"></tr>
+        <tr class="gap"></tr>
+        <tr class="gap"></tr>
+        <tr class="gap"></tr>
+        <tr class="gap"></tr>
+       
+        
+        
+     <!-- Inside of the cap -->
+<tr><th>Foer </th></tr>
+<tr><td class="subheading">Svederem</td></tr>
+<tr><td class="value">${selectedOptions.FOER.Svederem}</td></tr>
+<tr class="gap"></tr>
+<tr><td class="subheading">Farve </td></tr>
+<tr><td class="value">${selectedOptions.FOER.Farve}</td></tr>
+<tr class="gap"></tr>
+<tr><td class="subheading">Sløjfe</td></tr>
+<tr><td class="value">${selectedOptions.FOER.Sløjfe}</td></tr>
+<tr class="gap"></tr>
+<tr><td class="subheading">Linje 2</td></tr>
+<tr><td class="value">${selectedOptions.SKYGGE["Skyggegravering Line 2"] === '' ? 'Not specified' : selectedOptions.SKYGGE["Skyggegravering Line 2"]}</td></tr>
+<tr class="gap"></tr>
+<tr><td class="subheading">Forring</td></tr>
+<tr><td class="value">${selectedOptions.FOER.Foer}</td></tr>
+<tr class="gap"></tr>
+<tr><td class="subheading">Satin Type</td></tr>
+<tr><td class="value">${selectedOptions.FOER['Satin Type']=='' ? 'Not specified' : selectedOptions.FOER['Satin Type']}</td></tr>
+<tr class="gap"></tr>
+<tr><td class="subheading">Silke Type</td></tr>
+<tr><td class="value">${selectedOptions.FOER['Silk Type']=='' ? 'Not specified' : selectedOptions.FOER['Silk Type']}</td></tr>
+<tr class="gap"></tr>
+        
+        <!-- Tilbehør -->
+<tr><th>Tilbehør</th></tr>
+<tr><td class="subheading">Hueæske </td></tr>
+<tr><td class="value">${selectedOptions.TILBEHØR.Hueæske}</td></tr>
+<tr class="gap"></tr>
+<tr><td class="subheading">Huekuglepen </td></tr>
+<tr><td class="value">${selectedOptions.TILBEHØR.Huekuglepen}</td></tr>
+<tr class="gap"></tr>
+<tr><td class="subheading">Silkepude </td></tr>
+<tr><td class="value">${selectedOptions.TILBEHØR.Silkepude}</td></tr>
+<tr class="gap"></tr>
+<tr><td class="subheading">Ekstra Kokarde</td></tr>
+<tr><td class="value">${selectedOptions.TILBEHØR['Ekstra Kokarde']}</td></tr>
+<tr class="gap"></tr>
+<tr><td class="subheading">Handsker</td></tr>
+<tr><td class="value">${selectedOptions.TILBEHØR.Handsker}</td></tr>
+<tr class="gap"></tr>
+<tr><td class="subheading">Stor kuglepen </td></tr>
+<tr><td class="value">${selectedOptions.TILBEHØR['Stor kuglepen']}</td></tr>
+<tr class="gap"></tr>
+<tr><td class="subheading">Smarttag</td></tr>
+<tr><td class="value">${selectedOptions.TILBEHØR.Smarttag}</td></tr>
+<tr class="gap"></tr>
+<tr><td class="subheading">Lille flag</td></tr>
+<tr><td class="value">${!selectedOptions.TILBEHØR['Lille Flag Text'] ? 'No' : selectedOptions.TILBEHØR['Lille Flag Text']}</td></tr>
+<tr class="gap"></tr>
+<tr><td class="subheading">Trompet</td></tr>
+<tr><td class="value">${selectedOptions.TILBEHØR.Trompet}</td></tr>
+<tr class="gap"></tr>
+<tr><td class="subheading">Bucketpins</td></tr>
+<tr><td class="value">${selectedOptions.TILBEHØR.Bucketpins}</td></tr>
+<tr class="gap"></tr>
+    </table>
     </div>
   </div>
+  </div>
+  </div>
+
 </body>
 </html>
-`;
 
+`;
 
   // Enhanced text version formatting
   const text = `
