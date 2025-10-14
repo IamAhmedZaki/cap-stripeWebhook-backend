@@ -523,7 +523,7 @@ const factoryOrderEmail = (orderData) => {
         <tr><td class="value">${selectedOptions.EKSTRABETRÆK.Kantbånd}</td></tr>
         <tr class="gap"></tr>
         <tr><td class="subheading">Flag ribbon</td></tr>
-        <tr><td class="value">NOT SPECIFIED</td></tr>
+        <tr><td class="value">${selectedOptions.BETRÆK.Flagbånd}</td></tr>
         <tr class="gap"></tr>
         <tr><td class="subheading">Stars (Color matches the emblem)</td></tr>
         <tr><td class="value">${selectedOptions.KOKARDE.Emblem.name}</td></tr>
@@ -628,10 +628,14 @@ const factoryOrderEmail = (orderData) => {
         <tr><td class="value">${selectedOptions.FOER.Foer}</td></tr>
         <tr class="gap"></tr>
         <tr><td class="subheading">Silk Type</td></tr>
-        <tr><td class="value">${selectedOptions.FOER['Silk Type']}</td></tr>
+        <tr><td class="value">${selectedOptions.FOER['Silk Type']=== false
+              ? 'Not specified'
+              :selectedOptions.FOER['Silk Type']}</td></tr>
         <tr class="gap"></tr>
         <tr><td class="subheading">Satin Type</td></tr>
-        <tr><td class="value">${selectedOptions.FOER['Satin Type']}</td></tr>
+        <tr><td class="value">${selectedOptions.FOER['Satin Type']=== false
+              ? 'Not specified'
+              : selectedOptions.FOER['Satin Type']}</td></tr>
         
         
         <tr style='height:26px;'></tr>
