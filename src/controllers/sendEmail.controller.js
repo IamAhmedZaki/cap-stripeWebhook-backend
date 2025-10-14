@@ -523,7 +523,7 @@ const factoryOrderEmail = (orderData) => {
         <tr><td class="value">${selectedOptions.EKSTRABETRÆK.Kantbånd}</td></tr>
         <tr class="gap"></tr>
         <tr><td class="subheading">Flag ribbon</td></tr>
-        <tr><td class="value">${selectedOptions.EKSTRABETRÆK.Flagbånd}</td></tr>
+        <tr><td class="value">${!selectedOptions.EKSTRABETRÆK.Flagbånd?'No':selectedOptions.EKSTRABETRÆK}</td></tr>
         <tr class="gap"></tr>
         <tr><td class="subheading">Stars (Color matches the emblem)</td></tr>
         <tr><td class="value">${selectedOptions.KOKARDE.Emblem.name}</td></tr>
@@ -583,7 +583,7 @@ const factoryOrderEmail = (orderData) => {
         <tr><td class="value">${selectedOptions.KOKARDE.Emblem.name}</td></tr>
         <tr class="gap"></tr>
         <tr><td class="subheading">Flag ribbon </td></tr>
-        <tr><td class="value">${selectedOptions.BETRÆK.Flagbånd}</td></tr>
+        <tr><td class="value">${!selectedOptions.BETRÆK.Flagbånd?'No':selectedOptions.BETRÆK.Flagbånd}</td></tr>
         <tr class="gap"></tr>
         
         <tr class="gap"></tr>
