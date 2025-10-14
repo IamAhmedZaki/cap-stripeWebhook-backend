@@ -1152,6 +1152,8 @@ const html = `
 <tr class="gap"></tr>
 <tr class="gap"></tr>
 <tr class="gap"></tr>
+<tr class="gap"></tr>
+<tr class="gap"></tr>
 
 <!-- Extra Cover -->
 <tr><th>Extra Cover</th></tr>
@@ -1253,6 +1255,9 @@ ${selectedOptions.EKSTRABETRÆK.Tilvælg === 'Yes' ? `
         <tr class="gap"></tr>
         <tr class="gap"></tr>
         <tr class="gap"></tr>
+        <tr class="gap"></tr>
+        <tr class="gap"></tr>
+        <tr style="height: 10px;"></tr>
        
         
         
@@ -1292,16 +1297,16 @@ ${selectedOptions.EKSTRABETRÆK.Tilvælg === 'Yes' ? `
 <tr><td class="value">${selectedOptions.TILBEHØR.Silkepude}</td></tr>
 <tr class="gap"></tr>
 <tr><td class="subheading">Ekstra Kokarde</td></tr>
-<tr><td class="value">${selectedOptions.TILBEHØR['Ekstra Kokarde']}</td></tr>
+<tr><td class="value">${selectedOptions.TILBEHØR['Ekstra Kokarde Text']? 'No' : selectedOptions.TILBEHØR['Ekstra Kokarde Text']}</td></tr>
 <tr class="gap"></tr>
 <tr><td class="subheading">Handsker</td></tr>
 <tr><td class="value">${selectedOptions.TILBEHØR.Handsker}</td></tr>
 <tr class="gap"></tr>
 <tr><td class="subheading">Stor kuglepen </td></tr>
-<tr><td class="value">${selectedOptions.TILBEHØR['Stor kuglepen']}</td></tr>
+<tr><td class="value">${selectedOptions.TILBEHØR["Store kuglepen"]}</td></tr>
 <tr class="gap"></tr>
 <tr><td class="subheading">Smarttag</td></tr>
-<tr><td class="value">${selectedOptions.TILBEHØR.Smarttag}</td></tr>
+<tr><td class="value">${selectedOptions.TILBEHØR["Smart Tag"]}</td></tr>
 <tr class="gap"></tr>
 <tr><td class="subheading">Lille flag</td></tr>
 <tr><td class="value">${!selectedOptions.TILBEHØR['Lille Flag Text'] ? 'No' : selectedOptions.TILBEHØR['Lille Flag Text']}</td></tr>
