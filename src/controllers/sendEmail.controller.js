@@ -1325,6 +1325,41 @@ ${selectedOptions.EKSTRABETRÆK.Tilvælg === 'Yes' ? `
     </div>
   </div>
   </div>
+  div class="gap"></div>
+  <div class="gap"></div>
+  <div class="gap"></div>
+  <div class="footer">
+    Total: ${totalPrice} DKK <br>
+    <div class="gap"></div> 
+Inklusiv moms <br>
+<div class="gap"></div>
+  <hr>
+
+SUM: ${totalPrice} DKK<br>
+<div class="gap"></div>
+LEVERING: 0 DKK<br>
+<div class="gap"></div>
+MOMS: 20% of the total price DKK (vat)<br>
+<div class="gap"></div>
+
+  </div>
+  <div class="gap"></div>
+  <div class="gap"></div>
+  <div class="gap"></div>
+  
+  <div style="font-weight: bold; padding: 17px;">
+      
+
+Er du i tvivl om noget? Kundeservice altid klar, hvis du har brug for hjælp.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vi ønsker dig en dejlig dag,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Studentlife 😊
+
+</div>
+<div class="gap"></div>
+  <div class="gap"></div>
+  <div class="gap"></div>
+
+  <!-- wrapper end  -->
   </div>
 
 </body>
@@ -1992,6 +2027,26 @@ ${selectedOptions.EKSTRABETRÆK.Tilvælg === 'Yes' ? `
     </div>
   </div>
   </div>
+  div class="gap"></div>
+  <div class="gap"></div>
+  <div class="gap"></div>
+  <div class="footer">
+    Total: ${totalPrice} DKK <br>
+    <div class="gap"></div> 
+Inklusiv moms <br>
+<div class="gap"></div>
+  <hr>
+
+SUM: ${totalPrice} DKK<br>
+<div class="gap"></div>
+LEVERING: 0 DKK<br>
+<div class="gap"></div>
+MOMS: 20% of the total price DKK (vat)<br>
+<div class="gap"></div>
+
+  </div>
+
+  <!-- wrapper end  -->
   </div>
 
 </body>
