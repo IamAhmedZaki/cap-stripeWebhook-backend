@@ -1259,7 +1259,7 @@ ${selectedOptions.EKSTRABETRÆK.Tilvælg === 'Yes' ? `
         <tr><td class="value">${selectedOptions.KOKARDE.Emblem.name}</td></tr>
         <tr class="gap"></tr>
         <tr><td class="subheading">Flagbånd</td></tr>
-        <tr><td class="value">${!selectedOptions.BETRÆK.Flagbånd?'No':selectedOptions.BETRÆK.Flagbånd}</td></tr>
+        <tr><td class="value">${!selectedOptions.BETRÆK.Flagbånd?'Fravalgt':selectedOptions.BETRÆK.Flagbånd}</td></tr>
         <tr class="gap"></tr>
         <tr class="gap"></tr>
         <tr class="gap"></tr>
@@ -1384,7 +1384,7 @@ SUM: ${totalPrice} DKK<br>
 <div class="gap"></div>
 LEVERING: 0 DKK<br>
 <div class="gap"></div>
-MOMS: ${(totalPrice * 0.20).toFixed(2)}<br>
+MOMS: ${(totalPrice * 0.20).toFixed(2)} DKK<br>
 <div class="gap"></div>
 
   </div>
