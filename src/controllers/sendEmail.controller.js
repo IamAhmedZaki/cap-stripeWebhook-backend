@@ -735,6 +735,9 @@ const capOrderEmail = (orderData) => {
     program
   } = orderData;
 
+  const leveringstid = new Date(orderDate);
+leveringstid.setMonth(leveringstid.getMonth() + 3);
+
   // Enhanced formatOptions to handle different value structures
   const formatOptions = (options) => {
     return Object.entries(options)
