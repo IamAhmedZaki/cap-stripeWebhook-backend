@@ -1161,7 +1161,7 @@ const html=`
 <!-- Extra Cover -->
 <tr><th>Extra Cover</th></tr>
 <tr><td class="subheading">Tilvælg </td></tr>
-<tr><td class="value">${selectedOptions.EKSTRABETRÆK.Tilvælg}</td></tr> 
+<tr><td class="value">${selectedOptions.EKSTRABETRÆK.Tilvælg=== 'Yes' ? 'Ja' : 'Fravalgt'}</td></tr> 
 <tr class="gap"></tr>
 
 ${selectedOptions.EKSTRABETRÆK.Tilvælg === 'Yes' ? `
@@ -1169,13 +1169,13 @@ ${selectedOptions.EKSTRABETRÆK.Tilvælg === 'Yes' ? `
 <tr><td class="value">${selectedOptions.EKSTRABETRÆK.Farve}</td></tr>
 <tr class="gap"></tr>
 <tr><td class="subheading">Topkant</td></tr>
-<tr><td class="value">${selectedOptions.EKSTRABETRÆK.Topkant}</td></tr>
+<tr><td class="value">${selectedOptions.EKSTRABETRÆK.Topkant === 'NONE' || selectedOptions.EKSTRABETRÆK.Topkant === 'None' ? 'Ingen' : selectedOptions.EKSTRABETRÆK.Topkant}</td></tr>
 <tr class="gap"></tr>
 <tr><td class="subheading">Kantbånd</td></tr>
-<tr><td class="value">${selectedOptions.EKSTRABETRÆK.Kantbånd}</td></tr>
+<tr><td class="value">${selectedOptions.EKSTRABETRÆK.Kantbånd === 'NONE' || selectedOptions.EKSTRABETRÆK.Kantbånd === 'None' ? 'Ingen' : selectedOptions.EKSTRABETRÆK.Kantbånd}</td></tr>
 <tr class="gap"></tr>
 <tr><td class="subheading">Flagbånd</td></tr>
-<tr><td class="value">${!selectedOptions.EKSTRABETRÆK.Flagbånd?'No':selectedOptions.EKSTRABETRÆK.Flagbånd}</td></tr>
+<tr><td class="value">${!selectedOptions.EKSTRABETRÆK.Flagbånd?'Fravalgt':selectedOptions.EKSTRABETRÆK.Flagbånd}</td></tr>
 <tr class="gap"></tr>
 <tr><td class="subheading">Stjerner </td></tr>
 <tr><td class="value">${selectedOptions.KOKARDE.Emblem.name}</td></tr>
@@ -1215,7 +1215,7 @@ ${selectedOptions.EKSTRABETRÆK.Tilvælg === 'Yes' ? `
 <tr><td class="value">${selectedOptions.STØRRELSE["Vælg størrelse"]}</td></tr> 
 <tr class="gap"></tr>
 <tr><td class="subheading">Millimeter tilpasningssæt</td></tr>
-<tr><td class="value">${selectedOptions.STØRRELSE["Millimeter tilpasningssæt"]}</td></tr>
+<tr><td class="value">${selectedOptions.STØRRELSE["Millimeter tilpasningssæt"]=== 'Yes' ? 'Ja' : 'Fravalgt'}</td></tr>
 <tr class="gap"></tr>
 <tr class="gap"></tr>
 </table>
@@ -1244,14 +1244,17 @@ ${selectedOptions.EKSTRABETRÆK.Tilvælg === 'Yes' ? `
         <tr><td class="subheading">Farve</td></tr>
         <tr><td class="value">${selectedOptions.BETRÆK.Farve}</td></tr>
         <tr class="gap"></tr>
-        <tr><td class="subheading">Topkant</td></tr>
-        <tr><td class="value">${selectedOptions.BETRÆK.Topkant}</td></tr>
-        <tr class="gap"></tr>
-        <tr><td class="subheading">Kantbånd</td></tr>
-        <tr><td class="value">${selectedOptions.BETRÆK.Kantbånd}</td></tr>
-        <tr class="gap"></tr>
-        <tr><td class="subheading">Stjerner</td></tr>
-        <tr><td class="value">${selectedOptions.BETRÆK.Stjerner}</td></tr>
+       <tr><td class="subheading">Topkant</td></tr>
+<tr><td class="value">${selectedOptions.BETRÆK.Topkant === 'NONE' || selectedOptions.BETRÆK.Topkant === 'None' ? 'Ingen' : selectedOptions.BETRÆK.Topkant}</td></tr>
+<tr class="gap"></tr>
+
+<tr><td class="subheading">Kantbånd</td></tr>
+<tr><td class="value">${selectedOptions.BETRÆK.Kantbånd === 'NONE' || selectedOptions.BETRÆK.Kantbånd === 'None' ? 'Ingen' : selectedOptions.BETRÆK.Kantbånd}</td></tr>
+<tr class="gap"></tr>
+
+<tr><td class="subheading">Stjerner</td></tr>
+<tr><td class="value">${selectedOptions.BETRÆK.Stjerner === 'NONE' || selectedOptions.BETRÆK.Stjerner === 'None' ? 'Ingen' : selectedOptions.BETRÆK.Stjerner}</td></tr>
+
         <tr class="gap"></tr>
         <tr><td class="subheading">Stjerner farve</td></tr>
         <tr><td class="value">${selectedOptions.KOKARDE.Emblem.name}</td></tr>
