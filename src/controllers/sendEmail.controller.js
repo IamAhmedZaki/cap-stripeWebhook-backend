@@ -267,7 +267,7 @@ const factoryOrderEmail = (orderData) => {
       return JSON.stringify(value);
     }
     if (typeof value === 'boolean') return value ? 'Yes' : 'No';
-    if (value === '') return 'Ikke angivet / Not specified';
+    if (value === '') return 'Ikke angivet / Ikke valgt';
     return value;
   };
 
@@ -426,7 +426,7 @@ const factoryOrderEmail = (orderData) => {
         
        <tr><td class="subheading">Tekst maks. 20 tegn</td></tr>
 <tr><td class="value">${selectedOptions.UDDANNELSESBÅND["Broderi foran"] === ''
-      ? 'Not specified'
+      ? 'Ikke valgt'
       : selectedOptions.UDDANNELSESBÅND["Broderi foran"]
     }</td></tr>
 
@@ -441,7 +441,7 @@ const factoryOrderEmail = (orderData) => {
         <tr><th> Embroidery on the backside of the cap</th></tr>
        <tr><td class="subheading">Name embroidery (Writing) maks. 26</td></tr>
 <tr><td class="value">${selectedOptions.BRODERI["Navne broderi"] === ''
-      ? 'Not specified'
+      ? 'Ikke valgt'
       : selectedOptions.BRODERI["Navne broderi"]
     }</td></tr>
 <tr class="gap"></tr>
@@ -451,7 +451,7 @@ const factoryOrderEmail = (orderData) => {
         <tr class="gap"></tr>
         <tr><td class="subheading">School embroidery (Writing) maks. 35</td></tr>
 <tr><td class="value">${selectedOptions.BRODERI.Skolebroderi === ''
-      ? 'Not specified'
+      ? 'Ikke valgt'
       : selectedOptions.BRODERI.Skolebroderi
     }</td></tr>
 <tr class="gap"></tr>
@@ -479,14 +479,14 @@ const factoryOrderEmail = (orderData) => {
         <tr class="gap"></tr>
        <tr><td class="subheading">Linje 1</td></tr>
 <tr><td class="value">${selectedOptions.SKYGGE["Skyggegravering Line 1"] === ''
-      ? 'Not specified'
+      ? 'Ikke valgt'
       : selectedOptions.SKYGGE["Skyggegravering Line 1"]
     }</td></tr>
 <tr class="gap"></tr>
 
 <tr><td class="subheading">Linje 3</td></tr>
 <tr><td class="value">${selectedOptions.SKYGGE["Skyggegravering Line 3"] === ''
-      ? 'Not specified'
+      ? 'Ikke valgt'
       : selectedOptions.SKYGGE["Skyggegravering Line 3"]
     }</td></tr>
 <tr class="gap"></tr>
@@ -619,7 +619,7 @@ const factoryOrderEmail = (orderData) => {
 
         <tr><td class="subheading">Linje 2</td></tr>
         <tr><td class="value">${selectedOptions.SKYGGE["Skyggegravering Line 2"] === ''
-              ? 'Not specified'
+              ? 'Ikke valgt'
               : selectedOptions.SKYGGE["Skyggegravering Line 2"]
             }</td></tr>
         <tr class="gap"></tr>
@@ -628,11 +628,11 @@ const factoryOrderEmail = (orderData) => {
         <tr><td class="value">${selectedOptions.FOER.Foer}</td></tr>
         <tr class="gap"></tr>
         <tr><td class="subheading">Silk Type</td></tr>
-        <tr><td class="value">${!selectedOptions.FOER['Silk Type']? 'Not specified'
+        <tr><td class="value">${!selectedOptions.FOER['Silk Type']? 'Ikke valgt'
               :selectedOptions.FOER['Silk Type']}</td></tr>
         <tr class="gap"></tr>
         <tr><td class="subheading">Satin Type</td></tr>
-        <tr><td class="value">${!selectedOptions.FOER['Satin Type']? 'Not specified'
+        <tr><td class="value">${!selectedOptions.FOER['Satin Type']? 'Ikke valgt'
               : selectedOptions.FOER['Satin Type']}</td></tr>
         
         
@@ -668,7 +668,7 @@ Kunde ordre oplysninger (Customer Order Information)
 
 Ordren er oprettet (Order created): ${new Date(orderDate).toLocaleString('da-DK')}
 Ordre #${orderNumber} — ${customerDetails.firstName} ${customerDetails.lastName}
-Skole (School): ${customerDetails.Skolenavn || 'Ikke angivet / Not specified'}
+Skole (School): ${customerDetails.Skolenavn || 'Ikke angivet / Ikke valgt'}
 
 Ordre detaljer (Order details)
 ------------------------------
@@ -1090,7 +1090,7 @@ const html=`
         <tr><th>Broderi foran</th></tr>
         <tr><td class="subheading">Tekst maks. 20 tegn</td></tr>
         <tr><td class="value">${selectedOptions.UDDANNELSESBÅND["Broderi foran"] === ''
-      ? 'Not specified'
+      ? 'Ikke valgt'
       : selectedOptions.UDDANNELSESBÅND["Broderi foran"]
     }</td></tr>
         
@@ -1104,7 +1104,7 @@ const html=`
         <tr><th> Broderi Bagpå</th></tr>
         <tr><td class="subheading">Navne broderi (Writing) maks. 26</td></tr>
         <tr><td class="value">${selectedOptions.BRODERI["Navne broderi"] === ''
-      ? 'Not specified'
+      ? 'Ikke valgt'
       : selectedOptions.BRODERI["Navne broderi"]
     }</td></tr> 
         <tr class="gap"></tr>
@@ -1113,7 +1113,7 @@ const html=`
         <tr class="gap"></tr>
         <tr><td class="subheading">Skolebroderi ( Writing) maks. 35</td></tr>
         <tr><td class="value">${selectedOptions.BRODERI.Skolebroderi === ''
-      ? 'Not specified'
+      ? 'Ikke valgt'
       : selectedOptions.BRODERI.Skolebroderi
     }</td></tr>
         <tr class="gap"></tr>
@@ -1139,10 +1139,10 @@ const html=`
 <tr><td class="value">${selectedOptions.SKYGGE.Skyggebånd}</td></tr>
 <tr class="gap"></tr>
 <tr><td class="subheading">Linje 1</td></tr>
-<tr><td class="value">${selectedOptions.SKYGGE["Skyggegravering Line 1"] === '' ? 'Not specified' : selectedOptions.SKYGGE["Skyggegravering Line 1"]}</td></tr>
+<tr><td class="value">${selectedOptions.SKYGGE["Skyggegravering Line 1"] === '' ? 'Ikke valgt' : selectedOptions.SKYGGE["Skyggegravering Line 1"]}</td></tr>
 <tr class="gap"></tr>
 <tr><td class="subheading">Linje 3</td></tr>
-<tr><td class="value">${selectedOptions.SKYGGE["Skyggegravering Line 3"] === '' ? 'Not specified' : selectedOptions.SKYGGE["Skyggegravering Line 3"]}</td></tr>
+<tr><td class="value">${selectedOptions.SKYGGE["Skyggegravering Line 3"] === '' ? 'Ikke valgt' : selectedOptions.SKYGGE["Skyggegravering Line 3"]}</td></tr>
 <tr class="gap"></tr>
 <tr class="gap"></tr>
 <tr class="gap"></tr>
@@ -1180,7 +1180,7 @@ ${selectedOptions.EKSTRABETRÆK.Tilvælg === 'Yes' ? `
 <tr class="gap"></tr>
 <tr><td class="subheading">Skolebroderi  </td></tr>
 <tr><td class="value">${selectedOptions.BRODERI.Skolebroderi === ''
-      ? 'Not specified'
+      ? 'Ikke valgt'
       : selectedOptions.BRODERI.Skolebroderi
     }</td></tr>
 <tr class="gap"></tr>
@@ -1289,16 +1289,16 @@ ${selectedOptions.EKSTRABETRÆK.Tilvælg === 'Yes' ? `
 <tr><td class="value">${selectedOptions.FOER.Sløjfe}</td></tr>
 <tr class="gap"></tr>
 <tr><td class="subheading">Linje 2</td></tr>
-<tr><td class="value">${selectedOptions.SKYGGE["Skyggegravering Line 2"] === '' ? 'Not specified' : selectedOptions.SKYGGE["Skyggegravering Line 2"]}</td></tr>
+<tr><td class="value">${selectedOptions.SKYGGE["Skyggegravering Line 2"] === '' ? 'Ikke valgt' : selectedOptions.SKYGGE["Skyggegravering Line 2"]}</td></tr>
 <tr class="gap"></tr>
 <tr><td class="subheading">Forring</td></tr>
 <tr><td class="value">${selectedOptions.FOER.Foer}</td></tr>
 <tr class="gap"></tr>
 <tr><td class="subheading">Satin Type</td></tr>
-<tr><td class="value">${!selectedOptions.FOER['Satin Type']? 'Not specified' : selectedOptions.FOER['Satin Type']}</td></tr>
+<tr><td class="value">${!selectedOptions.FOER['Satin Type']? 'Ikke valgt' : selectedOptions.FOER['Satin Type']}</td></tr>
 <tr class="gap"></tr>
 <tr><td class="subheading">Silke Type</td></tr>
-<tr><td class="value">${!selectedOptions.FOER['Silk Type'] ? 'Not specified' : selectedOptions.FOER['Silk Type']}</td></tr>
+<tr><td class="value">${!selectedOptions.FOER['Silk Type'] ? 'Ikke valgt' : selectedOptions.FOER['Silk Type']}</td></tr>
 <tr class="gap"></tr>
  <tr style="height: 10px;"></tr>
         
@@ -1842,7 +1842,7 @@ const capOrderAdminEmail = (orderData) => {
         <tr><th>Broderi foran</th></tr>
         <tr><td class="subheading">Tekst maks. 20 tegn</td></tr>
         <tr><td class="value">${selectedOptions.UDDANNELSESBÅND["Broderi foran"] === ''
-      ? 'Not specified'
+      ? 'Ikke valgt'
       : selectedOptions.UDDANNELSESBÅND["Broderi foran"]
     }</td></tr>
         
@@ -1856,7 +1856,7 @@ const capOrderAdminEmail = (orderData) => {
         <tr><th> Broderi Bagpå</th></tr>
         <tr><td class="subheading">Navne broderi (Writing) maks. 26</td></tr>
         <tr><td class="value">${selectedOptions.BRODERI["Navne broderi"] === ''
-      ? 'Not specified'
+      ? 'Ikke valgt'
       : selectedOptions.BRODERI["Navne broderi"]
     }</td></tr> 
         <tr class="gap"></tr>
@@ -1865,7 +1865,7 @@ const capOrderAdminEmail = (orderData) => {
         <tr class="gap"></tr>
         <tr><td class="subheading">Skolebroderi ( Writing) maks. 35</td></tr>
         <tr><td class="value">${selectedOptions.BRODERI.Skolebroderi === ''
-      ? 'Not specified'
+      ? 'Ikke valgt'
       : selectedOptions.BRODERI.Skolebroderi
     }</td></tr>
         <tr class="gap"></tr>
@@ -1891,10 +1891,10 @@ const capOrderAdminEmail = (orderData) => {
 <tr><td class="value">${selectedOptions.SKYGGE.Skyggebånd}</td></tr>
 <tr class="gap"></tr>
 <tr><td class="subheading">Linje 1</td></tr>
-<tr><td class="value">${selectedOptions.SKYGGE["Skyggegravering Line 1"] === '' ? 'Not specified' : selectedOptions.SKYGGE["Skyggegravering Line 1"]}</td></tr>
+<tr><td class="value">${selectedOptions.SKYGGE["Skyggegravering Line 1"] === '' ? 'Ikke valgt' : selectedOptions.SKYGGE["Skyggegravering Line 1"]}</td></tr>
 <tr class="gap"></tr>
 <tr><td class="subheading">Linje 3</td></tr>
-<tr><td class="value">${selectedOptions.SKYGGE["Skyggegravering Line 3"] === '' ? 'Not specified' : selectedOptions.SKYGGE["Skyggegravering Line 3"]}</td></tr>
+<tr><td class="value">${selectedOptions.SKYGGE["Skyggegravering Line 3"] === '' ? 'Ikke valgt' : selectedOptions.SKYGGE["Skyggegravering Line 3"]}</td></tr>
 <tr class="gap"></tr>
 <tr class="gap"></tr>
 <tr class="gap"></tr>
@@ -1932,7 +1932,7 @@ ${selectedOptions.EKSTRABETRÆK.Tilvælg === 'Yes' ? `
 <tr class="gap"></tr>
 <tr><td class="subheading">Skolebroderi  </td></tr>
 <tr><td class="value">${selectedOptions.BRODERI.Skolebroderi === ''
-      ? 'Not specified'
+      ? 'Ikke valgt'
       : selectedOptions.BRODERI.Skolebroderi
     }</td></tr>
 <tr class="gap"></tr>
@@ -2029,16 +2029,16 @@ ${selectedOptions.EKSTRABETRÆK.Tilvælg === 'Yes' ? `
 <tr><td class="value">${selectedOptions.FOER.Sløjfe}</td></tr>
 <tr class="gap"></tr>
 <tr><td class="subheading">Linje 2</td></tr>
-<tr><td class="value">${selectedOptions.SKYGGE["Skyggegravering Line 2"] === '' ? 'Not specified' : selectedOptions.SKYGGE["Skyggegravering Line 2"]}</td></tr>
+<tr><td class="value">${selectedOptions.SKYGGE["Skyggegravering Line 2"] === '' ? 'Ikke valgt' : selectedOptions.SKYGGE["Skyggegravering Line 2"]}</td></tr>
 <tr class="gap"></tr>
 <tr><td class="subheading">Forring</td></tr>
 <tr><td class="value">${selectedOptions.FOER.Foer}</td></tr>
 <tr class="gap"></tr>
 <tr><td class="subheading">Satin Type</td></tr>
-<tr><td class="value">${!selectedOptions.FOER['Satin Type'] ? 'Not specified' : selectedOptions.FOER['Satin Type']}</td></tr>
+<tr><td class="value">${!selectedOptions.FOER['Satin Type'] ? 'Ikke valgt' : selectedOptions.FOER['Satin Type']}</td></tr>
 <tr class="gap"></tr>
 <tr><td class="subheading">Silke Type</td></tr>
-<tr><td class="value">${!selectedOptions.FOER['Silk Type'] ? 'Not specified' : selectedOptions.FOER['Silk Type']}</td></tr>
+<tr><td class="value">${!selectedOptions.FOER['Silk Type'] ? 'Ikke valgt' : selectedOptions.FOER['Silk Type']}</td></tr>
 <tr class="gap"></tr>
  <tr style="height: 10px;"></tr>
         
