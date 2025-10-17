@@ -878,7 +878,7 @@ leveringstid.setMonth(leveringstid.getMonth() + 3);
   };
   const programColor = programColorMap[program] || program;
   
-`
+const html=`
 <!DOCTYPE html>
 <html>
 <head>
