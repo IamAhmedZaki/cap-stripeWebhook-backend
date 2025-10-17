@@ -9,21 +9,9 @@ const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 
 const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
-const createEmailTransporter = () => {
-  return nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 587,
-    secure: false, // use TLS later
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS, // must be an App Password
-    },
-  });
-};
-
 // const createEmailTransporter = () => {
 //   return nodemailer.createTransport({
-//     host: "smtp.simply.com",
+//     host: "smtp.gmail.com",
 //     port: 587,
 //     secure: false, // use TLS later
 //     auth: {
@@ -32,6 +20,18 @@ const createEmailTransporter = () => {
 //     },
 //   });
 // };
+
+const createEmailTransporter = () => {
+  return nodemailer.createTransport({
+    host: "smtp.simply.com",
+    port: 587,
+    secure: false, // use TLS later
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS, // must be an App Password
+    },
+  });
+};
 
 
 
@@ -2235,7 +2235,7 @@ const sendCapEmail = async (req, res) => {
 
     const mailOptionsAdmin = {
       from: process.env.EMAIL_FROM || process.env.EMAIL_USER,
-      to: "mahmedzaki670@gmail.com",
+      to: "salg@studentlife.dk",
       subject: emailContentAdmin.subject,
       html: emailContentAdmin.html,
       text: emailContentAdmin.text
@@ -2243,7 +2243,7 @@ const sendCapEmail = async (req, res) => {
 
     const mailOptionsFactory = {
       from: process.env.EMAIL_FROM || process.env.EMAIL_USER,
-      to: "mahmedzaki670@gmail.com",
+      to: "salg@studentlife.dk",
       subject: emailContentFactory.subject,
       html: emailContentFactory.html,
       text: emailContentFactory.text
@@ -2347,7 +2347,7 @@ const stripePayment = async (req, res) => {
       mode: "payment",
       locale: "da",
       success_url: `https://shop.studentlife.dk/thankyou/?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: "http://localhost:5173/studentlife/cancel",
+      cancel_url: "https://elipsestudio.com/devstudentlife/cancel",
       metadata: {
         orderId: order.id,   // 👈 only store a small reference here
       },
