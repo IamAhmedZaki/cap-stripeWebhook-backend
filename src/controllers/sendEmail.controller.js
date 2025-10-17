@@ -977,13 +977,9 @@ const html=`
   </style>
 </head>
 <body style="margin:0;  padding:0; font-family:Arial, sans-serif;  ">
-<img src="https://elipsestudio.com/studentlife/studentlifeemail1.jpg" 
-     alt="Studentlife caps" 
-     style=" display: block; margin: 0 auto; border-radius: 0;">
   <div class="wrapper">
-  
     <div class="infoBlock">
-       
+        
         <div style="background: #f9fafb; padding: 15px 0; border-top: 1px solid #e5e7eb; text-align: center;">
         <span style="font-size: 16px; font-weight: bold; color: #111827; display: inline-block; margin: 0 10px;">
           ✓ Premium kvalitet
