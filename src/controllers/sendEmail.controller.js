@@ -1294,11 +1294,14 @@ ${selectedOptions.EKSTRABETRÆK.Tilvælg === 'Yes' ? `
 <tr><td class="subheading">Forring</td></tr>
 <tr><td class="value">${selectedOptions.FOER.Foer}</td></tr>
 <tr class="gap"></tr>
-<tr><td class="subheading">Satin Type</td></tr>
-<tr><td class="value">${selectedOptions.FOER['Satin Type']? 'Not specified' : selectedOptions.FOER['Satin Type']}</td></tr>
+<<tr><td class="subheading">Satin Type</td></tr>
+<tr><td class="value">${!selectedOptions.FOER['Satin Type'] ? 'Not specified' : selectedOptions.FOER['Satin Type']}</td></tr>
 <tr class="gap"></tr>
+
 <tr><td class="subheading">Silke Type</td></tr>
-<tr><td class="value">${selectedOptions.FOER['Silk Type'] ? 'Not specified' : selectedOptions.FOER['Silk Type']}</td></tr>
+<tr><td class="value">${!selectedOptions.FOER['Silk Type'] ? 'Not specified' : selectedOptions.FOER['Silk Type']}</td></tr>
+
+
 <tr class="gap"></tr>
  <tr style="height: 10px;"></tr>
         
