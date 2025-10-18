@@ -1789,7 +1789,7 @@ const capOrderAdminEmail = (orderData) => {
   
   
     <div >Ordre detaljer</div>
-  <div  class="downgap" style="margin-left: 370px; margin-bottom: 10px; margin-top: 4px;">The package choosed: ${packageName}
+  <div  class="downgap" style="margin-left: 370px; margin-bottom: 10px; margin-top: 4px;">${packageName}
 
   </div>
   <div  class="downgap" style="margin-left: 370px; margin-bottom: 10px; margin-top: 4px;">Price: ${totalPrice} DKK
