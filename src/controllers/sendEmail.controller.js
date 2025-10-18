@@ -1912,7 +1912,7 @@ const capOrderAdminEmail = (orderData) => {
 <!-- Extra Cover -->
 <tr><th>Extra Cover</th></tr>
 <tr><td class="subheading">Tilvælg </td></tr>
-<tr><td class="value">${selectedOptions.EKSTRABETRÆK.Tilvælg}</td></tr> 
+<tr><td class="value">${selectedOptions.EKSTRABETRÆK.Tilvælg=== 'Yes' ? 'Ja' : 'Fravalgt'}</td></tr> 
 <tr class="gap"></tr>
 
 ${selectedOptions.EKSTRABETRÆK.Tilvælg === 'Yes' ? `
@@ -1920,13 +1920,13 @@ ${selectedOptions.EKSTRABETRÆK.Tilvælg === 'Yes' ? `
 <tr><td class="value">${selectedOptions.EKSTRABETRÆK.Farve}</td></tr>
 <tr class="gap"></tr>
 <tr><td class="subheading">Topkant</td></tr>
-<tr><td class="value">${selectedOptions.EKSTRABETRÆK.Topkant}</td></tr>
+<tr><td class="value">${selectedOptions.EKSTRABETRÆK.Topkant === 'NONE' || selectedOptions.EKSTRABETRÆK.Topkant === 'None' ? 'Ingen' : selectedOptions.EKSTRABETRÆK.Topkant}</td></tr>
 <tr class="gap"></tr>
 <tr><td class="subheading">Kantbånd</td></tr>
-<tr><td class="value">${selectedOptions.EKSTRABETRÆK.Kantbånd}</td></tr>
+<tr><td class="value">${selectedOptions.EKSTRABETRÆK.Kantbånd === 'NONE' || selectedOptions.EKSTRABETRÆK.Kantbånd === 'None' ? 'Ingen' : selectedOptions.EKSTRABETRÆK.Kantbånd}</td></tr>
 <tr class="gap"></tr>
 <tr><td class="subheading">Flagbånd</td></tr>
-<tr><td class="value">${!selectedOptions.EKSTRABETRÆK.Flagbånd?'No':selectedOptions.EKSTRABETRÆK.Flagbånd}</td></tr>
+<tr><td class="value">${!selectedOptions.EKSTRABETRÆK.Flagbånd?'Fravalgt':selectedOptions.EKSTRABETRÆK.Flagbånd}</td></tr>
 <tr class="gap"></tr>
 <tr><td class="subheading">Stjerner </td></tr>
 <tr><td class="value">${selectedOptions.KOKARDE.Emblem.name}</td></tr>
@@ -1937,19 +1937,29 @@ ${selectedOptions.EKSTRABETRÆK.Tilvælg === 'Yes' ? `
       : selectedOptions.BRODERI.Skolebroderi
     }</td></tr>
 <tr class="gap"></tr>
-<tr><td class="subheading">Farve ( color of embodery)</td></tr>
+<tr><td class="subheading">Broderiets farve</td></tr>
 <tr><td class="value">${selectedOptions.BRODERI['Skolebroderi farve']}</td></tr>
 <tr class="gap"></tr>
 <tr><td class="subheading">Lyskugle</td></tr>
-<tr><td class="value">${selectedOptions.TILBEHØR.Lyskugle}</td></tr>
+<tr><td class="value">
+  ${selectedOptions.TILBEHØR.Lyskugle === 'Yes' ? 'Ja' : 'Fravalgt'}
+</td></tr>
 <tr class="gap"></tr>
+
 <tr><td class="subheading">Luksus champagneglas</td></tr>
-<tr><td class="value">${selectedOptions.TILBEHØR['Luksus champagneglas']}</td></tr>
+<tr><td class="value">
+  ${selectedOptions.TILBEHØR['Luksus champagneglas'] === 'Yes' ? 'Ja' : 'Fravalgt'}
+</td></tr>
 <tr class="gap"></tr>
+
 <tr><td class="subheading">Fløjte</td></tr>
-<tr><td class="value">${selectedOptions.TILBEHØR.Fløjte}</td></tr>
+<tr><td class="value">
+  ${selectedOptions.TILBEHØR.Fløjte === 'Yes' ? 'Ja' : 'Fravalgt'}
+</td></tr>
+
 <tr class="gap"></tr>
 ` : '' }
+
 
 <!-- Size -->
 <tr><th>Størrelse</th></tr>
@@ -1957,12 +1967,11 @@ ${selectedOptions.EKSTRABETRÆK.Tilvælg === 'Yes' ? `
 <tr><td class="value">${selectedOptions.STØRRELSE["Vælg størrelse"]}</td></tr> 
 <tr class="gap"></tr>
 <tr><td class="subheading">Millimeter tilpasningssæt</td></tr>
-<tr><td class="value">${selectedOptions.STØRRELSE["Millimeter tilpasningssæt"]}</td></tr>
+<tr><td class="value">${selectedOptions.STØRRELSE["Millimeter tilpasningssæt"]=== 'Yes' ? 'Ja' : 'Fravalgt'}</td></tr>
 <tr class="gap"></tr>
 <tr class="gap"></tr>
 </table>
 </div>
-
     <div class="table-container">
       <table>
                 <tr><th>Uddannelsesbånd</th></tr>
