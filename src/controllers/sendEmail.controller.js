@@ -376,14 +376,14 @@ const factoryOrderEmail = (orderData) => {
     <div class="infoBlock">
     <div  class="downgap" >Kunde ordre oplysninger:</div>
   <div  class="downgap" >Ordren er oprettet: </div>
-  <div><div class="downgap">Order nr:${orderNumber}</div> <div  class="downgap">Name of Customer:${customerDetails.firstName} ${customerDetails.lastName}</div> <div class="downgap">
-        School:${customerDetails.Skolenavn}</div></div>
+  <div><div class="downgap">Order nr:${orderNumber}</div> <div  class="downgap">Navn på kunde:${customerDetails.firstName} ${customerDetails.lastName}</div> <div class="downgap">
+        Skole:${customerDetails.Skolenavn}</div></div>
   <div class="downgap">Ordre detaljer</div>
   <div style="margin-left: 327px; margin-bottom: 10px; margin-top: 4px;">The package choosed:${packageName}
 
   </div>
   <div style="margin-left: 327px;">
-    Information about the Cap
+    
   </div>
   </div>
   <!-- First row of tables -->
@@ -508,7 +508,7 @@ const factoryOrderEmail = (orderData) => {
         <!-- Extra Cover -->
         <tr><th>Extra Cover</th></tr>
         <tr><td class="subheading">Option</td></tr>
-        <tr><td class="value">${selectedOptions.EKSTRABETRÆK.Tilvælg}</td></tr> 
+        <tr><td class="value">${selectedOptions.EKSTRABETRÆK.Tilvælg=== 'Yes' ? 'Ja' : 'Fravalgt'}</td></tr> 
         <tr class="gap"></tr>
         
           ${selectedOptions.EKSTRABETRÆK.Tilvælg === 'Yes'
@@ -545,7 +545,7 @@ const factoryOrderEmail = (orderData) => {
         <!-- Size -->
         <tr><th>Size</th></tr>
         <tr><td class="subheading">Choosen size (Size)</td></tr>
-        <tr><td class="value">${selectedOptions.STØRRELSE["Millimeter tilpasningssæt"]}</td></tr> 
+        <tr><td class="value">${selectedOptions.STØRRELSE["Millimeter tilpasningssæt"]=== 'Yes' ? 'Ja' : 'Fravalgt'}</td></tr> 
         <tr class="gap"></tr>
         <tr><td class="subheading">Foam to adjust the size</td></tr>
         <tr><td class="value">${selectedOptions.STØRRELSE["Vælg størrelse"]}</td></tr>
@@ -561,28 +561,26 @@ const factoryOrderEmail = (orderData) => {
     <div class="table-container">
       <table>
         <!-- Cover -->
-        <tr><th>Cover</th></tr>
-        <tr><td class="subheading">Color </td></tr>
+       <tr><th>Betræk </th></tr>
+        <tr><td class="subheading">Farve</td></tr>
         <tr><td class="value">${selectedOptions.BETRÆK.Farve}</td></tr>
-        
         <tr class="gap"></tr>
+       <tr><td class="subheading">Topkant</td></tr>
+<tr><td class="value">${selectedOptions.BETRÆK.Topkant === 'NONE' || selectedOptions.BETRÆK.Topkant === 'None' ? 'Ingen' : selectedOptions.BETRÆK.Topkant}</td></tr>
+<tr class="gap"></tr>
 
-        <tr><td class="subheading">Top edgning</td></tr>
-        <tr><td class="value">${selectedOptions.BETRÆK.Topkant}</td></tr>
-        <tr class="gap"></tr>
+<tr><td class="subheading">Kantbånd</td></tr>
+<tr><td class="value">${selectedOptions.BETRÆK.Kantbånd === 'NONE' || selectedOptions.BETRÆK.Kantbånd === 'None' ? 'Ingen' : selectedOptions.BETRÆK.Kantbånd}</td></tr>
+<tr class="gap"></tr>
 
-        <tr><td class="subheading">Edge band</td></tr>
-        <tr><td class="value">${selectedOptions.BETRÆK.Kantbånd}</td></tr>
+<tr><td class="subheading">Stjerner</td></tr>
+<tr><td class="value">${selectedOptions.BETRÆK.Stjerner === 'NONE' || selectedOptions.BETRÆK.Stjerner === 'None' ? 'Ingen' : selectedOptions.BETRÆK.Stjerner}</td></tr>
+
         <tr class="gap"></tr>
-        
-        <tr><td class="subheading">Stjerner</td></tr>
-        <tr><td class="value">${selectedOptions.BETRÆK.Stjerner}</td></tr>
-        <tr class="gap"></tr>
-        
-        <tr><td class="subheading">Color of star </td></tr>
+        <tr><td class="subheading">Stjerner farve</td></tr>
         <tr><td class="value">${selectedOptions.KOKARDE.Emblem.name}</td></tr>
         <tr class="gap"></tr>
-        <tr><td class="subheading">Flag ribbon </td></tr>
+        <tr><td class="subheading">Flagbånd</td></tr>
         <tr><td class="value">${!selectedOptions.BETRÆK.Flagbånd?'No':selectedOptions.BETRÆK.Flagbånd}</td></tr>
         <tr class="gap"></tr>
         
@@ -628,12 +626,10 @@ const factoryOrderEmail = (orderData) => {
         <tr><td class="value">${selectedOptions.FOER.Foer}</td></tr>
         <tr class="gap"></tr>
         <tr><td class="subheading">Silk Type</td></tr>
-        <tr><td class="value">${!selectedOptions.FOER['Silk Type']? 'Ikke valgt'
-              :selectedOptions.FOER['Silk Type']}</td></tr>
+        <tr><td class="value">${!selectedOptions.FOER['Satin Type']? 'Ikke valgt' : selectedOptions.FOER['Satin Type']}</td></tr>
         <tr class="gap"></tr>
         <tr><td class="subheading">Satin Type</td></tr>
-        <tr><td class="value">${!selectedOptions.FOER['Satin Type']? 'Ikke valgt'
-              : selectedOptions.FOER['Satin Type']}</td></tr>
+        <tr><td class="value">${!selectedOptions.FOER['Silk Type'] ? 'Ikke valgt' : selectedOptions.FOER['Silk Type']}</td></tr>
         
         
         <tr style='height:26px;'></tr>
@@ -641,14 +637,12 @@ const factoryOrderEmail = (orderData) => {
         <!-- Tilbehør -->
         <tr><th>Tilbehør</th></tr>
         <tr><td class="subheading">Silk cushion</td></tr>
-        <tr><td class="value">${selectedOptions.TILBEHØR.Silkepude}</td></tr>
+        <tr><td class="value">${selectedOptions.TILBEHØR.Silkepude === 'Yes' ? 'Ja' : 'Fravalgt'}</td></tr>
         
         <tr class="gap"></tr>
 
         <tr><td class="subheading">Small flag</td></tr>
-        <tr><td class="value">${!selectedOptions.TILBEHØR['Lille Flag Text']
-              ? 'No'
-              : selectedOptions.TILBEHØR['Lille Flag Text']}</td></tr>
+        <tr><td class="value">${!selectedOptions.TILBEHØR['Lille Flag Text'] ? 'Fravalgt' : selectedOptions.TILBEHØR['Lille Flag Text']}</td></tr>
         <tr class="gap"></tr>
       
     </table>
