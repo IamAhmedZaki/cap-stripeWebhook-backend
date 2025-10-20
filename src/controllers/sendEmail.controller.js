@@ -422,12 +422,15 @@ const factoryOrderEmail = (orderData) => {
         <!-- Embroidery on frontside -->
         <tr><th>Embroidery on frontside</th></tr>
      
-        ${!selectedOptions.UDDANNELSESBÅND["Broderi foran"]=== ''?
+        ${selectedOptions.UDDANNELSESBÅND["Broderi foran"]=== ''?
           `<tr><td class="subheading"></td></tr>
             <tr><td class="value"></td></tr>
 
   <tr class="gap"></tr>
   <tr><td class="subheading"></td></tr>
+        <tr><td class="value"></td></tr>
+        <tr class="gap"></tr>
+        <tr><td class="subheading">/td></tr>
         <tr><td class="value"></td></tr>
         <tr class="gap"></tr>`:`
           <tr><td class="subheading">Tekst maks. 20 tegn</td></tr>
@@ -451,7 +454,14 @@ const factoryOrderEmail = (orderData) => {
         <tr><th> Embroidery on the backside of the cap</th></tr>
         
         
-        ${selectedOptions.BRODERI["Navne broderi"]?`
+        ${selectedOptions.BRODERI["Navne broderi"]=== ''?`
+         <tr><td class="subheading"></td></tr>
+        <tr><td class="value"></td></tr>
+        <tr class="gap"></tr>
+         <tr><td class="subheading"></td></tr>
+        <tr><td class="value"></td></tr>
+        <tr class="gap"></tr>`:
+      `
           <tr><td class="subheading">Name embroidery (Writing) maks. 26</td></tr>
         <tr><td class="value">${selectedOptions.BRODERI["Navne broderi"] === ''
       ? 'Ikke valgt'
@@ -460,17 +470,17 @@ const factoryOrderEmail = (orderData) => {
         <tr class="gap"></tr>
          <tr><td class="subheading">Embroidery color </td></tr>
         <tr><td class="value">${selectedOptions.BRODERI.Broderifarve}</td></tr>
-        <tr class="gap"></tr>`:`
-         <tr><td class="subheading"></td></tr>
-        <tr><td class="value"></td></tr>
-        <tr class="gap"></tr>
-         <tr><td class="subheading"></td></tr>
-        <tr><td class="value"></td></tr>
         <tr class="gap"></tr>`}
        
         
         
-        ${selectedOptions.BRODERI.Skolebroderi ?`
+        ${selectedOptions.BRODERI.Skolebroderi === ''?`<tr><td class="subheading"></td></tr>
+        <tr><td class="value"></td></tr>
+        <tr class="gap"></tr>
+
+        <tr><td class="subheading"></td></tr>
+        <tr><td class="value"></td></tr>
+        <tr class="gap"></tr>`:`
           <tr><td class="subheading">School embroidery (Writing) maks. 35</td></tr>
         <tr><td class="value">${selectedOptions.BRODERI.Skolebroderi === ''
       ? 'Ikke valgt'
@@ -480,12 +490,6 @@ const factoryOrderEmail = (orderData) => {
 
         <tr><td class="subheading">Embroidery color </td></tr>
         <tr><td class="value">${selectedOptions.BRODERI['Skolebroderi farve']}</td></tr>
-        <tr class="gap"></tr>`:`<tr><td class="subheading"></td></tr>
-        <tr><td class="value"></td></tr>
-        <tr class="gap"></tr>
-
-        <tr><td class="subheading"></td></tr>
-        <tr><td class="value"></td></tr>
         <tr class="gap"></tr>`}
        
         
