@@ -1,3 +1,5 @@
+
+
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 const nodemailer = require("nodemailer");
@@ -267,7 +269,7 @@ const factoryOrderEmail = (orderData) => {
       return JSON.stringify(value);
     }
     if (typeof value === 'boolean') return value ? 'Yes' : 'No';
-    if (value === '') return 'Ikke angivet / Ikke valgt';
+    if (value === '') return 'Ikke angivet / Not specified';
     return value;
   };
 
@@ -376,14 +378,14 @@ const factoryOrderEmail = (orderData) => {
     <div class="infoBlock">
     <div  class="downgap" >Kunde ordre oplysninger:</div>
   <div  class="downgap" >Ordren er oprettet: </div>
-  <div><div class="downgap">Order nr:${orderNumber}</div> <div  class="downgap">Navn på kunde:${customerDetails.firstName} ${customerDetails.lastName}</div> <div class="downgap">
-        Skole:${customerDetails.Skolenavn}</div></div>
+  <div><div class="downgap">Order nr:${orderNumber}</div> <div  class="downgap">Name of Customer:${customerDetails.firstName} ${customerDetails.lastName}</div> <div class="downgap">
+        School:${customerDetails.Skolenavn}</div></div>
   <div class="downgap">Ordre detaljer</div>
   <div style="margin-left: 327px; margin-bottom: 10px; margin-top: 4px;">The package choosed:${packageName}
 
   </div>
   <div style="margin-left: 327px;">
-    
+    Information about the Cap
   </div>
   </div>
   <!-- First row of tables -->
@@ -426,7 +428,7 @@ const factoryOrderEmail = (orderData) => {
         
        <tr><td class="subheading">Tekst maks. 20 tegn</td></tr>
 <tr><td class="value">${selectedOptions.UDDANNELSESBÅND["Broderi foran"] === ''
-      ? 'Ikke valgt'
+      ? 'Not specified'
       : selectedOptions.UDDANNELSESBÅND["Broderi foran"]
     }</td></tr>
 
@@ -441,7 +443,7 @@ const factoryOrderEmail = (orderData) => {
         <tr><th> Embroidery on the backside of the cap</th></tr>
        <tr><td class="subheading">Name embroidery (Writing) maks. 26</td></tr>
 <tr><td class="value">${selectedOptions.BRODERI["Navne broderi"] === ''
-      ? 'Ikke valgt'
+      ? 'Not specified'
       : selectedOptions.BRODERI["Navne broderi"]
     }</td></tr>
 <tr class="gap"></tr>
@@ -451,7 +453,7 @@ const factoryOrderEmail = (orderData) => {
         <tr class="gap"></tr>
         <tr><td class="subheading">School embroidery (Writing) maks. 35</td></tr>
 <tr><td class="value">${selectedOptions.BRODERI.Skolebroderi === ''
-      ? 'Ikke valgt'
+      ? 'Not specified'
       : selectedOptions.BRODERI.Skolebroderi
     }</td></tr>
 <tr class="gap"></tr>
@@ -479,14 +481,14 @@ const factoryOrderEmail = (orderData) => {
         <tr class="gap"></tr>
        <tr><td class="subheading">Linje 1</td></tr>
 <tr><td class="value">${selectedOptions.SKYGGE["Skyggegravering Line 1"] === ''
-      ? 'Ikke valgt'
+      ? 'Not specified'
       : selectedOptions.SKYGGE["Skyggegravering Line 1"]
     }</td></tr>
 <tr class="gap"></tr>
 
 <tr><td class="subheading">Linje 3</td></tr>
 <tr><td class="value">${selectedOptions.SKYGGE["Skyggegravering Line 3"] === ''
-      ? 'Ikke valgt'
+      ? 'Not specified'
       : selectedOptions.SKYGGE["Skyggegravering Line 3"]
     }</td></tr>
 <tr class="gap"></tr>
@@ -508,7 +510,7 @@ const factoryOrderEmail = (orderData) => {
         <!-- Extra Cover -->
         <tr><th>Extra Cover</th></tr>
         <tr><td class="subheading">Option</td></tr>
-        <tr><td class="value">${selectedOptions.EKSTRABETRÆK.Tilvælg=== 'Yes' ? 'Ja' : 'Fravalgt'}</td></tr> 
+        <tr><td class="value">${selectedOptions.EKSTRABETRÆK.Tilvælg}</td></tr> 
         <tr class="gap"></tr>
         
           ${selectedOptions.EKSTRABETRÆK.Tilvælg === 'Yes'
@@ -545,7 +547,7 @@ const factoryOrderEmail = (orderData) => {
         <!-- Size -->
         <tr><th>Size</th></tr>
         <tr><td class="subheading">Choosen size (Size)</td></tr>
-        <tr><td class="value">${selectedOptions.STØRRELSE["Millimeter tilpasningssæt"]=== 'Yes' ? 'Ja' : 'Fravalgt'}</td></tr> 
+        <tr><td class="value">${selectedOptions.STØRRELSE["Millimeter tilpasningssæt"]}</td></tr> 
         <tr class="gap"></tr>
         <tr><td class="subheading">Foam to adjust the size</td></tr>
         <tr><td class="value">${selectedOptions.STØRRELSE["Vælg størrelse"]}</td></tr>
@@ -561,26 +563,28 @@ const factoryOrderEmail = (orderData) => {
     <div class="table-container">
       <table>
         <!-- Cover -->
-       <tr><th>Betræk </th></tr>
-        <tr><td class="subheading">Farve</td></tr>
+        <tr><th>Cover</th></tr>
+        <tr><td class="subheading">Color </td></tr>
         <tr><td class="value">${selectedOptions.BETRÆK.Farve}</td></tr>
+        
         <tr class="gap"></tr>
-       <tr><td class="subheading">Topkant</td></tr>
-<tr><td class="value">${selectedOptions.BETRÆK.Topkant === 'NONE' || selectedOptions.BETRÆK.Topkant === 'None' ? 'Ingen' : selectedOptions.BETRÆK.Topkant}</td></tr>
-<tr class="gap"></tr>
 
-<tr><td class="subheading">Kantbånd</td></tr>
-<tr><td class="value">${selectedOptions.BETRÆK.Kantbånd === 'NONE' || selectedOptions.BETRÆK.Kantbånd === 'None' ? 'Ingen' : selectedOptions.BETRÆK.Kantbånd}</td></tr>
-<tr class="gap"></tr>
-
-<tr><td class="subheading">Stjerner</td></tr>
-<tr><td class="value">${selectedOptions.BETRÆK.Stjerner === 'NONE' || selectedOptions.BETRÆK.Stjerner === 'None' ? 'Ingen' : selectedOptions.BETRÆK.Stjerner}</td></tr>
-
+        <tr><td class="subheading">Top edgning</td></tr>
+        <tr><td class="value">${selectedOptions.BETRÆK.Topkant}</td></tr>
         <tr class="gap"></tr>
-        <tr><td class="subheading">Stjerner farve</td></tr>
+
+        <tr><td class="subheading">Edge band</td></tr>
+        <tr><td class="value">${selectedOptions.BETRÆK.Kantbånd}</td></tr>
+        <tr class="gap"></tr>
+        
+        <tr><td class="subheading">Stjerner</td></tr>
+        <tr><td class="value">${selectedOptions.BETRÆK.Stjerner}</td></tr>
+        <tr class="gap"></tr>
+        
+        <tr><td class="subheading">Color of star </td></tr>
         <tr><td class="value">${selectedOptions.KOKARDE.Emblem.name}</td></tr>
         <tr class="gap"></tr>
-        <tr><td class="subheading">Flagbånd</td></tr>
+        <tr><td class="subheading">Flag ribbon </td></tr>
         <tr><td class="value">${!selectedOptions.BETRÆK.Flagbånd?'No':selectedOptions.BETRÆK.Flagbånd}</td></tr>
         <tr class="gap"></tr>
         
@@ -617,7 +621,7 @@ const factoryOrderEmail = (orderData) => {
 
         <tr><td class="subheading">Linje 2</td></tr>
         <tr><td class="value">${selectedOptions.SKYGGE["Skyggegravering Line 2"] === ''
-              ? 'Ikke valgt'
+              ? 'Not specified'
               : selectedOptions.SKYGGE["Skyggegravering Line 2"]
             }</td></tr>
         <tr class="gap"></tr>
@@ -626,10 +630,14 @@ const factoryOrderEmail = (orderData) => {
         <tr><td class="value">${selectedOptions.FOER.Foer}</td></tr>
         <tr class="gap"></tr>
         <tr><td class="subheading">Silk Type</td></tr>
-        <tr><td class="value">${!selectedOptions.FOER['Satin Type']? 'Ikke valgt' : selectedOptions.FOER['Satin Type']}</td></tr>
+        <tr><td class="value">${selectedOptions.FOER['Silk Type']
+              ? 'Not specified'
+              :selectedOptions.FOER['Silk Type']}</td></tr>
         <tr class="gap"></tr>
         <tr><td class="subheading">Satin Type</td></tr>
-        <tr><td class="value">${!selectedOptions.FOER['Silk Type'] ? 'Ikke valgt' : selectedOptions.FOER['Silk Type']}</td></tr>
+        <tr><td class="value">${selectedOptions.FOER['Satin Type']
+              ? 'Not specified'
+              : selectedOptions.FOER['Satin Type']}</td></tr>
         
         
         <tr style='height:26px;'></tr>
@@ -637,12 +645,14 @@ const factoryOrderEmail = (orderData) => {
         <!-- Tilbehør -->
         <tr><th>Tilbehør</th></tr>
         <tr><td class="subheading">Silk cushion</td></tr>
-        <tr><td class="value">${selectedOptions.TILBEHØR.Silkepude === 'Yes' ? 'Ja' : 'Fravalgt'}</td></tr>
+        <tr><td class="value">${selectedOptions.TILBEHØR.Silkepude}</td></tr>
         
         <tr class="gap"></tr>
 
         <tr><td class="subheading">Small flag</td></tr>
-        <tr><td class="value">${!selectedOptions.TILBEHØR['Lille Flag Text'] ? 'Fravalgt' : selectedOptions.TILBEHØR['Lille Flag Text']}</td></tr>
+        <tr><td class="value">${!selectedOptions.TILBEHØR['Lille Flag Text']
+              ? 'No'
+              : selectedOptions.TILBEHØR['Lille Flag Text']}</td></tr>
         <tr class="gap"></tr>
       
     </table>
@@ -662,7 +672,7 @@ Kunde ordre oplysninger (Customer Order Information)
 
 Ordren er oprettet (Order created): ${new Date(orderDate).toLocaleString('da-DK')}
 Ordre #${orderNumber} — ${customerDetails.firstName} ${customerDetails.lastName}
-Skole (School): ${customerDetails.Skolenavn || 'Ikke angivet / Ikke valgt'}
+Skole (School): ${customerDetails.Skolenavn || 'Ikke angivet / Not specified'}
 
 Ordre detaljer (Order details)
 ------------------------------
@@ -712,6 +722,7 @@ NOTE TIL FABRIK / NOTE TO FACTORY
     text
   };
 };
+
 
 
 const capOrderEmail = (orderData) => {
@@ -2413,7 +2424,7 @@ const stripePayment = async (req, res) => {
       mode: "payment",
       locale: "da",
       success_url: `https://shop.studentlife.dk/thankyou/?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: "https://elipsestudio.com/devstudentlife/cancel",
+      cancel_url: "https://elipsestudio.com/studentlife/cancel",
       metadata: {
         orderId: order.id,   // 👈 only store a small reference here
       },
@@ -2488,3 +2499,8 @@ const stripeWebhook = async (req, res) => {
 module.exports = {
   workflowStatusChange, sendCapEmail, stripePayment, getSessionDetails, stripeWebhook
 };
+
+
+
+
+// salg@studentlife.dk
