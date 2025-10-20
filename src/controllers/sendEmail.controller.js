@@ -23,15 +23,19 @@ const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
 const createEmailTransporter = () => {
   return nodemailer.createTransport({
-    host: "smtp.simply.com",
+    host: "mail.simply.com",
     port: 587,
-    secure: false, // use TLS later
+    secure: false,
     auth: {
       user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS, // must be an App Password
+      pass: process.env.EMAIL_PASS,
+    },
+    tls: {
+      rejectUnauthorized: false,
     },
   });
 };
+
 
 
 
