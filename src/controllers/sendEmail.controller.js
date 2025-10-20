@@ -1106,7 +1106,7 @@ const capOrderEmail = (orderData) => {
        <!-- Embroidery on frontside -->
 <tr><th>Broderi foran</th></tr>
 ${
-  selectedOptions.UDDANNELSESBÅND["Broderi foran"] === ""
+  selectedOptions.UDDANNELSESBÅND["Broderi foran"] == false
     ? `
       <tr><td class="subheading" style="height: 67px;"></td></tr>
       <tr><td class="value"></td></tr>
@@ -1128,7 +1128,7 @@ ${
 <!-- Embroidery on the backside of the cap -->
 <tr><th>Broderi Bagpå</th></tr>
 ${
-  selectedOptions.BRODERI["Navne broderi"] === ""
+  selectedOptions.BRODERI["Navne broderi"] == false
     ? `
       <tr><td class="subheading" style="height: 67px;"></td></tr>
       <tr><td class="value"></td></tr>
@@ -1148,7 +1148,7 @@ ${
 }
 
 ${
-  selectedOptions.BRODERI.Skolebroderi === ""
+  selectedOptions.BRODERI.Skolebroderi == false
     ? `
       <tr><td class="subheading" style="height: 67px;"></td></tr>
       <tr><td class="value"></td></tr>
@@ -1883,7 +1883,7 @@ const capOrderAdminEmail = (orderData) => {
        <!-- Embroidery on frontside -->
 <tr><th>Broderi foran</th></tr>
 ${
-  selectedOptions.UDDANNELSESBÅND["Broderi foran"] === ""
+  selectedOptions.UDDANNELSESBÅND["Broderi foran"] == false
     ? `
       <tr><td class="subheading" style="height: 67px;"></td></tr>
       <tr><td class="value"></td></tr>
@@ -1905,7 +1905,7 @@ ${
 <!-- Embroidery on the backside of the cap -->
 <tr><th>Broderi Bagpå</th></tr>
 ${
-  selectedOptions.BRODERI["Navne broderi"] === ""
+  selectedOptions.BRODERI["Navne broderi"] == false
     ? `
       <tr><td class="subheading" style="height: 67px;"></td></tr>
       <tr><td class="value"></td></tr>
@@ -1925,7 +1925,7 @@ ${
 }
 
 ${
-  selectedOptions.BRODERI.Skolebroderi === ""
+  selectedOptions.BRODERI.Skolebroderi == false
     ? `
       <tr><td class="subheading" style="height: 67px;"></td></tr>
       <tr><td class="value"></td></tr>
