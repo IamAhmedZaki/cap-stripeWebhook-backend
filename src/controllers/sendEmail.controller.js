@@ -422,7 +422,14 @@ const factoryOrderEmail = (orderData) => {
         <!-- Embroidery on frontside -->
         <tr><th>Embroidery on frontside</th></tr>
      
-        ${!selectedOptions.UDDANNELSESBÅND["Broderi foran"]?`
+        ${!selectedOptions.UDDANNELSESBÅND["Broderi foran"]=== ''?
+          `<tr><td class="subheading"></td></tr>
+            <tr><td class="value"></td></tr>
+
+  <tr class="gap"></tr>
+  <tr><td class="subheading"></td></tr>
+        <tr><td class="value"></td></tr>
+        <tr class="gap"></tr>`:`
           <tr><td class="subheading">Tekst maks. 20 tegn</td></tr>
 <tr><td class="value">${selectedOptions.UDDANNELSESBÅND["Broderi foran"] === ''
       ? 'Ikke valgt'
@@ -430,17 +437,15 @@ const factoryOrderEmail = (orderData) => {
     }</td></tr>
 
 <tr class="gap"></tr>
-          `:`<tr><td class="subheading"></td></tr>
-            <tr><td class="value"></td></tr>
-
-  <tr class="gap"></tr>`}
+<tr><td class="subheading">Embroidery color</td></tr>
+        <tr><td class="value">${selectedOptions.UDDANNELSESBÅND["Broderi farve"]}</td></tr>
+        <tr class="gap"></tr>
+          `}
         
        
 
 
-        <tr><td class="subheading">Embroidery color</td></tr>
-        <tr><td class="value">${selectedOptions.UDDANNELSESBÅND["Broderi farve"]}</td></tr>
-        <tr class="gap"></tr>
+        
          
         <!-- Embroidery on the backside of the cap -->
         <tr><th> Embroidery on the backside of the cap</th></tr>
