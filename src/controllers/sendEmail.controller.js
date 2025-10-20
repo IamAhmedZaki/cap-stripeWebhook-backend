@@ -423,16 +423,14 @@ const factoryOrderEmail = (orderData) => {
         <tr><th>Embroidery on frontside</th></tr>
      
         ${selectedOptions.UDDANNELSESBÅND["Broderi foran"]== false?
-          `<tr><td class="subheading"></td></tr>
-            <tr><td class="value"></td></tr>
+        `<tr><td class="subheading" style="height: 67px;"></td></tr>
+        <tr><td class="value"></td></tr>
 
-  <tr class="gap"></tr>
-  <tr><td class="subheading"></td></tr>
+        <tr class="gap"></tr>
+        <tr><td class="subheading" style="height: 67px;"></td></tr>
         <tr><td class="value"></td></tr>
         <tr class="gap"></tr>
-        <tr><td class="subheading">/td></tr>
-        <tr><td class="value"></td></tr>
-        <tr class="gap"></tr>`:`
+        `:`
           <tr><td class="subheading">Tekst maks. 20 tegn</td></tr>
 <tr><td class="value">${selectedOptions.UDDANNELSESBÅND["Broderi foran"]}</td></tr>
 
@@ -452,10 +450,10 @@ const factoryOrderEmail = (orderData) => {
         
         
         ${selectedOptions.BRODERI["Navne broderi"]== false?`
-         <tr><td class="subheading"></td></tr>
+         <tr><td class="subheading" style="height: 67px;"></td></tr>
         <tr><td class="value"></td></tr>
         <tr class="gap"></tr>
-         <tr><td class="subheading"></td></tr>
+         <tr><td class="subheading" style="height: 67px;"></td></tr>
         <tr><td class="value"></td></tr>
         <tr class="gap"></tr>`:
       `
@@ -468,11 +466,11 @@ const factoryOrderEmail = (orderData) => {
        
         
         
-        ${selectedOptions.BRODERI.Skolebroderi ==false ?`<tr><td class="subheading"></td></tr>
+        ${selectedOptions.BRODERI.Skolebroderi ==false ?`<tr><td class="subheading" style="height: 67px;"></td></tr>
         <tr><td class="value"></td></tr>
         <tr class="gap"></tr>
 
-        <tr><td class="subheading"></td></tr>
+        <tr><td class="subheading" style="height: 67px;"></td></tr>
         <tr><td class="value"></td></tr>
         <tr class="gap"></tr>`:`
           <tr><td class="subheading">School embroidery (Writing) maks. 35</td></tr>
