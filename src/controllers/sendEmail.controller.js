@@ -714,7 +714,6 @@ NOTE TIL FABRIK / NOTE TO FACTORY
 };
 
 
-
 const capOrderEmail = (orderData) => {
   const {
     customerDetails,
