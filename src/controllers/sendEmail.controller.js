@@ -379,7 +379,7 @@ const factoryOrderEmail = (orderData) => {
   <div><div class="downgap">Order nr:${orderNumber}</div> <div  class="downgap">Navn på kunde:${customerDetails.firstName} ${customerDetails.lastName}</div> <div class="downgap">
         Skole:${customerDetails.Skolenavn}</div></div>
   <div class="downgap">Ordre detaljer</div>
-  <div style="margin-left: 327px; margin-bottom: 10px; margin-top: 4px;">The package choosed:${packageName}
+  <div style="margin-left: 327px; margin-bottom: 10px; margin-top: 4px;">${packageName}
 
   </div>
   <div style="margin-left: 327px;">
@@ -422,7 +422,7 @@ const factoryOrderEmail = (orderData) => {
         <!-- Embroidery on frontside -->
         <tr><th>Embroidery on frontside</th></tr>
      
-        ${selectedOptions.UDDANNELSESBÅND["Broderi foran"]=== ''?
+        ${selectedOptions.UDDANNELSESBÅND["Broderi foran"]== false?
           `<tr><td class="subheading"></td></tr>
             <tr><td class="value"></td></tr>
 
@@ -434,10 +434,7 @@ const factoryOrderEmail = (orderData) => {
         <tr><td class="value"></td></tr>
         <tr class="gap"></tr>`:`
           <tr><td class="subheading">Tekst maks. 20 tegn</td></tr>
-<tr><td class="value">${selectedOptions.UDDANNELSESBÅND["Broderi foran"] === ''
-      ? 'Ikke valgt'
-      : selectedOptions.UDDANNELSESBÅND["Broderi foran"]
-    }</td></tr>
+<tr><td class="value">${selectedOptions.UDDANNELSESBÅND["Broderi foran"]}</td></tr>
 
 <tr class="gap"></tr>
 <tr><td class="subheading">Embroidery color</td></tr>
@@ -454,7 +451,7 @@ const factoryOrderEmail = (orderData) => {
         <tr><th> Embroidery on the backside of the cap</th></tr>
         
         
-        ${selectedOptions.BRODERI["Navne broderi"]=== ''?`
+        ${selectedOptions.BRODERI["Navne broderi"]== false?`
          <tr><td class="subheading"></td></tr>
         <tr><td class="value"></td></tr>
         <tr class="gap"></tr>
@@ -463,10 +460,7 @@ const factoryOrderEmail = (orderData) => {
         <tr class="gap"></tr>`:
       `
           <tr><td class="subheading">Name embroidery (Writing) maks. 26</td></tr>
-        <tr><td class="value">${selectedOptions.BRODERI["Navne broderi"] === ''
-      ? 'Ikke valgt'
-      : selectedOptions.BRODERI["Navne broderi"]
-    }</td></tr>
+        <tr><td class="value">${selectedOptions.BRODERI["Navne broderi"]}</td></tr>
         <tr class="gap"></tr>
          <tr><td class="subheading">Embroidery color </td></tr>
         <tr><td class="value">${selectedOptions.BRODERI.Broderifarve}</td></tr>
@@ -474,7 +468,7 @@ const factoryOrderEmail = (orderData) => {
        
         
         
-        ${selectedOptions.BRODERI.Skolebroderi === ''?`<tr><td class="subheading"></td></tr>
+        ${selectedOptions.BRODERI.Skolebroderi ==false ?`<tr><td class="subheading"></td></tr>
         <tr><td class="value"></td></tr>
         <tr class="gap"></tr>
 
@@ -482,10 +476,7 @@ const factoryOrderEmail = (orderData) => {
         <tr><td class="value"></td></tr>
         <tr class="gap"></tr>`:`
           <tr><td class="subheading">School embroidery (Writing) maks. 35</td></tr>
-        <tr><td class="value">${selectedOptions.BRODERI.Skolebroderi === ''
-      ? 'Ikke valgt'
-      : selectedOptions.BRODERI.Skolebroderi
-        }</td></tr>
+        <tr><td class="value">${selectedOptions.BRODERI.Skolebroderi}</td></tr>
         <tr class="gap"></tr>
 
         <tr><td class="subheading">Embroidery color </td></tr>
