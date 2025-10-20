@@ -422,7 +422,7 @@ const factoryOrderEmail = (orderData) => {
         <!-- Embroidery on frontside -->
         <tr><th>Embroidery on frontside</th></tr>
      
-        ${selectedOptions.UDDANNELSESBÅND["Broderi foran"]== false?
+        ${!selectedOptions.UDDANNELSESBÅND["Broderi foran"]?
         `<tr><td class="subheading" style="height: 67px;"></td></tr>
         <tr><td class="value"></td></tr>
 
@@ -449,7 +449,7 @@ const factoryOrderEmail = (orderData) => {
         <tr><th> Embroidery on the backside of the cap</th></tr>
         
         
-        ${selectedOptions.BRODERI["Navne broderi"]== false?`
+        ${!selectedOptions.BRODERI["Navne broderi"]?`
          <tr><td class="subheading" style="height: 67px;"></td></tr>
         <tr><td class="value"></td></tr>
         <tr class="gap"></tr>
@@ -466,7 +466,7 @@ const factoryOrderEmail = (orderData) => {
        
         
         
-        ${selectedOptions.BRODERI.Skolebroderi ==false ?`<tr><td class="subheading" style="height: 67px;"></td></tr>
+        ${!selectedOptions.BRODERI.Skolebroderi  ?`<tr><td class="subheading" style="height: 67px;"></td></tr>
         <tr><td class="value"></td></tr>
         <tr class="gap"></tr>
 
@@ -501,14 +501,14 @@ const factoryOrderEmail = (orderData) => {
         <tr><td class="value">${selectedOptions.SKYGGE.Skyggebånd}</td></tr>
         <tr class="gap"></tr>
        <tr><td class="subheading">Linje 1</td></tr>
-<tr><td class="value">${selectedOptions.SKYGGE["Skyggegravering Line 1"] === ''
+<tr><td class="value">${!selectedOptions.SKYGGE["Skyggegravering Line 1"] === ''
       ? 'Ikke valgt'
       : selectedOptions.SKYGGE["Skyggegravering Line 1"]
     }</td></tr>
 <tr class="gap"></tr>
 
 <tr><td class="subheading">Linje 3</td></tr>
-<tr><td class="value">${selectedOptions.SKYGGE["Skyggegravering Line 3"] === ''
+<tr><td class="value">${!selectedOptions.SKYGGE["Skyggegravering Line 3"] === ''
       ? 'Ikke valgt'
       : selectedOptions.SKYGGE["Skyggegravering Line 3"]
     }</td></tr>
@@ -639,7 +639,7 @@ const factoryOrderEmail = (orderData) => {
        
 
         <tr><td class="subheading">Linje 2</td></tr>
-        <tr><td class="value">${selectedOptions.SKYGGE["Skyggegravering Line 2"] === ''
+        <tr><td class="value">${!selectedOptions.SKYGGE["Skyggegravering Line 2"] === ''
       ? 'Ikke valgt'
       : selectedOptions.SKYGGE["Skyggegravering Line 2"]
     }</td></tr>
@@ -1106,7 +1106,7 @@ const capOrderEmail = (orderData) => {
        <!-- Embroidery on frontside -->
 <tr><th>Broderi foran</th></tr>
 ${
-  selectedOptions.UDDANNELSESBÅND["Broderi foran"] == false
+  !selectedOptions.UDDANNELSESBÅND["Broderi foran"] 
     ? `
       <tr><td class="subheading" style="height: 67px;"></td></tr>
       <tr><td class="value"></td></tr>
@@ -1128,7 +1128,7 @@ ${
 <!-- Embroidery on the backside of the cap -->
 <tr><th>Broderi Bagpå</th></tr>
 ${
-  selectedOptions.BRODERI["Navne broderi"] == false
+  !selectedOptions.BRODERI["Navne broderi"] 
     ? `
       <tr><td class="subheading" style="height: 67px;"></td></tr>
       <tr><td class="value"></td></tr>
@@ -1148,7 +1148,7 @@ ${
 }
 
 ${
-  selectedOptions.BRODERI.Skolebroderi == false
+  !selectedOptions.BRODERI.Skolebroderi 
     ? `
       <tr><td class="subheading" style="height: 67px;"></td></tr>
       <tr><td class="value"></td></tr>
@@ -1374,7 +1374,7 @@ ${selectedOptions.EKSTRABETRÆK.Tilvælg === 'Yes' ? `
 
 <tr><td class="subheading">Ekstra Kokarde</td></tr>
 <tr><td class="value">
-  ${selectedOptions.TILBEHØR['Ekstra korkarde Text'] === '' ? 'Fravalgt' : selectedOptions.TILBEHØR['Ekstra korkarde Text']}
+  ${!selectedOptions.TILBEHØR['Ekstra korkarde Text']  ? 'Fravalgt' : selectedOptions.TILBEHØR['Ekstra korkarde Text']}
 </td></tr>
 <tr class="gap"></tr>
 
@@ -1883,7 +1883,7 @@ const capOrderAdminEmail = (orderData) => {
        <!-- Embroidery on frontside -->
 <tr><th>Broderi foran</th></tr>
 ${
-  selectedOptions.UDDANNELSESBÅND["Broderi foran"] == false
+  !selectedOptions.UDDANNELSESBÅND["Broderi foran"] == false
     ? `
       <tr><td class="subheading" style="height: 67px;"></td></tr>
       <tr><td class="value"></td></tr>
@@ -1905,7 +1905,7 @@ ${
 <!-- Embroidery on the backside of the cap -->
 <tr><th>Broderi Bagpå</th></tr>
 ${
-  selectedOptions.BRODERI["Navne broderi"] == false
+  !selectedOptions.BRODERI["Navne broderi"] 
     ? `
       <tr><td class="subheading" style="height: 67px;"></td></tr>
       <tr><td class="value"></td></tr>
@@ -1925,7 +1925,7 @@ ${
 }
 
 ${
-  selectedOptions.BRODERI.Skolebroderi == false
+  !selectedOptions.BRODERI.Skolebroderi == false
     ? `
       <tr><td class="subheading" style="height: 67px;"></td></tr>
       <tr><td class="value"></td></tr>
@@ -2151,7 +2151,7 @@ ${selectedOptions.EKSTRABETRÆK.Tilvælg === 'Yes' ? `
 
 <tr><td class="subheading">Ekstra Kokarde</td></tr>
 <tr><td class="value">
-  ${selectedOptions.TILBEHØR['Ekstra korkarde Text'] === '' ? 'Fravalgt' : selectedOptions.TILBEHØR['Ekstra korkarde Text']}
+  ${!selectedOptions.TILBEHØR['Ekstra korkarde Text'] === '' ? 'Fravalgt' : selectedOptions.TILBEHØR['Ekstra korkarde Text']}
 </td></tr>
 <tr class="gap"></tr>
 
