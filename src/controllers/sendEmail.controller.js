@@ -457,7 +457,7 @@ const factoryOrderEmail = (orderData) => {
         <tr><td class="value"></td></tr>
         <tr class="gap"></tr>`:
       `
-          <tr><td class="subheading">Name embroidery (Writing) maks. 26</td></tr>
+          <tr><td class="subheading">Name embroidery (Tekst) maks. 26</td></tr>
         <tr><td class="value">${selectedOptions.BRODERI["Navne broderi"]}</td></tr>
         <tr class="gap"></tr>
          <tr><td class="subheading">Embroidery color </td></tr>
@@ -473,7 +473,7 @@ const factoryOrderEmail = (orderData) => {
         <tr><td class="subheading" style="height: 67px;"></td></tr>
         <tr><td class="value"></td></tr>
         <tr class="gap"></tr>`:`
-          <tr><td class="subheading">School embroidery (Writing) maks. 35</td></tr>
+          <tr><td class="subheading">School embroidery (Tekst) maks. 35</td></tr>
         <tr><td class="value">${selectedOptions.BRODERI.Skolebroderi}</td></tr>
         <tr class="gap"></tr>
 
@@ -1103,46 +1103,78 @@ const capOrderEmail = (orderData) => {
         <tr><td class="value">${selectedOptions.KOKARDE.Type}</td></tr>
         <tr class="gap"></tr>
         
-        <!-- Embroidery on frontside -->
-        <tr><th>Broderi foran</th></tr>
-        <tr><td class="subheading">Tekst maks. 20 tegn</td></tr>
-        <tr><td class="value">${selectedOptions.UDDANNELSESBÅND["Broderi foran"] === ''
-      ? 'Ikke valgt'
-      : selectedOptions.UDDANNELSESBÅND["Broderi foran"]
-    }</td></tr>
-        
-        <tr class="gap"></tr>
+       <!-- Embroidery on frontside -->
+<tr><th>Broderi foran</th></tr>
+${
+  selectedOptions.UDDANNELSESBÅND["Broderi foran"] === ""
+    ? `
+      <tr><td class="subheading" style="height: 67px;"></td></tr>
+      <tr><td class="value"></td></tr>
+      <tr class="gap"></tr>
+      <tr><td class="subheading" style="height: 67px;"></td></tr>
+      <tr><td class="value"></td></tr>
+      <tr class="gap"></tr>
+    `
+    : `
+      <tr><td class="subheading">Tekst maks. 20 tegn</td></tr>
+      <tr><td class="value">${selectedOptions.UDDANNELSESBÅND["Broderi foran"]}</td></tr>
+      <tr class="gap"></tr>
+      <tr><td class="subheading">Broderi farve</td></tr>
+      <tr><td class="value">${selectedOptions.UDDANNELSESBÅND["Broderi farve"]}</td></tr>
+      <tr class="gap"></tr>
+    `
+}
 
-        <tr><td class="subheading">Broderi farve</td></tr>
-        <tr><td class="value">${selectedOptions.UDDANNELSESBÅND["Broderi farve"]}</td></tr>
-        <tr class="gap"></tr>
-         
-        <!-- Embroidery on the backside of the cap -->
-        <tr><th> Broderi Bagpå</th></tr>
-        <tr><td class="subheading">Navne broderi (Writing) maks. 26</td></tr>
-        <tr><td class="value">${selectedOptions.BRODERI["Navne broderi"] === ''
-      ? 'Ikke valgt'
-      : selectedOptions.BRODERI["Navne broderi"]
-    }</td></tr> 
-        <tr class="gap"></tr>
-        <tr><td class="subheading">Broderi farve </td></tr>
-        <tr><td class="value">${selectedOptions.BRODERI.Broderifarve}</td></tr>
-        <tr class="gap"></tr>
-        <tr><td class="subheading">Skolebroderi ( Writing) maks. 35</td></tr>
-        <tr><td class="value">${selectedOptions.BRODERI.Skolebroderi === ''
-      ? 'Ikke valgt'
-      : selectedOptions.BRODERI.Skolebroderi
-    }</td></tr>
-        <tr class="gap"></tr>
-        <tr><td class="subheading">Broderi farve </td></tr>
-        <tr><td class="value">${selectedOptions.BRODERI['Skolebroderi farve']}</td></tr>
-        <tr class="gap"></tr>
-        <tr><td class="subheading">Knap Farve</td></tr>
-        <tr><td class="value">${selectedOptions.UDDANNELSESBÅND['Knap farve']}</td></tr>
-        <tr class="gap"></tr>
-        <tr><td class="subheading">År</td></tr>
-        <tr><td class="value">${selectedOptions.UDDANNELSESBÅND.år}</td></tr>
-        <tr class="gap"></tr>
+<!-- Embroidery on the backside of the cap -->
+<tr><th>Broderi Bagpå</th></tr>
+${
+  selectedOptions.BRODERI["Navne broderi"] === ""
+    ? `
+      <tr><td class="subheading" style="height: 67px;"></td></tr>
+      <tr><td class="value"></td></tr>
+      <tr class="gap"></tr>
+      <tr><td class="subheading" style="height: 67px;"></td></tr>
+      <tr><td class="value"></td></tr>
+      <tr class="gap"></tr>
+    `
+    : `
+      <tr><td class="subheading">Navne broderi (Tekst) maks. 26</td></tr>
+      <tr><td class="value">${selectedOptions.BRODERI["Navne broderi"]}</td></tr>
+      <tr class="gap"></tr>
+      <tr><td class="subheading">Broderi farve</td></tr>
+      <tr><td class="value">${selectedOptions.BRODERI.Broderifarve}</td></tr>
+      <tr class="gap"></tr>
+    `
+}
+
+${
+  selectedOptions.BRODERI.Skolebroderi === ""
+    ? `
+      <tr><td class="subheading" style="height: 67px;"></td></tr>
+      <tr><td class="value"></td></tr>
+      <tr class="gap"></tr>
+      <tr><td class="subheading" style="height: 67px;"></td></tr>
+      <tr><td class="value"></td></tr>
+      <tr class="gap"></tr>
+    `
+    : `
+      <tr><td class="subheading">Skolebroderi ( Tekst) maks. 35</td></tr>
+      <tr><td class="value">${selectedOptions.BRODERI.Skolebroderi}</td></tr>
+      <tr class="gap"></tr>
+      <tr><td class="subheading">Broderi farve</td></tr>
+      <tr><td class="value">${selectedOptions.BRODERI['Skolebroderi farve']}</td></tr>
+      <tr class="gap"></tr>
+    `
+}
+
+<tr><td class="subheading">Knap Farve</td></tr>
+<tr><td class="value">${selectedOptions.UDDANNELSESBÅND['Knap farve']}</td></tr>
+<tr class="gap"></tr>
+
+<tr><td class="subheading">År</td></tr>
+<tr><td class="value">${selectedOptions.UDDANNELSESBÅND.år}</td></tr>
+<tr class="gap"></tr>
+
         
         <!-- brim -->
 <tr><th>Skygge</th></tr>
@@ -1848,46 +1880,78 @@ const capOrderAdminEmail = (orderData) => {
         <tr><td class="value">${selectedOptions.KOKARDE.Type}</td></tr>
         <tr class="gap"></tr>
         
-        <!-- Embroidery on frontside -->
-        <tr><th>Broderi foran</th></tr>
-        <tr><td class="subheading">Tekst maks. 20 tegn</td></tr>
-        <tr><td class="value">${selectedOptions.UDDANNELSESBÅND["Broderi foran"] === ''
-      ? 'Ikke valgt'
-      : selectedOptions.UDDANNELSESBÅND["Broderi foran"]
-    }</td></tr>
-        
-        <tr class="gap"></tr>
+       <!-- Embroidery on frontside -->
+<tr><th>Broderi foran</th></tr>
+${
+  selectedOptions.UDDANNELSESBÅND["Broderi foran"] === ""
+    ? `
+      <tr><td class="subheading" style="height: 67px;"></td></tr>
+      <tr><td class="value"></td></tr>
+      <tr class="gap"></tr>
+      <tr><td class="subheading" style="height: 67px;"></td></tr>
+      <tr><td class="value"></td></tr>
+      <tr class="gap"></tr>
+    `
+    : `
+      <tr><td class="subheading">Tekst maks. 20 tegn</td></tr>
+      <tr><td class="value">${selectedOptions.UDDANNELSESBÅND["Broderi foran"]}</td></tr>
+      <tr class="gap"></tr>
+      <tr><td class="subheading">Broderi farve</td></tr>
+      <tr><td class="value">${selectedOptions.UDDANNELSESBÅND["Broderi farve"]}</td></tr>
+      <tr class="gap"></tr>
+    `
+}
 
-        <tr><td class="subheading">Broderi farve</td></tr>
-        <tr><td class="value">${selectedOptions.UDDANNELSESBÅND["Broderi farve"]}</td></tr>
-        <tr class="gap"></tr>
-         
-        <!-- Embroidery on the backside of the cap -->
-        <tr><th> Broderi Bagpå</th></tr>
-        <tr><td class="subheading">Navne broderi (Writing) maks. 26</td></tr>
-        <tr><td class="value">${selectedOptions.BRODERI["Navne broderi"] === ''
-      ? 'Ikke valgt'
-      : selectedOptions.BRODERI["Navne broderi"]
-    }</td></tr> 
-        <tr class="gap"></tr>
-        <tr><td class="subheading">Broderi farve </td></tr>
-        <tr><td class="value">${selectedOptions.BRODERI.Broderifarve}</td></tr>
-        <tr class="gap"></tr>
-        <tr><td class="subheading">Skolebroderi ( Writing) maks. 35</td></tr>
-        <tr><td class="value">${selectedOptions.BRODERI.Skolebroderi === ''
-      ? 'Ikke valgt'
-      : selectedOptions.BRODERI.Skolebroderi
-    }</td></tr>
-        <tr class="gap"></tr>
-        <tr><td class="subheading">Broderi farve </td></tr>
-        <tr><td class="value">${selectedOptions.BRODERI['Skolebroderi farve']}</td></tr>
-        <tr class="gap"></tr>
-        <tr><td class="subheading">Knap Farve</td></tr>
-        <tr><td class="value">${selectedOptions.UDDANNELSESBÅND['Knap farve']}</td></tr>
-        <tr class="gap"></tr>
-        <tr><td class="subheading">År</td></tr>
-        <tr><td class="value">${selectedOptions.UDDANNELSESBÅND.år}</td></tr>
-        <tr class="gap"></tr>
+<!-- Embroidery on the backside of the cap -->
+<tr><th>Broderi Bagpå</th></tr>
+${
+  selectedOptions.BRODERI["Navne broderi"] === ""
+    ? `
+      <tr><td class="subheading" style="height: 67px;"></td></tr>
+      <tr><td class="value"></td></tr>
+      <tr class="gap"></tr>
+      <tr><td class="subheading" style="height: 67px;"></td></tr>
+      <tr><td class="value"></td></tr>
+      <tr class="gap"></tr>
+    `
+    : `
+      <tr><td class="subheading">Navne broderi (Tekst) maks. 26</td></tr>
+      <tr><td class="value">${selectedOptions.BRODERI["Navne broderi"]}</td></tr>
+      <tr class="gap"></tr>
+      <tr><td class="subheading">Broderi farve</td></tr>
+      <tr><td class="value">${selectedOptions.BRODERI.Broderifarve}</td></tr>
+      <tr class="gap"></tr>
+    `
+}
+
+${
+  selectedOptions.BRODERI.Skolebroderi === ""
+    ? `
+      <tr><td class="subheading" style="height: 67px;"></td></tr>
+      <tr><td class="value"></td></tr>
+      <tr class="gap"></tr>
+      <tr><td class="subheading" style="height: 67px;"></td></tr>
+      <tr><td class="value"></td></tr>
+      <tr class="gap"></tr>
+    `
+    : `
+      <tr><td class="subheading">Skolebroderi ( Tekst) maks. 35</td></tr>
+      <tr><td class="value">${selectedOptions.BRODERI.Skolebroderi}</td></tr>
+      <tr class="gap"></tr>
+      <tr><td class="subheading">Broderi farve</td></tr>
+      <tr><td class="value">${selectedOptions.BRODERI['Skolebroderi farve']}</td></tr>
+      <tr class="gap"></tr>
+    `
+}
+
+<tr><td class="subheading">Knap Farve</td></tr>
+<tr><td class="value">${selectedOptions.UDDANNELSESBÅND['Knap farve']}</td></tr>
+<tr class="gap"></tr>
+
+<tr><td class="subheading">År</td></tr>
+<tr><td class="value">${selectedOptions.UDDANNELSESBÅND.år}</td></tr>
+<tr class="gap"></tr>
+
         
         <!-- brim -->
 <tr><th>Skygge</th></tr>
