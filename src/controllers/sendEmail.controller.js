@@ -1364,7 +1364,7 @@ ${selectedOptions.EKSTRABETRÆK.Tilvælg === 'Yes' ? `
 
 <tr><td class="subheading">Ekstra Kokarde</td></tr>
 <tr><td class="value">
-  ${selectedOptions.TILBEHØR['Ekstra korkarde Text']==undefined  ? 'Fravalgt' : selectedOptions.TILBEHØR['Ekstra korkarde Text']}
+  ${!selectedOptions.TILBEHØR['Ekstra korkarde Text']  ? 'Fravalgt' : selectedOptions.TILBEHØR['Ekstra korkarde Text']}
 </td></tr>
 <tr class="gap"></tr>
 
