@@ -301,84 +301,16 @@ const factoryOrderEmail = (orderData) => {
 <head>
   <meta charset="UTF-8">
   <title>Two Tables Side by Side</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      /* text-align: center; */
-      margin: 0;
-      padding: 50px 0;
-          display: flex;
-          justify-content: center;
-    }
-
-    .table-container {
-      display: inline-block; /* allows side-by-side placement */
-      /* space between tables */
-      vertical-align: top; /* align tops evenly */
-    }
-
-    table {
-      border-collapse: collapse;
-      width: 328px;
-      /* border: 1px solid #ccc; */
-      margin: 0 auto;
-    }
-
-    th {
-      font-size: 20px;
-      padding: 10px;
-      text-align: left;
-      /* background-color: #f2f2f2; */
-    }
-
-    td {
-      padding: 9px;
-      font-size: 16px;
-      /* border-top: 1px solid #ddd; */
-    }
-
-    .subheading {
-      font-weight: bold;
-      background-color: #ffffff;
-       text-align: left;
-    }
-
-    .value {
-      font-size: 18px;
-      /* color: #0074D9; */
-      background-color: #ffffff;
-       text-align: left;
-    }
-
-    .gap{
-        height: 23px;
-    }
-    .infoBlock{
-        margin-left: 42px;
-        font-weight: bold;
-        font-size: 18px;
-    }
-        .wrapper {
-  width: 732px;
-  overflow-x: hidden;
-  background-color: #e7e7e7b9;
-  margin: 0 auto; 
-}
-  .downgap{
-  margin-bottom: 10px;
-}
-  
-  </style>
 </head>
-<body style="margin:0;  padding:0; font-family:Arial, sans-serif;">
+<body style="margin:0; padding:0; font-family:Arial, sans-serif;">
 
-    <div class="wrapper">
-    <div class="infoBlock">
-    <div  class="downgap" >Kunde ordre oplysninger:</div>
-  <div  class="downgap" >Ordren er oprettet: </div>
-  <div><div class="downgap">Order nr:${orderNumber}</div> <div  class="downgap">Navn på kunde:${customerDetails.firstName} ${customerDetails.lastName}</div> <div class="downgap">
+    <div class="wrapper" style="width: 732px; overflow-x: hidden; background-color: #e7e7e7b9; margin: 0 auto;">
+    <div class="infoBlock" style="margin-left: 42px; font-weight: bold; font-size: 18px;">
+    <div class="downgap" style="margin-bottom: 10px;">Kunde ordre oplysninger:</div>
+  <div class="downgap" style="margin-bottom: 10px;">Ordren er oprettet: </div>
+  <div><div class="downgap" style="margin-bottom: 10px;">Order nr:${orderNumber}</div> <div class="downgap" style="margin-bottom: 10px;">Navn på kunde:${customerDetails.firstName} ${customerDetails.lastName}</div> <div class="downgap" style="margin-bottom: 10px;">
         Skole:${customerDetails.Skolenavn}</div></div>
-  <div class="downgap">Ordre detaljer</div>
+  <div class="downgap" style="margin-bottom: 10px;">Ordre detaljer</div>
   <div style="margin-left: 327px; margin-bottom: 10px; margin-top: 4px;">${packageName}
 
   </div>
@@ -388,26 +320,26 @@ const factoryOrderEmail = (orderData) => {
   </div>
   <!-- First row of tables -->
   <div style="text-align:center;">
-    <div class="table-container">
-      <table>
+    <div class="table-container" style="display: inline-block; vertical-align: top;">
+      <table style="border-collapse: collapse; width: 328px; margin: 0 auto;">
        
       </table>
     </div>
 
-    <div class="table-container">
-      <table>
-        <tr><th>The cap</th></tr>
-        <tr><td class="subheading">Color of the cap</td></tr>
-        <tr><td class="value">${programColor}</td></tr>
+    <div class="table-container" style="display: inline-block; vertical-align: top;">
+      <table style="border-collapse: collapse; width: 328px; margin: 0 auto;">
+        <tr><th style="font-size: 20px; padding: 10px; text-align: left;">The cap</th></tr>
+        <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Color of the cap</td></tr>
+        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${programColor}</td></tr>
         
-        <tr class="gap"></tr>
+        <tr class="gap" style="height: 23px;"></tr>
 
-        <tr><td class="subheading">Material</td></tr>
-        <tr><td class="value">${selectedOptions.UDDANNELSESBÅND.Materiale}</td></tr>
-        <tr class="gap"></tr>
+        <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Material</td></tr>
+        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.UDDANNELSESBÅND.Materiale}</td></tr>
+        <tr class="gap" style="height: 23px;"></tr>
 
-        <tr><td class="subheading">Chinstrap</td></tr>
-        <tr><td class="value">${selectedOptions.UDDANNELSESBÅND.Hagerem}</td></tr>
+        <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Chinstrap</td></tr>
+        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.UDDANNELSESBÅND.Hagerem}</td></tr>
         
        
 
@@ -417,27 +349,27 @@ const factoryOrderEmail = (orderData) => {
 
   <!-- Second row (another set of side-by-side tables) -->
   <div style="text-align:center; margin-top:40px;">
-    <div class="table-container">
-      <table>
+    <div class="table-container" style="display: inline-block; vertical-align: top;">
+      <table style="border-collapse: collapse; width: 328px; margin: 0 auto;">
         <!-- Embroidery on frontside -->
-        <tr><th>Embroidery on frontside</th></tr>
+        <tr><th style="font-size: 20px; padding: 10px; text-align: left;">Embroidery on frontside</th></tr>
      
         ${!selectedOptions.UDDANNELSESBÅND["Broderi foran"]?
-        `<tr><td class="subheading" style="height: 67px;"></td></tr>
-        <tr><td class="value"></td></tr>
+        `<tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px; height: 67px;"></td></tr>
+        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;"></td></tr>
 
-        <tr class="gap"></tr>
-        <tr><td class="subheading" style="height: 67px;"></td></tr>
-        <tr><td class="value"></td></tr>
-        <tr class="gap"></tr>
+        <tr class="gap" style="height: 23px;"></tr>
+        <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px; height: 67px;"></td></tr>
+        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;"></td></tr>
+        <tr class="gap" style="height: 23px;"></tr>
         `:`
-          <tr><td class="subheading">Tekst maks. 20 tegn</td></tr>
-<tr><td class="value">${selectedOptions.UDDANNELSESBÅND["Broderi foran"]}</td></tr>
+          <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Tekst maks. 20 tegn</td></tr>
+<tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.UDDANNELSESBÅND["Broderi foran"]}</td></tr>
 
-<tr class="gap"></tr>
-<tr><td class="subheading">Embroidery color</td></tr>
-        <tr><td class="value">${selectedOptions.UDDANNELSESBÅND["Broderi farve"]}</td></tr>
-        <tr class="gap"></tr>
+<tr class="gap" style="height: 23px;"></tr>
+<tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Embroidery color</td></tr>
+        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.UDDANNELSESBÅND["Broderi farve"]}</td></tr>
+        <tr class="gap" style="height: 23px;"></tr>
           `}
         
        
@@ -446,117 +378,117 @@ const factoryOrderEmail = (orderData) => {
         
          
         <!-- Embroidery on the backside of the cap -->
-        <tr><th> Embroidery on the backside of the cap</th></tr>
+        <tr><th style="font-size: 20px; padding: 10px; text-align: left;"> Embroidery on the backside of the cap</th></tr>
         
         
        ${!selectedOptions.BRODERI || !selectedOptions.BRODERI["Navne broderi"] ? `
-         <tr><td class="subheading" style="height: 67px;"></td></tr>
-        <tr><td class="value"></td></tr>
-        <tr class="gap"></tr>
-         <tr><td class="subheading" style="height: 67px;"></td></tr>
-        <tr><td class="value"></td></tr>
-        <tr class="gap"></tr>` :
+         <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px; height: 67px;"></td></tr>
+        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;"></td></tr>
+        <tr class="gap" style="height: 23px;"></tr>
+         <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px; height: 67px;"></td></tr>
+        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;"></td></tr>
+        <tr class="gap" style="height: 23px;"></tr>` :
       `
-          <tr><td class="subheading">Name embroidery (Tekst) maks. 26</td></tr>
-        <tr><td class="value">${selectedOptions.BRODERI["Navne broderi"]}</td></tr>
-        <tr class="gap"></tr>
-         <tr><td class="subheading">Embroidery color </td></tr>
-        <tr><td class="value">${selectedOptions.BRODERI?.Broderifarve || 'Not chosen'}</td></tr>
-        <tr class="gap"></tr>`}
+          <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Name embroidery (Tekst) maks. 26</td></tr>
+        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.BRODERI["Navne broderi"]}</td></tr>
+        <tr class="gap" style="height: 23px;"></tr>
+         <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Embroidery color </td></tr>
+        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.BRODERI?.Broderifarve || 'Not chosen'}</td></tr>
+        <tr class="gap" style="height: 23px;"></tr>`}
        
        
        
-        ${!selectedOptions.BRODERI || !selectedOptions.BRODERI.Skolebroderi ? `<tr><td class="subheading" style="height: 67px;"></td></tr>
-        <tr><td class="value"></td></tr>
-        <tr class="gap"></tr>
+        ${!selectedOptions.BRODERI || !selectedOptions.BRODERI.Skolebroderi ? `<tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px; height: 67px;"></td></tr>
+        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;"></td></tr>
+        <tr class="gap" style="height: 23px;"></tr>
 
-        <tr><td class="subheading" style="height: 67px;"></td></tr>
-        <tr><td class="value"></td></tr>
-        <tr class="gap"></tr>` : `
-          <tr><td class="subheading">School embroidery (Tekst) maks. 35</td></tr>
-        <tr><td class="value">${selectedOptions.BRODERI.Skolebroderi}</td></tr>
-        <tr class="gap"></tr>
+        <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px; height: 67px;"></td></tr>
+        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;"></td></tr>
+        <tr class="gap" style="height: 23px;"></tr>` : `
+          <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">School embroidery (Tekst) maks. 35</td></tr>
+        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.BRODERI.Skolebroderi}</td></tr>
+        <tr class="gap" style="height: 23px;"></tr>
 
-        <tr><td class="subheading">Embroidery color </td></tr>
-        <tr><td class="value">${selectedOptions.BRODERI?.['Skolebroderi farve'] || 'Not chosen'}</td></tr>
-        <tr class="gap"></tr>`}
+        <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Embroidery color </td></tr>
+        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.BRODERI?.['Skolebroderi farve'] || 'Not chosen'}</td></tr>
+        <tr class="gap" style="height: 23px;"></tr>`}
        
         
-        <tr><td class="subheading">Buttons color</td></tr>
-        <tr><td class="value">${selectedOptions.UDDANNELSESBÅND['Knap farve']}</td></tr>
-        <tr class="gap"></tr>
-        <tr><td class="subheading">Year</td></tr>
-        <tr><td class="value">${selectedOptions.UDDANNELSESBÅND.år}</td></tr>
-        <tr class="gap"></tr>
+        <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Buttons color</td></tr>
+        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.UDDANNELSESBÅND['Knap farve']}</td></tr>
+        <tr class="gap" style="height: 23px;"></tr>
+        <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Year</td></tr>
+        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.UDDANNELSESBÅND.år}</td></tr>
+        <tr class="gap" style="height: 23px;"></tr>
         
         <!-- brim -->
-        <tr><th>Brim</th></tr>
-        <tr><td class="subheading">Type</td></tr>
-        <tr><td class="value">${selectedOptions.SKYGGE.Type}</td></tr> 
-        <tr class="gap"></tr>
-        <tr><td class="subheading">Material </td></tr>
-        <tr><td class="value">${selectedOptions.SKYGGE.Materiale}</td></tr>
-        <tr class="gap"></tr>
-        <tr><td class="subheading">Shadow band</td></tr>
-        <tr><td class="value">${selectedOptions.SKYGGE.Skyggebånd}</td></tr>
-        <tr class="gap"></tr>
-       <tr><td class="subheading">Linje 1</td></tr>
-<tr><td class="value">${!selectedOptions.SKYGGE["Skyggegravering Line 1"] 
+        <tr><th style="font-size: 20px; padding: 10px; text-align: left;">Brim</th></tr>
+        <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Type</td></tr>
+        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.SKYGGE.Type}</td></tr> 
+        <tr class="gap" style="height: 23px;"></tr>
+        <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Material </td></tr>
+        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.SKYGGE.Materiale}</td></tr>
+        <tr class="gap" style="height: 23px;"></tr>
+        <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Shadow band</td></tr>
+        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.SKYGGE.Skyggebånd}</td></tr>
+        <tr class="gap" style="height: 23px;"></tr>
+       <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Linje 1</td></tr>
+<tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${!selectedOptions.SKYGGE["Skyggegravering Line 1"] 
       ? 'Ikke valgt'
       : selectedOptions.SKYGGE["Skyggegravering Line 1"]
     }</td></tr>
-<tr class="gap"></tr>
+<tr class="gap" style="height: 23px;"></tr>
 
-<tr><td class="subheading">Linje 3</td></tr>
-<tr><td class="value">${!selectedOptions.SKYGGE["Skyggegravering Line 3"] 
+<tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Linje 3</td></tr>
+<tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${!selectedOptions.SKYGGE["Skyggegravering Line 3"] 
       ? 'Ikke valgt'
       : selectedOptions.SKYGGE["Skyggegravering Line 3"]
     }</td></tr>
-<tr class="gap"></tr>
+<tr class="gap" style="height: 23px;"></tr>
 
        
-        <tr class="gap"></tr>
-        <tr class="gap"></tr>
-        <tr class="gap"></tr>
-        <tr class="gap"></tr>
-        <tr class="gap"></tr>
-        <tr class="gap"></tr>
-        <tr class="gap"></tr>
-        <tr class="gap"></tr>
-        <tr class="gap"></tr>
-        <tr class="gap"></tr>
+        <tr class="gap" style="height: 23px;"></tr>
+        <tr class="gap" style="height: 23px;"></tr>
+        <tr class="gap" style="height: 23px;"></tr>
+        <tr class="gap" style="height: 23px;"></tr>
+        <tr class="gap" style="height: 23px;"></tr>
+        <tr class="gap" style="height: 23px;"></tr>
+        <tr class="gap" style="height: 23px;"></tr>
+        <tr class="gap" style="height: 23px;"></tr>
+        <tr class="gap" style="height: 23px;"></tr>
+        <tr class="gap" style="height: 23px;"></tr>
        
         
 
         <!-- Extra Cover -->
-        <tr><th>Extra Cover</th></tr>
-        <tr><td class="subheading">Option</td></tr>
-        <tr><td class="value">${selectedOptions.EKSTRABETRÆK.Tilvælg === 'Yes' ? 'Ja' : 'Fravalgt'}</td></tr> 
-        <tr class="gap"></tr>
+        <tr><th style="font-size: 20px; padding: 10px; text-align: left;">Extra Cover</th></tr>
+        <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Option</td></tr>
+        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.EKSTRABETRÆK.Tilvælg === 'Yes' ? 'Ja' : 'Fravalgt'}</td></tr> 
+        <tr class="gap" style="height: 23px;"></tr>
         
           ${selectedOptions.EKSTRABETRÆK.Tilvælg === 'Yes'
       ? `
-        <tr><td class="subheading">Color</td></tr>
-        <tr><td class="value">${selectedOptions.EKSTRABETRÆK.Farve}</td></tr>
-        <tr class="gap"></tr>
-        <tr><td class="subheading">Top edging</td></tr>
-        <tr><td class="value">${selectedOptions.EKSTRABETRÆK.Topkant}</td></tr>
-        <tr class="gap"></tr>
-        <tr><td class="subheading">Edge ribbon</td></tr>
-        <tr><td class="value">${selectedOptions.EKSTRABETRÆK.Kantbånd}</td></tr>
-        <tr class="gap"></tr>
-        <tr><td class="subheading">Flag ribbon</td></tr>
-        <tr><td class="value">${!selectedOptions.EKSTRABETRÆK.Flagbånd ? 'Fravalgt' : selectedOptions.EKSTRABETRÆK}</td></tr>
-        <tr class="gap"></tr>
-        <tr><td class="subheading">Stars (Color matches the emblem)</td></tr>
-        <tr><td class="value">${selectedOptions.KOKARDE.Emblem.name}</td></tr>
-        <tr class="gap"></tr>
-        <tr><td class="subheading">School embroidery</td></tr>
-        <tr><td class="value">${selectedOptions.BRODERI.Skolebroderi}</td></tr>
-        <tr class="gap"></tr>
-        <tr><td class="subheading">Color (color of embroidery)</td></tr>
-        <tr><td class="value">${selectedOptions.BRODERI['Skolebroderi farve']}</td></tr>
-        <tr class="gap"></tr>
+        <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Color</td></tr>
+        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.EKSTRABETRÆK.Farve}</td></tr>
+        <tr class="gap" style="height: 23px;"></tr>
+        <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Top edging</td></tr>
+        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.EKSTRABETRÆK.Topkant}</td></tr>
+        <tr class="gap" style="height: 23px;"></tr>
+        <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Edge ribbon</td></tr>
+        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.EKSTRABETRÆK.Kantbånd}</td></tr>
+        <tr class="gap" style="height: 23px;"></tr>
+        <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Flag ribbon</td></tr>
+        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${!selectedOptions.EKSTRABETRÆK.Flagbånd ? 'Fravalgt' : selectedOptions.EKSTRABETRÆK}</td></tr>
+        <tr class="gap" style="height: 23px;"></tr>
+        <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Stars (Color matches the emblem)</td></tr>
+        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.KOKARDE.Emblem.name}</td></tr>
+        <tr class="gap" style="height: 23px;"></tr>
+        <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">School embroidery</td></tr>
+        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.BRODERI.Skolebroderi}</td></tr>
+        <tr class="gap" style="height: 23px;"></tr>
+        <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Color (color of embroidery)</td></tr>
+        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.BRODERI['Skolebroderi farve']}</td></tr>
+        <tr class="gap" style="height: 23px;"></tr>
       `
       : ''
     }
@@ -566,14 +498,14 @@ const factoryOrderEmail = (orderData) => {
         
         
         <!-- Size -->
-        <tr><th>Size</th></tr>
-        <tr><td class="subheading">Choosen size (Size)</td></tr>
-        <tr><td class="value">${selectedOptions.STØRRELSE["Millimeter tilpasningssæt"] === 'Yes' ? 'Ja' : 'Fravalgt'}</td></tr> 
-        <tr class="gap"></tr>
-        <tr><td class="subheading">Foam to adjust the size</td></tr>
-        <tr><td class="value">${selectedOptions.STØRRELSE["Vælg størrelse"]}</td></tr>
-        <tr class="gap"></tr>
-        <tr class="gap"></tr>
+        <tr><th style="font-size: 20px; padding: 10px; text-align: left;">Size</th></tr>
+        <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Choosen size (Size)</td></tr>
+        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.STØRRELSE["Millimeter tilpasningssæt"] === 'Yes' ? 'Ja' : 'Fravalgt'}</td></tr> 
+        <tr class="gap" style="height: 23px;"></tr>
+        <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Foam to adjust the size</td></tr>
+        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.STØRRELSE["Vælg størrelse"]}</td></tr>
+        <tr class="gap" style="height: 23px;"></tr>
+        <tr class="gap" style="height: 23px;"></tr>
         
        
 
@@ -581,92 +513,92 @@ const factoryOrderEmail = (orderData) => {
       </table>
     </div>
 
-    <div class="table-container">
-      <table>
+    <div class="table-container" style="display: inline-block; vertical-align: top;">
+      <table style="border-collapse: collapse; width: 328px; margin: 0 auto;">
         <!-- Cover -->
-       <tr><th>Betræk </th></tr>
-        <tr><td class="subheading">Farve</td></tr>
-        <tr><td class="value">${selectedOptions.BETRÆK.Farve}</td></tr>
-        <tr class="gap"></tr>
-       <tr><td class="subheading">Topkant</td></tr>
-<tr><td class="value">${selectedOptions.BETRÆK.Topkant === 'NONE' || selectedOptions.BETRÆK.Topkant === 'None' ? 'Ingen' : selectedOptions.BETRÆK.Topkant}</td></tr>
-<tr class="gap"></tr>
+       <tr><th style="font-size: 20px; padding: 10px; text-align: left;">Betræk </th></tr>
+        <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Farve</td></tr>
+        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.BETRÆK.Farve}</td></tr>
+        <tr class="gap" style="height: 23px;"></tr>
+       <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Topkant</td></tr>
+<tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.BETRÆK.Topkant === 'NONE' || selectedOptions.BETRÆK.Topkant === 'None' ? 'Ingen' : selectedOptions.BETRÆK.Topkant}</td></tr>
+<tr class="gap" style="height: 23px;"></tr>
 
-<tr><td class="subheading">Kantbånd</td></tr>
-<tr><td class="value">${selectedOptions.BETRÆK.Kantbånd === 'NONE' || selectedOptions.BETRÆK.Kantbånd === 'None' ? 'Ingen' : selectedOptions.BETRÆK.Kantbånd}</td></tr>
-<tr class="gap"></tr>
+<tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Kantbånd</td></tr>
+<tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.BETRÆK.Kantbånd === 'NONE' || selectedOptions.BETRÆK.Kantbånd === 'None' ? 'Ingen' : selectedOptions.BETRÆK.Kantbånd}</td></tr>
+<tr class="gap" style="height: 23px;"></tr>
 
-<tr><td class="subheading">Stjerner</td></tr>
-<tr><td class="value">${selectedOptions.BETRÆK.Stjerner === 'NONE' || selectedOptions.BETRÆK.Stjerner === 'None' ? 'Ingen' : selectedOptions.BETRÆK.Stjerner}</td></tr>
+<tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Stjerner</td></tr>
+<tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.BETRÆK.Stjerner === 'NONE' || selectedOptions.BETRÆK.Stjerner === 'None' ? 'Ingen' : selectedOptions.BETRÆK.Stjerner}</td></tr>
 
-        <tr class="gap"></tr>
-        <tr><td class="subheading">Stjerner farve</td></tr>
-        <tr><td class="value">${selectedOptions.KOKARDE.Emblem.name}</td></tr>
-        <tr class="gap"></tr>
-        <tr><td class="subheading">Flagbånd</td></tr>
-        <tr><td class="value">${!selectedOptions.BETRÆK.Flagbånd ? 'Fravalgt' : selectedOptions.BETRÆK.Flagbånd}</td></tr>
-        <tr class="gap"></tr>
+        <tr class="gap" style="height: 23px;"></tr>
+        <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Stjerner farve</td></tr>
+        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.KOKARDE.Emblem.name}</td></tr>
+        <tr class="gap" style="height: 23px;"></tr>
+        <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Flagbånd</td></tr>
+        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${!selectedOptions.BETRÆK.Flagbånd ? 'Fravalgt' : selectedOptions.BETRÆK.Flagbånd}</td></tr>
+        <tr class="gap" style="height: 23px;"></tr>
         
-        <tr class="gap"></tr>
-        <tr class="gap"></tr>
-        <tr class="gap"></tr>
-        <tr class="gap"></tr>
-        <tr class="gap"></tr>
-        <tr class="gap"></tr>
-        <tr class="gap"></tr>
-        <tr class="gap"></tr>
-        <tr class="gap"></tr>
-        <tr class="gap"></tr>
-        <tr class="gap"></tr>
-        <tr class="gap"></tr>
-        <tr class="gap"></tr>
+        <tr class="gap" style="height: 23px;"></tr>
+        <tr class="gap" style="height: 23px;"></tr>
+        <tr class="gap" style="height: 23px;"></tr>
+        <tr class="gap" style="height: 23px;"></tr>
+        <tr class="gap" style="height: 23px;"></tr>
+        <tr class="gap" style="height: 23px;"></tr>
+        <tr class="gap" style="height: 23px;"></tr>
+        <tr class="gap" style="height: 23px;"></tr>
+        <tr class="gap" style="height: 23px;"></tr>
+        <tr class="gap" style="height: 23px;"></tr>
+        <tr class="gap" style="height: 23px;"></tr>
+        <tr class="gap" style="height: 23px;"></tr>
+        <tr class="gap" style="height: 23px;"></tr>
         
         <!-- Inside of the cap -->
-        <tr><th>Inside of the cap </th></tr>
-        <tr><td class="subheading">Sweatband </td></tr>
-        <tr><td class="value">${selectedOptions.FOER.Svederem}</td></tr>
+        <tr><th style="font-size: 20px; padding: 10px; text-align: left;">Inside of the cap </th></tr>
+        <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Sweatband </td></tr>
+        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.FOER.Svederem}</td></tr>
         
-        <tr class="gap"></tr>
+        <tr class="gap" style="height: 23px;"></tr>
 
-        <tr><td class="subheading">Color</td></tr>
-        <tr><td class="value">${selectedOptions.FOER.Farve}</td></tr>
-        <tr class="gap"></tr>
+        <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Color</td></tr>
+        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.FOER.Farve}</td></tr>
+        <tr class="gap" style="height: 23px;"></tr>
 
-        <tr><td class="subheading">Bow</td></tr>
-        <tr><td class="value">${selectedOptions.FOER.Sløjfe}</td></tr>
-        <tr class="gap"></tr>
+        <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Bow</td></tr>
+        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.FOER.Sløjfe}</td></tr>
+        <tr class="gap" style="height: 23px;"></tr>
         
        
 
-        <tr><td class="subheading">Linje 2</td></tr>
-        <tr><td class="value">${!selectedOptions.SKYGGE["Skyggegravering Line 2"] 
+        <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Linje 2</td></tr>
+        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${!selectedOptions.SKYGGE["Skyggegravering Line 2"] 
       ? 'Ikke valgt'
       : selectedOptions.SKYGGE["Skyggegravering Line 2"]
     }</td></tr>
-        <tr class="gap"></tr>
+        <tr class="gap" style="height: 23px;"></tr>
 
-        <tr><td class="subheading">Inner band</td></tr>
-        <tr><td class="value">${selectedOptions.FOER.Foer}</td></tr>
-        <tr class="gap"></tr>
-        <tr><td class="subheading">Silk Type</td></tr>
-        <tr><td class="value">${!selectedOptions.FOER['Satin Type'] ? 'Ikke valgt' : selectedOptions.FOER['Satin Type']}</td></tr>
-        <tr class="gap"></tr>
-        <tr><td class="subheading">Satin Type</td></tr>
-        <tr><td class="value">${!selectedOptions.FOER['Silk Type'] ? 'Ikke valgt' : selectedOptions.FOER['Silk Type']}</td></tr>
+        <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Inner band</td></tr>
+        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.FOER.Foer}</td></tr>
+        <tr class="gap" style="height: 23px;"></tr>
+        <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Silk Type</td></tr>
+        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${!selectedOptions.FOER['Satin Type'] ? 'Ikke valgt' : selectedOptions.FOER['Satin Type']}</td></tr>
+        <tr class="gap" style="height: 23px;"></tr>
+        <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Satin Type</td></tr>
+        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${!selectedOptions.FOER['Silk Type'] ? 'Ikke valgt' : selectedOptions.FOER['Silk Type']}</td></tr>
         
         
         <tr style='height:26px;'></tr>
         
         <!-- Tilbehør -->
-        <tr><th>Tilbehør</th></tr>
-        <tr><td class="subheading">Silk cushion</td></tr>
-        <tr><td class="value">${selectedOptions.TILBEHØR.Silkepude === 'Yes' ? 'Ja' : 'Fravalgt'}</td></tr>
+        <tr><th style="font-size: 20px; padding: 10px; text-align: left;">Tilbehør</th></tr>
+        <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Silk cushion</td></tr>
+        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.TILBEHØR.Silkepude === 'Yes' ? 'Ja' : 'Fravalgt'}</td></tr>
         
-        <tr class="gap"></tr>
+        <tr class="gap" style="height: 23px;"></tr>
 
-        <tr><td class="subheading">Small flag</td></tr>
-        <tr><td class="value">${!selectedOptions.TILBEHØR['Lille Flag Text'] ? 'Fravalgt' : selectedOptions.TILBEHØR['Lille Flag Text']}</td></tr>
-        <tr class="gap"></tr>
+        <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Small flag</td></tr>
+        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${!selectedOptions.TILBEHØR['Lille Flag Text'] ? 'Fravalgt' : selectedOptions.TILBEHØR['Lille Flag Text']}</td></tr>
+        <tr class="gap" style="height: 23px;"></tr>
       
     </table>
     </div>
@@ -675,7 +607,6 @@ const factoryOrderEmail = (orderData) => {
 
 </body>
 </html>
-
 `;
 
 
@@ -993,7 +924,7 @@ const capOrderEmail = (orderData) => {
   </style>
 </head>
 <body style="margin:0;  padding:0; font-family:Arial, sans-serif;  ">
-<img src="https://elipsestudio.com/studentlife/studentlifeemail1.jpg" 
+<img src="https://res.cloudinary.com/ds1ogapco/image/upload/v1761063050/01_q0pctl.png" 
      alt="Studentlife caps" 
      style=" display: block; margin: 0 auto; border-radius: 0;">
   <div class="wrapper">
