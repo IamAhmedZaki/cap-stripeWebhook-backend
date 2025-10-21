@@ -9,9 +9,5 @@ router.post(
   webhookController.stripeWebhook
 );
 
-router.post(
-  "/testEmail",
-  webhookController.emailTester
-);
 
 module.exports = router;
