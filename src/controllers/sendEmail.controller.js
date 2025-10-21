@@ -909,6 +909,9 @@ const capOrderEmail = (orderData) => {
     font-weight: bold;
     font-size: 20px;
 }
+    .marginwala{
+    margin-right:10px;
+    }
     
   </style>
 <body style="margin:0; padding:0; font-family:Arial, sans-serif;">
@@ -945,7 +948,7 @@ const capOrderEmail = (orderData) => {
     <div class="downgap" style="margin-bottom: 10px;">Ordren er oprettet: </div>
     <div class="gap" style="height: 20px;"></div>
   <div><div class="downgap orderNumber" style="margin-bottom: 10px; background-color: #e7e7e7; padding: 17px; width: 657px;">Order nr: ${orderNumber}</div></div>
- <div class="table-container2" style="display: inline-block; vertical-align: top; background:#e7e7e7;">
+ <div class="table-container2 marginwala" style="display: inline-block; vertical-align: top; background:#e7e7e7; margin-right: 10px;">
   <table style="border-collapse: collapse; width: 342px; margin: 0 auto;">
     <tr><th style="font-size: 20px; padding: 10px; text-align: left;">Betalingsoplysninger</th></tr>
     <tr class="gap" style="height: 20px;"></tr>
