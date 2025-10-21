@@ -814,7 +814,7 @@ const capOrderEmail = (orderData) => {
   <title>Two Tables Side by Side</title>
 </head>
 <body style="margin:0; padding:0; font-family:Arial, sans-serif;">
-<img src="https://elipsestudio.com/studentlife/studentlifeemail1.jpg" 
+<img src="https://res.cloudinary.com/ds1ogapco/image/upload/v1761063050/01_q0pctl.png" 
      alt="Studentlife caps" 
      style="display: block; margin: 0 auto; border-radius: 0;">
   <div class="wrapper" style="width: 732px; overflow-x: hidden; background-color: #ffffff; margin: 0 auto;">
