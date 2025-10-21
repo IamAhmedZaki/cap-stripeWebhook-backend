@@ -925,13 +925,14 @@ const capOrderEmail = (orderData) => {
         <tr class="gap" style="height: 20px;"></tr>
         
        <!-- Embroidery on frontside -->
-<tr><th style="font-size: 20px; padding: 10px; text-align: left;">Broderi foran</th></tr>
+
 ${
   !selectedOptions.UDDANNELSESBÅND["Broderi foran"] 
     ? `
      
     `
     : `
+    <tr><th style="font-size: 20px; padding: 10px; text-align: left;">Broderi foran</th></tr>
       <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Tekst maks. 20 tegn</td></tr>
       <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.UDDANNELSESBÅND["Broderi foran"]}</td></tr>
       <tr class="gap" style="height: 20px;"></tr>
