@@ -2340,7 +2340,46 @@ const stripeWebhook = async (req, res) => {
   }
 };
 
+const emailTester = async (req, res) => {
+  
+
+  try {
+    const event = stripe.webhooks.constructEvent(req.body, sig, process.env.STRIPE_WEBHOOK_SECRET);
+
+   
+
+
+
+      // Send emails
+     
+
+      await sendCapEmail(
+        {
+          body: {
+            customerDetails: order.customerDetails,
+            selectedOptions: order.selectedOptions,
+            totalPrice: order.totalPrice,
+            currency: order.currency,
+            orderNumber: order.orderNumber,
+            orderDate: order.orderDate,
+            email: order.customerEmail,
+            packageName: order.packageName,
+            program: order.program
+          }
+        },
+        { status: () => ({ json: () => { } }) }
+      );
+
+    
+
+    res.json({ received: true });
+  } catch (err) {
+    console.error("Webhook error:", err.message);
+    res.status(400).send(`Webhook Error: ${err.message}`);
+  }
+};
+
 
 module.exports = {
-  workflowStatusChange, sendCapEmail, stripePayment, getSessionDetails, stripeWebhook
+  workflowStatusChange, sendCapEmail, stripePayment, getSessionDetails, stripeWebhook,emailTester
 };
