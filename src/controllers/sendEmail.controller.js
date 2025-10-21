@@ -1566,7 +1566,7 @@ const capOrderAdminEmail = (orderData) => {
   
   <!-- Second row (another set of side-by-side tables) -->
   <div style="text-align:center; margin-top:40px;">
-    <div class="table-container" style="display: inline-block; vertical-align: top;">
+    <div class="table-container" style="display: inline-block; vertical-align: top padding-right:10px;">
       <table style="border-collapse: collapse; width: 342px; margin: 0 auto;">
         <!-- Kokarde -->
         <tr><th style="font-size: 20px; padding: 10px; text-align: left;">Kokarde</th></tr>
