@@ -2342,10 +2342,20 @@ const stripeWebhook = async (req, res) => {
 };
 
 const emailTester = async (req, res) => {
-  
+    const {
+      customerDetails,
+      selectedOptions,
+      totalPrice,
+      currency,
+      orderNumber,
+      orderDate,
+      email,
+      packageName,
+      program
+    } = req.body;
 
   try {
-    const event = stripe.webhooks.constructEvent(req.body, sig, process.env.STRIPE_WEBHOOK_SECRET);
+    // const event = stripe.webhooks.constructEvent(req.body, sig, process.env.STRIPE_WEBHOOK_SECRET);
 
    
 
@@ -2357,15 +2367,15 @@ const emailTester = async (req, res) => {
       await sendCapEmail(
         {
           body: {
-            customerDetails: order.customerDetails,
-            selectedOptions: order.selectedOptions,
-            totalPrice: order.totalPrice,
-            currency: order.currency,
-            orderNumber: order.orderNumber,
-            orderDate: order.orderDate,
-            email: order.customerEmail,
-            packageName: order.packageName,
-            program: order.program
+            customerDetails: customerDetails,
+            selectedOptions: selectedOptions,
+            totalPrice: totalPrice,
+            currency: currency,
+            orderNumber: orderNumber,
+            orderDate: orderDate,
+            email: email,
+            packageName: packageName,
+            program: program
           }
         },
         { status: () => ({ json: () => { } }) }
