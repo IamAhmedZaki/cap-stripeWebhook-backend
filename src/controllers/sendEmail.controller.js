@@ -501,14 +501,14 @@ const factoryOrderEmail = (orderData) => {
         <tr><td class="value">${selectedOptions.SKYGGE.Skyggebånd}</td></tr>
         <tr class="gap"></tr>
        <tr><td class="subheading">Linje 1</td></tr>
-<tr><td class="value">${!selectedOptions.SKYGGE["Skyggegravering Line 1"] === ''
+<tr><td class="value">${!selectedOptions.SKYGGE["Skyggegravering Line 1"] 
       ? 'Ikke valgt'
       : selectedOptions.SKYGGE["Skyggegravering Line 1"]
     }</td></tr>
 <tr class="gap"></tr>
 
 <tr><td class="subheading">Linje 3</td></tr>
-<tr><td class="value">${!selectedOptions.SKYGGE["Skyggegravering Line 3"] === ''
+<tr><td class="value">${!selectedOptions.SKYGGE["Skyggegravering Line 3"] 
       ? 'Ikke valgt'
       : selectedOptions.SKYGGE["Skyggegravering Line 3"]
     }</td></tr>
@@ -1873,7 +1873,7 @@ const capOrderAdminEmail = (orderData) => {
        <!-- Embroidery on frontside -->
 <tr><th>Broderi foran</th></tr>
 ${
-  !selectedOptions.UDDANNELSESBÅND["Broderi foran"] == false
+  !selectedOptions.UDDANNELSESBÅND["Broderi foran"] 
     ? `
       <tr><td class="subheading" style="height: 67px;"></td></tr>
       <tr><td class="value"></td></tr>
@@ -1945,10 +1945,10 @@ ${!selectedOptions.BRODERI || !selectedOptions.BRODERI.Skolebroderi  ?`<tr><td c
 <tr><td class="value">${selectedOptions.SKYGGE.Skyggebånd}</td></tr>
 <tr class="gap"></tr>
 <tr><td class="subheading">Linje 1</td></tr>
-<tr><td class="value">${selectedOptions.SKYGGE["Skyggegravering Line 1"] === '' ? 'Ikke valgt' : selectedOptions.SKYGGE["Skyggegravering Line 1"]}</td></tr>
+<tr><td class="value">${!selectedOptions.SKYGGE["Skyggegravering Line 1"]  ? 'Ikke valgt' : selectedOptions.SKYGGE["Skyggegravering Line 1"]}</td></tr>
 <tr class="gap"></tr>
 <tr><td class="subheading">Linje 3</td></tr>
-<tr><td class="value">${selectedOptions.SKYGGE["Skyggegravering Line 3"] === '' ? 'Ikke valgt' : selectedOptions.SKYGGE["Skyggegravering Line 3"]}</td></tr>
+<tr><td class="value">${!selectedOptions.SKYGGE["Skyggegravering Line 3"]  ? 'Ikke valgt' : selectedOptions.SKYGGE["Skyggegravering Line 3"]}</td></tr>
 <tr class="gap"></tr>
 <tr class="gap"></tr>
 <tr class="gap"></tr>
