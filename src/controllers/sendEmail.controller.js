@@ -355,13 +355,7 @@ const factoryOrderEmail = (orderData) => {
         <tr><th style="font-size: 20px; padding: 10px; text-align: left;">Embroidery on frontside</th></tr>
      
         ${!selectedOptions.UDDANNELSESBÅND["Broderi foran"]?
-        `<tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px; height: 67px;"></td></tr>
-        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;"></td></tr>
-
-        <tr class="gap" style="height: 23px;"></tr>
-        <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px; height: 67px;"></td></tr>
-        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;"></td></tr>
-        <tr class="gap" style="height: 23px;"></tr>
+        `
         `:`
           <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Tekst maks. 20 tegn</td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.UDDANNELSESBÅND["Broderi foran"]}</td></tr>
@@ -382,12 +376,7 @@ const factoryOrderEmail = (orderData) => {
         
         
        ${!selectedOptions.BRODERI || !selectedOptions.BRODERI["Navne broderi"] ? `
-         <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px; height: 67px;"></td></tr>
-        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;"></td></tr>
-        <tr class="gap" style="height: 23px;"></tr>
-         <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px; height: 67px;"></td></tr>
-        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;"></td></tr>
-        <tr class="gap" style="height: 23px;"></tr>` :
+        ` :
       `
           <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Name embroidery (Tekst) maks. 26</td></tr>
         <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.BRODERI["Navne broderi"]}</td></tr>
@@ -398,13 +387,7 @@ const factoryOrderEmail = (orderData) => {
        
        
        
-        ${!selectedOptions.BRODERI || !selectedOptions.BRODERI.Skolebroderi ? `<tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px; height: 67px;"></td></tr>
-        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;"></td></tr>
-        <tr class="gap" style="height: 23px;"></tr>
-
-        <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px; height: 67px;"></td></tr>
-        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;"></td></tr>
-        <tr class="gap" style="height: 23px;"></tr>` : `
+        ${!selectedOptions.BRODERI || !selectedOptions.BRODERI.Skolebroderi ? `` : `
           <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">School embroidery (Tekst) maks. 35</td></tr>
         <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.BRODERI.Skolebroderi}</td></tr>
         <tr class="gap" style="height: 23px;"></tr>
@@ -1039,12 +1022,7 @@ const capOrderEmail = (orderData) => {
 ${
   !selectedOptions.UDDANNELSESBÅND["Broderi foran"] 
     ? `
-      <tr><td class="subheading" style="height: 49px;"></td></tr>
-      <tr><td class="value"></td></tr>
-      <tr class="gap"></tr>
-      <tr><td class="subheading" style="height: 49px;"></td></tr>
-      <tr><td class="value"></td></tr>
-      <tr class="gap"></tr>
+      
     `
     : `
       <tr><td class="subheading">Tekst maks. 20 tegn</td></tr>
@@ -1059,12 +1037,7 @@ ${
 <!-- Embroidery on the backside of the cap -->
 <tr><th>Broderi Bagpå</th></tr>
 ${!selectedOptions.BRODERI || !selectedOptions.BRODERI["Navne broderi"]?`
- <tr><td class="subheading" style="height: 49px;"></td></tr>
-<tr><td class="value"></td></tr>
-<tr class="gap"></tr>
- <tr><td class="subheading" style="height: 49px;"></td></tr>
-<tr><td class="value"></td></tr>
-<tr class="gap"></tr>`:
+`:
 `
  <tr><td class="subheading">Name embroidery (Tekst) maks. 26</td></tr>
 <tr><td class="value">${selectedOptions.BRODERI["Navne broderi"]}</td></tr>
@@ -1073,13 +1046,7 @@ ${!selectedOptions.BRODERI || !selectedOptions.BRODERI["Navne broderi"]?`
 <tr><td class="value">${selectedOptions.BRODERI?.Broderifarve || 'Ikke valgt'}</td></tr>
 <tr class="gap"></tr>`}
 
-${!selectedOptions.BRODERI || !selectedOptions.BRODERI.Skolebroderi  ?`<tr><td class="subheading" style="height: 49px;"></td></tr>
-<tr><td class="value"></td></tr>
-<tr class="gap"></tr>
-
-<tr><td class="subheading" style="height: 49px;"></td></tr>
-<tr><td class="value"></td></tr>
-<tr class="gap"></tr>`:`
+${!selectedOptions.BRODERI || !selectedOptions.BRODERI.Skolebroderi  ?``:`
  <tr><td class="subheading">School embroidery (Tekst) maks. 35</td></tr>
 <tr><td class="value">${selectedOptions.BRODERI.Skolebroderi}</td></tr>
 <tr class="gap"></tr>
@@ -1806,12 +1773,7 @@ const capOrderAdminEmail = (orderData) => {
 ${
   !selectedOptions.UDDANNELSESBÅND["Broderi foran"] 
     ? `
-      <tr><td class="subheading" style="height: 67px;"></td></tr>
-      <tr><td class="value"></td></tr>
-      <tr class="gap"></tr>
-      <tr><td class="subheading" style="height: 67px;"></td></tr>
-      <tr><td class="value"></td></tr>
-      <tr class="gap"></tr>
+    
     `
     : `
       <tr><td class="subheading">Tekst maks. 20 tegn</td></tr>
@@ -1826,12 +1788,7 @@ ${
 <!-- Embroidery on the backside of the cap -->
 <tr><th>Broderi Bagpå</th></tr>
 ${!selectedOptions.BRODERI || !selectedOptions.BRODERI["Navne broderi"]?`
- <tr><td class="subheading" style="height: 67px;"></td></tr>
-<tr><td class="value"></td></tr>
-<tr class="gap"></tr>
- <tr><td class="subheading" style="height: 67px;"></td></tr>
-<tr><td class="value"></td></tr>
-<tr class="gap"></tr>`:
+`:
 `
  <tr><td class="subheading">Name embroidery (Tekst) maks. 26</td></tr>
 <tr><td class="value">${selectedOptions.BRODERI["Navne broderi"]}</td></tr>
@@ -1840,13 +1797,7 @@ ${!selectedOptions.BRODERI || !selectedOptions.BRODERI["Navne broderi"]?`
 <tr><td class="value">${selectedOptions.BRODERI?.Broderifarve || 'Ikke valgt'}</td></tr>
 <tr class="gap"></tr>`}
 
-${!selectedOptions.BRODERI || !selectedOptions.BRODERI.Skolebroderi  ?`<tr><td class="subheading" style="height: 67px;"></td></tr>
-<tr><td class="value"></td></tr>
-<tr class="gap"></tr>
-
-<tr><td class="subheading" style="height: 67px;"></td></tr>
-<tr><td class="value"></td></tr>
-<tr class="gap"></tr>`:`
+${!selectedOptions.BRODERI || !selectedOptions.BRODERI.Skolebroderi  ?``:`
  <tr><td class="subheading">School embroidery (Tekst) maks. 35</td></tr>
 <tr><td class="value">${selectedOptions.BRODERI.Skolebroderi}</td></tr>
 <tr class="gap"></tr>
