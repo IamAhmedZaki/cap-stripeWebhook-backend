@@ -913,6 +913,14 @@ const capOrderEmail = (orderData) => {
     margin-right:10px;
     }
     
+    @media only screen and (max-width: 600px) {
+        .package{
+    margin-left:0px;
+    }
+    
+      }
+    
+    
   </style>
 <body style="margin:0; padding:0; font-family:Arial, sans-serif;">
 <img src="https://res.cloudinary.com/ds1ogapco/image/upload/v1761063050/01_q0pctl.png" 
@@ -983,9 +991,9 @@ const capOrderEmail = (orderData) => {
   
   
     <div style="margin-bottom: 10px;">Ordre detaljer</div>
-  <div class="downgap" style="margin-left: 370px; margin-bottom: 10px; margin-top: 4px;">${packageName}
+  <div class="downgap package" style="margin-left: 370px; margin-bottom: 10px; margin-top: 4px;">${packageName}
   </div>
-  <div class="downgap" style="margin-left: 370px; margin-bottom: 10px; margin-top: 4px;">Pris: ${totalPrice} DKK
+  <div class="downgap package" style="margin-left: 370px; margin-bottom: 10px; margin-top: 4px;">Pris: ${totalPrice} DKK
 
   </div>
   <div class="gap" style="height: 20px;"></div>
