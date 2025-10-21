@@ -813,6 +813,104 @@ const capOrderEmail = (orderData) => {
   <meta charset="UTF-8">
   <title>Two Tables Side by Side</title>
 </head>
+ <style>
+    body {
+      font-family: Arial, sans-serif;
+      /* text-align: center; */
+      margin: 0;
+      padding: 50px 0;
+    }
+
+    .table-container {
+      display: inline-block; /* allows side-by-side placement */
+      /* space between tables */
+      vertical-align: top; /* align tops evenly */
+    }
+    .table-container3 {
+      display: inline-block; /* allows side-by-side placement */
+      padding-right:10px;
+      vertical-align: top; /* align tops evenly */
+    }
+    .table-container2 {
+      display: inline-block; /* allows side-by-side placement */
+      /* space between tables */
+      vertical-align: top; /* align tops evenly */
+      background:#e7e7e7;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 342px;
+      /* border: 1px solid #ccc; */
+      margin: 0 auto;
+    }
+
+    th {
+      font-size: 20px;
+      padding: 10px;
+      text-align: left;
+      /* background-color: #f2f2f2; */
+    }
+
+    td {
+      padding: 9px;
+      font-size: 16px;
+      /* border-top: 1px solid #ddd; */
+    }
+
+    .subheading {
+      font-weight: bold;
+      background-color: #ffffff;
+        text-align: left;
+    }
+    
+    .subheading2 {
+      font-weight: bold;
+     
+       text-align: left;
+    }
+
+    .value {
+      font-size: 18px;
+      /* color: #0074D9; */
+      background-color: #ffffff;
+       text-align: left;
+    }
+
+    .gap{
+        height: 20px;
+    }
+    .infoBlock{
+      position: relative;
+       
+        font-weight: bold;
+        font-size: 18px;
+        
+    }
+    .wrapper {
+  width: 732px;
+  overflow-x: hidden;
+  background-color: #ffffff;
+  margin: 0 auto; /* This centers the wrapper */
+}
+
+.downgap{
+  margin-bottom: 10px;
+}
+.orderNumber{
+    background-color: #e7e7e7;
+    padding: 17px;
+    width: 657px;
+}
+    .footer{
+    background-color: #e7e7e7;
+    padding: 17px;
+    /* width: 657px; */
+    font-weight: bold;
+    font-size: 20px;
+}
+    
+  </style>
 <body style="margin:0; padding:0; font-family:Arial, sans-serif;">
 <img src="https://res.cloudinary.com/ds1ogapco/image/upload/v1761063050/01_q0pctl.png" 
      alt="Studentlife caps" 
@@ -907,7 +1005,7 @@ const capOrderEmail = (orderData) => {
   
   <!-- Second row (another set of side-by-side tables) -->
   <div style="text-align:center; margin-top:40px;">
-    <div class="table-container" style="display: inline-block; vertical-align: top;">
+    <div class="table-container3" style="display: inline-block; vertical-align: top;  padding-right:10px;">
       <table style="border-collapse: collapse; width: 342px; margin: 0 auto;">
         <!-- Kokarde -->
         <tr><th style="font-size: 20px; padding: 10px; text-align: left;">Kokarde</th></tr>
@@ -1497,6 +1595,7 @@ const capOrderAdminEmail = (orderData) => {
   <meta charset="UTF-8">
   <title>Two Tables Side by Side</title>
 </head>
+
 <body style="margin:0; padding:0; font-family:Arial, sans-serif;">
   <div class="wrapper" style="width: 732px; overflow-x: hidden; background-color: #ffffff; margin: 0 auto;">
     <div class="infoBlock" style="position: relative; font-weight: bold; font-size: 18px;">
@@ -1566,7 +1665,7 @@ const capOrderAdminEmail = (orderData) => {
   
   <!-- Second row (another set of side-by-side tables) -->
   <div style="text-align:center; margin-top:40px;">
-    <div class="table-container" style="display: inline-block; vertical-align: top padding-right:10px;">
+    <div class="table-container" style="display: inline-block; vertical-align: top;">
       <table style="border-collapse: collapse; width: 342px; margin: 0 auto;">
         <!-- Kokarde -->
         <tr><th style="font-size: 20px; padding: 10px; text-align: left;">Kokarde</th></tr>
