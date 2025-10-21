@@ -639,7 +639,7 @@ const factoryOrderEmail = (orderData) => {
        
 
         <tr><td class="subheading">Linje 2</td></tr>
-        <tr><td class="value">${!selectedOptions.SKYGGE["Skyggegravering Line 2"] === ''
+        <tr><td class="value">${!selectedOptions.SKYGGE["Skyggegravering Line 2"] 
       ? 'Ikke valgt'
       : selectedOptions.SKYGGE["Skyggegravering Line 2"]
     }</td></tr>
@@ -1178,10 +1178,10 @@ ${!selectedOptions.BRODERI || !selectedOptions.BRODERI.Skolebroderi  ?`<tr><td c
 <tr><td class="value">${selectedOptions.SKYGGE.Skyggebånd}</td></tr>
 <tr class="gap"></tr>
 <tr><td class="subheading">Linje 1</td></tr>
-<tr><td class="value">${selectedOptions.SKYGGE["Skyggegravering Line 1"] === '' ? 'Ikke valgt' : selectedOptions.SKYGGE["Skyggegravering Line 1"]}</td></tr>
+<tr><td class="value">${!selectedOptions.SKYGGE["Skyggegravering Line 1"]  ? 'Ikke valgt' : selectedOptions.SKYGGE["Skyggegravering Line 1"]}</td></tr>
 <tr class="gap"></tr>
 <tr><td class="subheading">Linje 3</td></tr>
-<tr><td class="value">${selectedOptions.SKYGGE["Skyggegravering Line 3"] === '' ? 'Ikke valgt' : selectedOptions.SKYGGE["Skyggegravering Line 3"]}</td></tr>
+<tr><td class="value">${!selectedOptions.SKYGGE["Skyggegravering Line 3"]  ? 'Ikke valgt' : selectedOptions.SKYGGE["Skyggegravering Line 3"]}</td></tr>
 <tr class="gap"></tr>
 <tr class="gap"></tr>
 <tr class="gap"></tr>
@@ -1328,7 +1328,7 @@ ${selectedOptions.EKSTRABETRÆK.Tilvælg === 'Yes' ? `
 <tr><td class="value">${selectedOptions.FOER.Sløjfe}</td></tr>
 <tr class="gap"></tr>
 <tr><td class="subheading">Linje 2</td></tr>
-<tr><td class="value">${selectedOptions.SKYGGE["Skyggegravering Line 2"] === '' ? 'Ikke valgt' : selectedOptions.SKYGGE["Skyggegravering Line 2"]}</td></tr>
+<tr><td class="value">${!selectedOptions.SKYGGE["Skyggegravering Line 2"]  ? 'Ikke valgt' : selectedOptions.SKYGGE["Skyggegravering Line 2"]}</td></tr>
 <tr class="gap"></tr>
 <tr><td class="subheading">Forring</td></tr>
 <tr><td class="value">${selectedOptions.FOER.Foer}</td></tr>
@@ -2095,7 +2095,7 @@ ${selectedOptions.EKSTRABETRÆK.Tilvælg === 'Yes' ? `
 <tr><td class="value">${selectedOptions.FOER.Sløjfe}</td></tr>
 <tr class="gap"></tr>
 <tr><td class="subheading">Linje 2</td></tr>
-<tr><td class="value">${selectedOptions.SKYGGE["Skyggegravering Line 2"] === '' ? 'Ikke valgt' : selectedOptions.SKYGGE["Skyggegravering Line 2"]}</td></tr>
+<tr><td class="value">${!selectedOptions.SKYGGE["Skyggegravering Line 2"]  ? 'Ikke valgt' : selectedOptions.SKYGGE["Skyggegravering Line 2"]}</td></tr>
 <tr class="gap"></tr>
 <tr><td class="subheading">Forring</td></tr>
 <tr><td class="value">${selectedOptions.FOER.Foer}</td></tr>
