@@ -324,8 +324,8 @@ const factoryOrderEmail = (orderData) => {
         <tr class="gap" style="height: 20px;"></tr>
         <tr class="gap" style="height: 20px;"></tr>
        
-        <tr><td class="subheading2" style="font-weight: bold; text-align: left; padding: 9px; font-size: 16px;">Package</td></tr>
-        <tr><td class="subheading2" style="font-weight: bold; text-align: left; padding: 9px; font-size: 16px;">Pris</td></tr>
+        <tr><td class="subheading2" style="font-weight: bold; text-align: left; padding: 9px; font-size: 16px;">${packageName}</td></tr>
+        <tr><td class="subheading2" style="font-weight: bold; text-align: left; padding: 9px; font-size: 16px;">Pris: ${totalPrice}</td></tr>
         <tr class="gap" style="height: 20px;"></tr>
 
       </table>
@@ -1023,8 +1023,8 @@ const capOrderEmail = (orderData) => {
         <tr class="gap" style="height: 20px;"></tr>
         <tr class="gap" style="height: 20px;"></tr>
        
-        <tr><td class="subheading2" style="font-weight: bold; text-align: left; padding: 9px; font-size: 16px;">Package</td></tr>
-        <tr><td class="subheading2" style="font-weight: bold; text-align: left; padding: 9px; font-size: 16px;">Pris</td></tr>
+        <tr><td class="subheading2" style="font-weight: bold; text-align: left; padding: 9px; font-size: 16px;">${packageName}</td></tr>
+        <tr><td class="subheading2" style="font-weight: bold; text-align: left; padding: 9px; font-size: 16px;">Pris: ${totalPrice}</td></tr>
         <tr class="gap" style="height: 20px;"></tr>
 
       </table>
@@ -1692,8 +1692,8 @@ const capOrderAdminEmail = (orderData) => {
         <tr class="gap" style="height: 20px;"></tr>
         <tr class="gap" style="height: 20px;"></tr>
        
-        <tr><td class="subheading2" style="font-weight: bold; text-align: left; padding: 9px; font-size: 16px;">Package</td></tr>
-        <tr><td class="subheading2" style="font-weight: bold; text-align: left; padding: 9px; font-size: 16px;">Pris</td></tr>
+        <tr><td class="subheading2" style="font-weight: bold; text-align: left; padding: 9px; font-size: 16px;">${packageName}</td></tr>
+        <tr><td class="subheading2" style="font-weight: bold; text-align: left; padding: 9px; font-size: 16px;">Pris: ${totalPrice}</td></tr>
         <tr class="gap" style="height: 20px;"></tr>
 
       </table>
