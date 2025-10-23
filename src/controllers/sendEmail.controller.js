@@ -945,8 +945,8 @@ const capOrderEmail = (orderData) => {
         
     }
     .wrapper {
+  width: 732px;
   
-  overflow-x: hidden;
   background-color: #ffffff;
   margin: 0 auto; /* This centers the wrapper */
 }
@@ -983,7 +983,7 @@ const capOrderEmail = (orderData) => {
 <img src="https://res.cloudinary.com/ds1ogapco/image/upload/v1761063050/01_q0pctl.png" 
      alt="Studentlife caps" 
      style="display: block; margin: 0 auto; border-radius: 0;">
-  <div class="wrapper" style=" overflow-x: hidden; background-color: #ffffff; margin: 0 auto;">
+  <div class="wrapper" style=" background-color: #ffffff; margin: 0 auto;">
     <div class="infoBlock" style="position: relative; font-weight: bold; font-size: 18px;">
         
         <div style="background: #f9fafb; padding: 15px 0; border-top: 1px solid #e5e7eb; text-align: center;">
@@ -1791,8 +1791,8 @@ const capOrderAdminEmail = (orderData) => {
         
     }
     .wrapper {
+  width: 732px;
   
-  overflow-x: hidden;
   background-color: #ffffff;
   margin: 0 auto; /* This centers the wrapper */
 }
@@ -1827,7 +1827,7 @@ const capOrderAdminEmail = (orderData) => {
   </style>
 <body style="margin:0; padding:0; font-family:Arial, sans-serif;">
 
-  <div class="wrapper" style=" overflow-x: hidden; background-color: #ffffff; margin: 0 auto;">
+  <div class="wrapper" style="width: 732px; background-color: #ffffff; margin: 0 auto;">
     <div class="infoBlock" style="position: relative; font-weight: bold; font-size: 18px;">
         
     <div class="downgap" style="margin-bottom: 10px;">Kunde ordre oplysninger:</div>
