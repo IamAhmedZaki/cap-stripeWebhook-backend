@@ -983,7 +983,7 @@ const capOrderEmail = (orderData) => {
 <img src="https://res.cloudinary.com/ds1ogapco/image/upload/v1761063050/01_q0pctl.png" 
      alt="Studentlife caps" 
      style="display: block; margin: 0 auto; border-radius: 0;">
-  <div class="wrapper" style=" background-color: #ffffff; margin: 0 auto;">
+  <div class="wrapper" style=" width: 732px; background-color: #ffffff; margin: 0 auto;">
     <div class="infoBlock" style="position: relative; font-weight: bold; font-size: 18px;">
         
         <div style="background: #f9fafb; padding: 15px 0; border-top: 1px solid #e5e7eb; text-align: center;">
