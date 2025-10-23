@@ -1709,18 +1709,134 @@ const capOrderAdminEmail = (orderData) => {
   <meta charset="UTF-8">
   <title>Two Tables Side by Side</title>
 </head>
+ <style>
+    body {
+      font-family: Arial, sans-serif;
+      /* text-align: center; */
+      margin: 0;
+      padding: 50px 0;
+    }
 
+    .table-container {
+      display: inline-block; /* allows side-by-side placement */
+      /* space between tables */
+      vertical-align: top; /* align tops evenly */
+    }
+    .table-container3 {
+      display: inline-block; /* allows side-by-side placement */
+      padding-right:10px;
+      vertical-align: top; /* align tops evenly */
+    }
+    .table-container2 {
+      display: inline-block; /* allows side-by-side placement */
+      /* space between tables */
+      vertical-align: top; /* align tops evenly */
+      background:#e7e7e7;
+    }
+      .table-container23 {
+      display: inline-block; /* allows side-by-side placement */
+      /* space between tables */
+      vertical-align: top; /* align tops evenly */
+      background:#ffffff;
+    }
+
+
+    table {
+      border-collapse: collapse;
+      width: 342px;
+      /* border: 1px solid #ccc; */
+      margin: 0 auto;
+    }
+
+    th {
+      font-size: 20px;
+      padding: 10px;
+      text-align: left;
+      /* background-color: #f2f2f2; */
+    }
+
+    td {
+      padding: 9px;
+      font-size: 16px;
+      /* border-top: 1px solid #ddd; */
+    }
+
+    .subheading {
+      font-weight: bold;
+      background-color: #ffffff;
+        text-align: left;
+    }
+    
+    .subheading2 {
+      font-weight: bold;
+     
+       text-align: left;
+    }
+
+    .value {
+      font-size: 18px;
+      /* color: #0074D9; */
+      background-color: #ffffff;
+       text-align: left;
+    }
+
+    .gap{
+        height: 20px;
+    }
+    .infoBlock{
+      position: relative;
+       
+        font-weight: bold;
+        font-size: 18px;
+        
+    }
+    .wrapper {
+  
+  overflow-x: hidden;
+  background-color: #ffffff;
+  margin: 0 auto; /* This centers the wrapper */
+}
+
+.downgap{
+  margin-bottom: 10px;
+}
+.orderNumber{
+    background-color: #e7e7e7;
+    padding: 17px;
+    width: 657px;
+}
+    .footer{
+    background-color: #e7e7e7;
+    padding: 17px;
+    /* width: 657px; */
+    font-weight: bold;
+    font-size: 20px;
+}
+    .marginwala{
+    margin-right:10px;
+    }
+    
+    @media only screen and (max-width: 600px) {
+        .package{
+    margin-left:0px;
+    }
+    
+      }
+    
+    
+  </style>
 <body style="margin:0; padding:0; font-family:Arial, sans-serif;">
+
   <div class="wrapper" style=" overflow-x: hidden; background-color: #ffffff; margin: 0 auto;">
     <div class="infoBlock" style="position: relative; font-weight: bold; font-size: 18px;">
-       
+        
     <div class="downgap" style="margin-bottom: 10px;">Kunde ordre oplysninger:</div>
   <div class="gap" style="height: 20px;"></div>
     <div class="downgap" style="margin-bottom: 10px;">Ordren er oprettet: </div>
     <div class="gap" style="height: 20px;"></div>
   <div><div class="downgap orderNumber" style="margin-bottom: 10px; background-color: #e7e7e7; padding: 17px; width: 657px;">Order nr: ${orderNumber}</div></div>
-  <div class="table-container2" style="display: inline-block; vertical-align: top; background:#e7e7e7;">
-      <table style="border-collapse: collapse; width: 342px; margin: 0 auto;">
+ <div class="table-container2 marginwala" style="display: inline-block; vertical-align: top; background:#e7e7e7; margin-right: 10px;">
+  <table style="border-collapse: collapse; width: 342px; margin: 0 auto;">
     <tr><th style="font-size: 20px; padding: 10px; text-align: left;">Betalingsoplysninger</th></tr>
     <tr class="gap" style="height: 20px;"></tr>
     <tr><td class="subheading2" style="font-weight: bold; text-align: left; padding: 9px; font-size: 16px;">Oplysninger om betaleren</td></tr>
@@ -1744,7 +1860,8 @@ const capOrderAdminEmail = (orderData) => {
     <tr class="gap" style="height: 20px;"></tr>
     ${customerDetails.notes ? `<tr><td class="subheading2" style="font-weight: bold; text-align: left; padding: 9px; font-size: 16px;">Levering: ${customerDetails.notes}</td></tr>` : ''}
   </table>
-    </div>
+</div>
+
 
     <div class="gap" style="height: 20px;"></div> 
     <div class="gap" style="height: 20px;"></div> 
@@ -1752,7 +1869,7 @@ const capOrderAdminEmail = (orderData) => {
     <div class="gap" style="height: 20px;"></div> 
   
   
-   <div class="table-container23" style="display: inline-block; vertical-align: top; background:#ffffff;">
+    <div class="table-container23" style="display: inline-block; vertical-align: top; background:#ffffff;">
       <table style="border-collapse: collapse; width: 342px; margin: 0 auto;">
        
         <tr><td class="subheading2" style="font-weight: bold; text-align: left; padding: 9px; font-size: 16px;">Ordre detalje</td></tr>
@@ -1788,7 +1905,7 @@ const capOrderAdminEmail = (orderData) => {
   
   <!-- Second row (another set of side-by-side tables) -->
   <div style="text-align:center; margin-top:40px;">
-    <div class="table-container" style="display: inline-block; vertical-align: top;">
+    <div class="table-container3" style="display: inline-block; vertical-align: top;  padding-right:10px;">
       <table style="border-collapse: collapse; width: 342px; margin: 0 auto;">
         <!-- Kokarde -->
         <tr><th style="font-size: 20px; padding: 10px; text-align: left;">Kokarde</th></tr>
@@ -1806,13 +1923,14 @@ const capOrderAdminEmail = (orderData) => {
         <tr class="gap" style="height: 20px;"></tr>
         
        <!-- Embroidery on frontside -->
-       ${
-         !selectedOptions.UDDANNELSESBÅND["Broderi foran"] 
-         ? `
-         
-         `
-         : `
-         <tr><th style="font-size: 20px; padding: 10px; text-align: left;">Broderi foran</th></tr>
+
+${
+  !selectedOptions.UDDANNELSESBÅND["Broderi foran"] 
+    ? `
+     
+    `
+    : `
+    <tr><th style="font-size: 20px; padding: 10px; text-align: left;">Broderi foran</th></tr>
       <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Tekst maks. 20 tegn</td></tr>
       <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.UDDANNELSESBÅND["Broderi foran"]}</td></tr>
       <tr class="gap" style="height: 20px;"></tr>
@@ -1825,7 +1943,7 @@ const capOrderAdminEmail = (orderData) => {
 <!-- Embroidery on the backside of the cap -->
 <tr><th style="font-size: 20px; padding: 10px; text-align: left;">Broderi Bagpå</th></tr>
 ${!selectedOptions.BRODERI || !selectedOptions.BRODERI["Navne broderi"]?`
-`:
+ `:
 `
  <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Name embroidery (Tekst) maks. 26</td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.BRODERI["Navne broderi"]}</td></tr>
@@ -1884,10 +2002,10 @@ ${!selectedOptions.BRODERI || !selectedOptions.BRODERI.Skolebroderi  ?``:`
 <!-- Extra Cover -->
 <tr><th style="font-size: 20px; padding: 10px; text-align: left;">Extra Cover</th></tr>
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Tilvælg </td></tr>
-<tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.EKSTRABETRÆK.Tilvælg == 'Ja' ? 'Ja' : 'Fravalgt'}</td></tr> 
+<tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.EKSTRABETRÆK.Tilvælg === 'Ja' ? 'Ja' : 'Fravalgt'}</td></tr> 
 <tr class="gap" style="height: 20px;"></tr>
 
-${selectedOptions.EKSTRABETRÆK.Tilvælg == 'Ja' ? `
+${selectedOptions.EKSTRABETRÆK.Tilvælg === 'Ja' ? `
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Farve</td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.EKSTRABETRÆK.Farve}</td></tr>
 <tr class="gap" style="height: 20px;"></tr>
@@ -1902,13 +2020,12 @@ ${!shouldHideSelectors?`
   <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Flagbånd</td></tr>
   <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${!selectedOptions.EKSTRABETRÆK.Flagbånd ? 'Fravalgt':selectedOptions.EKSTRABETRÆK.Flagbånd=='Nej' ? 'Fravalgt': selectedOptions.EKSTRABETRÆK.Flagbånd}</td></tr>
   <tr class="gap" style="height: 20px;"></tr>
-
+  
   <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Stjerner </td></tr>
   <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.KOKARDE.Emblem.name}</td></tr>
   <tr class="gap" style="height: 20px;"></tr>
  
   `:``}
-
 ${!selectedOptions.BRODERI || !selectedOptions.BRODERI.Skolebroderi  ?``:`
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Skolebroderi  </td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${!selectedOptions.BRODERI.Skolebroderi}</td></tr>
@@ -1938,7 +2055,6 @@ ${!selectedOptions.BRODERI || !selectedOptions.BRODERI.Skolebroderi  ?``:`
 <tr class="gap" style="height: 20px;"></tr>
 ` : ''}
 
-
 <!-- Size -->
 <tr><th style="font-size: 20px; padding: 10px; text-align: left;">Størrelse</th></tr>
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Vælg størrelse (Size)</td></tr>
@@ -1950,6 +2066,7 @@ ${!selectedOptions.BRODERI || !selectedOptions.BRODERI.Skolebroderi  ?``:`
 <tr class="gap" style="height: 20px;"></tr>
 </table>
 </div>
+
     <div class="table-container" style="display: inline-block; vertical-align: top;">
       <table style="border-collapse: collapse; width: 342px; margin: 0 auto;">
                 <tr><th style="font-size: 20px; padding: 10px; text-align: left;">Uddannelsesbånd</th></tr>
@@ -1974,7 +2091,7 @@ ${!selectedOptions.BRODERI || !selectedOptions.BRODERI.Skolebroderi  ?``:`
         <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.BETRÆK.Farve}</td></tr>
         <tr class="gap" style="height: 20px;"></tr>
         <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Topkant</td></tr>
-        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.BETRÆK.Topkant === 'NONE' || selectedOptions.BETRÆK.Topkant === 'None' ? 'Ingen' : selectedOptions.BETRÆK.Topkant}</td></tr>
+ <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.BETRÆK.Topkant === 'NONE' || selectedOptions.BETRÆK.Topkant === 'None' ? 'Ingen' : selectedOptions.BETRÆK.Topkant}</td></tr>
  <tr class="gap" style="height: 20px;"></tr>
         ${!shouldHideSelectors?`
           
@@ -2029,7 +2146,6 @@ ${!selectedOptions.BRODERI || !selectedOptions.BRODERI.Skolebroderi  ?``:`
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Forring</td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.FOER.Foer}</td></tr>
 <tr class="gap" style="height: 20px;"></tr>
-
 ${!selectedOptions.FOER || !selectedOptions.FOER['Satin Type']  ?``:`
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Satin Type</td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${!selectedOptions.FOER['Satin Type'] ? 'Ikke valgt' : selectedOptions.FOER['Satin Type']}</td></tr>
@@ -2041,25 +2157,26 @@ ${!selectedOptions.FOER || !selectedOptions.FOER['Silk Type']  ?``:`
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${!selectedOptions.FOER['Silk Type'] ? 'Ikke valgt' : selectedOptions.FOER['Silk Type']}</td></tr>
 <tr class="gap" style="height: 20px;"></tr>`
 }
-
-
-
-
-
-
  <tr style="height: 10px;"></tr>
-
-
-
         
         <!-- Tilbehør -->
 <tr><th style="font-size: 20px; padding: 10px; text-align: left;">Tilbehør</th></tr>
 
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Hueæske</td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">
-  ${selectedOptions.TILBEHØR.Hueæske === 'Ja' ? 'Ja' : 'Fravalgt'}
+  ${selectedOptions.TILBEHØR.Hueæske}
 </td></tr>
 <tr class="gap" style="height: 20px;"></tr>
+
+${selectedOptions.TILBEHØR['Premium æske']?`
+  <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Premium æske</td></tr>
+<tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">
+  ${selectedOptions.TILBEHØR['Premium æske']}
+</td></tr>
+<tr class="gap" style="height: 20px;"></tr>
+  `:``
+}
+
 
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Huekuglepen</td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">
@@ -2075,7 +2192,7 @@ ${!selectedOptions.FOER || !selectedOptions.FOER['Silk Type']  ?``:`
 
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Ekstra Kokarde</td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">
-  ${!selectedOptions.TILBEHØR['Ekstra korkarde Text'] ? 'Fravalgt' : selectedOptions.TILBEHØR['Ekstra korkarde Text']}
+  ${!selectedOptions.TILBEHØR['Ekstra korkarde Text']  ? 'Fravalgt' : selectedOptions.TILBEHØR['Ekstra korkarde Text']}
 </td></tr>
 <tr class="gap" style="height: 20px;"></tr>
 
@@ -2113,6 +2230,7 @@ ${!selectedOptions.FOER || !selectedOptions.FOER['Silk Type']  ?``:`
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">
   ${selectedOptions.TILBEHØR.Bucketpins === 'Ja' ? 'Ja' : 'Fravalgt'}
 </td></tr>
+
 <tr class="gap" style="height: 20px;"></tr>
     </table>
     </div>
@@ -2136,12 +2254,28 @@ MOMS: ${(totalPrice * 0.20).toFixed(2)} DKK<br>
 <div class="gap" style="height: 20px;"></div>
 
   </div>
+  <div class="gap" style="height: 20px;"></div>
+  <div class="gap" style="height: 20px;"></div>
+  <div class="gap" style="height: 20px;"></div>
+  
+  <div style="font-weight: bold; padding: 17px; font-size: 20px;">
+      
+
+Er du i tvivl om noget? Kundeservice altid klar, hvis du har brug for hjælp.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vi ønsker dig en dejlig dag,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Studentlife 😊
+
+</div>
+<div class="gap" style="height: 20px;"></div>
+  <div class="gap" style="height: 20px;"></div>
+  <div class="gap" style="height: 20px;"></div>
 
   <!-- wrapper end  -->
   </div>
 
 </body>
 </html>
+
 
 `;
 
