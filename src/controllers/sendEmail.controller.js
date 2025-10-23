@@ -1010,6 +1010,10 @@ const capOrderEmail = (orderData) => {
     <div class="gap" style="height: 20px;"></div>
     <div class="downgap" style="margin-bottom: 10px;">Din ordre oplysninger:</div>
   <div class="gap" style="height: 20px;"></div>
+  <div class="gap" style="height: 20px;"></div>
+  <div class="gap" style="height: 20px;"></div>
+  <div class="gap" style="height: 20px;"></div>
+  <div class="gap" style="height: 20px;"></div>
     <div class="downgap" style="margin-bottom: 10px;">Ordren er oprettet: </div>
     <div class="gap" style="height: 20px;"></div>
   <div><div class="downgap orderNumber" style="margin-bottom: 10px; background-color: #e7e7e7; padding: 17px; width: 657px;">Order nr: ${orderNumber}</div></div>
