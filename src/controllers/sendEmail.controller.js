@@ -69,6 +69,19 @@ const factoryOrderEmail = (orderData) => {
 
   } = orderData;
 
+
+   const hideSelectorsPrograms = [
+        'sosuassistent',
+        'sosuhjælper',
+        'frisør',
+        'kosmetolog',
+        'pædagog',
+        'pau',
+        'ernæringsassisten'
+    ];
+
+    const shouldHideSelectors = hideSelectorsPrograms.includes(program?.toLowerCase());
+
   const formatLabel = (label) => {
     const labelMap = {
       // General Cap Options
@@ -469,16 +482,19 @@ const factoryOrderEmail = (orderData) => {
         <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Top edging</td></tr>
         <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.EKSTRABETRÆK.Topkant}</td></tr>
         <tr class="gap" style="height: 23px;"></tr>
-        <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Edge ribbon</td></tr>
-        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.EKSTRABETRÆK.Kantbånd}</td></tr>
-        <tr class="gap" style="height: 23px;"></tr>
-        <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Flag ribbon</td></tr>
-        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${!selectedOptions.EKSTRABETRÆK.Flagbånd ? 'Fravalgt':selectedOptions.EKSTRABETRÆK.Flagbånd=='Nej' ? 'Fravalgt': selectedOptions.EKSTRABETRÆK.Flagbånd}</td></tr>
-        <tr class="gap" style="height: 23px;"></tr>
-        <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Stars (Color matches the emblem)</td></tr>
-        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.KOKARDE.Emblem.name}</td></tr>
-        <tr class="gap" style="height: 23px;"></tr>
-        ${!selectedOptions.BRODERI || !selectedOptions.BRODERI.Skolebroderi  ?``:`
+        ${!shouldHideSelectors?`
+          
+          <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Edge ribbon</td></tr>
+          <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.EKSTRABETRÆK.Kantbånd}</td></tr>
+          <tr class="gap" style="height: 23px;"></tr>
+          <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Flag ribbon</td></tr>
+          <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${!selectedOptions.EKSTRABETRÆK.Flagbånd ? 'Fravalgt':selectedOptions.EKSTRABETRÆK.Flagbånd=='Nej' ? 'Fravalgt': selectedOptions.EKSTRABETRÆK.Flagbånd}</td></tr>
+          <tr class="gap" style="height: 23px;"></tr>
+          <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Stars (Color matches the emblem)</td></tr>
+          <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.KOKARDE.Emblem.name}</td></tr>
+          <tr class="gap" style="height: 23px;"></tr>
+          `:``}
+          ${!selectedOptions.BRODERI || !selectedOptions.BRODERI.Skolebroderi  ?``:`
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Skolebroderi  </td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.BRODERI.Skolebroderi}</td></tr>
 <tr class="gap" style="height: 20px;"></tr>
@@ -520,18 +536,20 @@ const factoryOrderEmail = (orderData) => {
        <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Topkant</td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.BETRÆK.Topkant === 'NONE' || selectedOptions.BETRÆK.Topkant === 'None' ? 'Ingen' : selectedOptions.BETRÆK.Topkant}</td></tr>
 <tr class="gap" style="height: 23px;"></tr>
-
-<tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Kantbånd</td></tr>
-<tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.BETRÆK.Kantbånd === 'NONE' || selectedOptions.BETRÆK.Kantbånd === 'None' ? 'Ingen' : selectedOptions.BETRÆK.Kantbånd}</td></tr>
-<tr class="gap" style="height: 23px;"></tr>
-
-<tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Stjerner</td></tr>
-<tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.BETRÆK.Stjerner === 'NONE' || selectedOptions.BETRÆK.Stjerner === 'None' ? 'Ingen' : selectedOptions.BETRÆK.Stjerner}</td></tr>
-
-        <tr class="gap" style="height: 23px;"></tr>
-        <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Stjerner farve</td></tr>
-        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.KOKARDE.Emblem.name}</td></tr>
-        <tr class="gap" style="height: 23px;"></tr>
+${!shouldHideSelectors?`
+  
+  <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Kantbånd</td></tr>
+  <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.BETRÆK.Kantbånd === 'NONE' || selectedOptions.BETRÆK.Kantbånd === 'None' ? 'Ingen' : selectedOptions.BETRÆK.Kantbånd}</td></tr>
+  <tr class="gap" style="height: 23px;"></tr>
+  
+  <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Stjerner</td></tr>
+  <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.BETRÆK.Stjerner === 'NONE' || selectedOptions.BETRÆK.Stjerner === 'None' ? 'Ingen' : selectedOptions.BETRÆK.Stjerner}</td></tr>
+  
+          <tr class="gap" style="height: 23px;"></tr>
+          <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Stjerner farve</td></tr>
+          <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.KOKARDE.Emblem.name}</td></tr>
+          <tr class="gap" style="height: 23px;"></tr>
+  `:``}
         <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Flagbånd</td></tr>
         <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${!selectedOptions.BETRÆK.Flagbånd ? 'Fravalgt':selectedOptions.BETRÆK.Flagbånd=='Nej' ? 'Fravalgt': selectedOptions.BETRÆK.Flagbånd}</td></tr>
         <tr class="gap" style="height: 23px;"></tr>
@@ -681,6 +699,19 @@ const capOrderEmail = (orderData) => {
     packageName,
     program
   } = orderData;
+
+
+   const hideSelectorsPrograms = [
+        'sosuassistent',
+        'sosuhjælper',
+        'frisør',
+        'kosmetolog',
+        'pædagog',
+        'pau',
+        'ernæringsassisten'
+    ];
+
+    const shouldHideSelectors = hideSelectorsPrograms.includes(program?.toLowerCase());
 
   const leveringstid = new Date(orderDate);
   leveringstid.setMonth(leveringstid.getMonth() + 3);
@@ -1159,14 +1190,18 @@ ${selectedOptions.EKSTRABETRÆK.Tilvælg === 'Ja' ? `
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Topkant</td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.EKSTRABETRÆK.Topkant === 'NONE' || selectedOptions.EKSTRABETRÆK.Topkant === 'None' ? 'Ingen' : selectedOptions.EKSTRABETRÆK.Topkant}</td></tr>
 <tr class="gap" style="height: 20px;"></tr>
-<tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Kantbånd</td></tr>
-<tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.EKSTRABETRÆK.Kantbånd === 'NONE' || selectedOptions.EKSTRABETRÆK.Kantbånd === 'None' ? 'Ingen' : selectedOptions.EKSTRABETRÆK.Kantbånd}</td></tr>
-<tr class="gap" style="height: 20px;"></tr>
-<tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Flagbånd</td></tr>
-<tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${!selectedOptions.EKSTRABETRÆK.Flagbånd ? 'Fravalgt':selectedOptions.EKSTRABETRÆK.Flagbånd=='Nej' ? 'Fravalgt': selectedOptions.EKSTRABETRÆK.Flagbånd}</td></tr>
-<tr class="gap" style="height: 20px;"></tr>
-<tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Stjerner </td></tr>
-<tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.KOKARDE.Emblem.name}</td></tr>
+${!shouldHideSelectors?`
+ 
+  <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Kantbånd</td></tr>
+  <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.EKSTRABETRÆK.Kantbånd === 'NONE' || selectedOptions.EKSTRABETRÆK.Kantbånd === 'None' ? 'Ingen' : selectedOptions.EKSTRABETRÆK.Kantbånd}</td></tr>
+  <tr class="gap" style="height: 20px;"></tr>
+  <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Flagbånd</td></tr>
+  <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${!selectedOptions.EKSTRABETRÆK.Flagbånd ? 'Fravalgt':selectedOptions.EKSTRABETRÆK.Flagbånd=='Nej' ? 'Fravalgt': selectedOptions.EKSTRABETRÆK.Flagbånd}</td></tr>
+  <tr class="gap" style="height: 20px;"></tr>
+  <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Stjerner </td></tr>
+  <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.KOKARDE.Emblem.name}</td></tr>
+ 
+  `:``}
 <tr class="gap" style="height: 20px;"></tr>
 ${!selectedOptions.BRODERI || !selectedOptions.BRODERI.Skolebroderi  ?``:`
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Skolebroderi  </td></tr>
@@ -1232,21 +1267,25 @@ ${!selectedOptions.BRODERI || !selectedOptions.BRODERI.Skolebroderi  ?``:`
         <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Farve</td></tr>
         <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.BETRÆK.Farve}</td></tr>
         <tr class="gap" style="height: 20px;"></tr>
-       <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Topkant</td></tr>
-<tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.BETRÆK.Topkant === 'NONE' || selectedOptions.BETRÆK.Topkant === 'None' ? 'Ingen' : selectedOptions.BETRÆK.Topkant}</td></tr>
-<tr class="gap" style="height: 20px;"></tr>
-
-<tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Kantbånd</td></tr>
-<tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.BETRÆK.Kantbånd === 'NONE' || selectedOptions.BETRÆK.Kantbånd === 'None' ? 'Ingen' : selectedOptions.BETRÆK.Kantbånd}</td></tr>
-<tr class="gap" style="height: 20px;"></tr>
-
-<tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Stjerner</td></tr>
-<tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.BETRÆK.Stjerner === 'NONE' || selectedOptions.BETRÆK.Stjerner === 'None' ? 'Ingen' : selectedOptions.BETRÆK.Stjerner}</td></tr>
-
-        <tr class="gap" style="height: 20px;"></tr>
-        <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Stjerner farve</td></tr>
-        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.KOKARDE.Emblem.name}</td></tr>
-        <tr class="gap" style="height: 20px;"></tr>
+        <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Topkant</td></tr>
+ <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.BETRÆK.Topkant === 'NONE' || selectedOptions.BETRÆK.Topkant === 'None' ? 'Ingen' : selectedOptions.BETRÆK.Topkant}</td></tr>
+ <tr class="gap" style="height: 20px;"></tr>
+        ${!shouldHideSelectors?`
+          
+   
+   <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Kantbånd</td></tr>
+   <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.BETRÆK.Kantbånd === 'NONE' || selectedOptions.BETRÆK.Kantbånd === 'None' ? 'Ingen' : selectedOptions.BETRÆK.Kantbånd}</td></tr>
+   <tr class="gap" style="height: 20px;"></tr>
+   
+   <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Stjerner</td></tr>
+   <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.BETRÆK.Stjerner === 'NONE' || selectedOptions.BETRÆK.Stjerner === 'None' ? 'Ingen' : selectedOptions.BETRÆK.Stjerner}</td></tr>
+   
+           <tr class="gap" style="height: 20px;"></tr>
+          
+           <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Stjerner farve</td></tr>
+           <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.KOKARDE.Emblem.name}</td></tr>
+           <tr class="gap" style="height: 20px;"></tr>
+           `:``}
         <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Flagbånd</td></tr>
         <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${!selectedOptions.BETRÆK.Flagbånd ? 'Fravalgt':selectedOptions.BETRÆK.Flagbånd=='Nej' ? 'Fravalgt': selectedOptions.BETRÆK.Flagbånd}</td></tr>
         <tr class="gap" style="height: 20px;"></tr>
@@ -1516,6 +1555,18 @@ const capOrderAdminEmail = (orderData) => {
     packageName,
     program
   } = orderData;
+
+   const hideSelectorsPrograms = [
+        'sosuassistent',
+        'sosuhjælper',
+        'frisør',
+        'kosmetolog',
+        'pædagog',
+        'pau',
+        'ernæringsassisten'
+    ];
+
+    const shouldHideSelectors = hideSelectorsPrograms.includes(program?.toLowerCase());
 
   // Enhanced formatOptions to handle different value structures
   const formatOptions = (options) => {
@@ -1832,7 +1883,8 @@ ${selectedOptions.EKSTRABETRÆK.Tilvælg == 'Ja' ? `
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Topkant</td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.EKSTRABETRÆK.Topkant === 'NONE' || selectedOptions.EKSTRABETRÆK.Topkant === 'None' ? 'Ingen' : selectedOptions.EKSTRABETRÆK.Topkant}</td></tr>
 <tr class="gap" style="height: 20px;"></tr>
-<tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Kantbånd</td></tr>
+${!shouldHideSelectors?`
+  <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Kantbånd</td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.EKSTRABETRÆK.Kantbånd === 'NONE' || selectedOptions.EKSTRABETRÆK.Kantbånd === 'None' ? 'Ingen' : selectedOptions.EKSTRABETRÆK.Kantbånd}</td></tr>
 <tr class="gap" style="height: 20px;"></tr>
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Flagbånd</td></tr>
@@ -1840,7 +1892,8 @@ ${selectedOptions.EKSTRABETRÆK.Tilvælg == 'Ja' ? `
 <tr class="gap" style="height: 20px;"></tr>
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Stjerner </td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.KOKARDE.Emblem.name}</td></tr>
-<tr class="gap" style="height: 20px;"></tr>
+<tr class="gap" style="height: 20px;"></tr>`:``}
+
 ${!selectedOptions.BRODERI || !selectedOptions.BRODERI.Skolebroderi  ?``:`
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Skolebroderi  </td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${!selectedOptions.BRODERI.Skolebroderi}</td></tr>
@@ -1905,18 +1958,21 @@ ${!selectedOptions.BRODERI || !selectedOptions.BRODERI.Skolebroderi  ?``:`
         <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Farve</td></tr>
         <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.BETRÆK.Farve}</td></tr>
         <tr class="gap" style="height: 20px;"></tr>
-       <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Topkant</td></tr>
-<tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.BETRÆK.Topkant === 'NONE' || selectedOptions.BETRÆK.Topkant === 'None' ? 'Ingen' : selectedOptions.BETRÆK.Topkant}</td></tr>
-<tr class="gap" style="height: 20px;"></tr>
-
-<tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Kantbånd</td></tr>
-<tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.BETRÆK.Kantbånd === 'NONE' || selectedOptions.BETRÆK.Kantbånd === 'None' ? 'Ingen' : selectedOptions.BETRÆK.Kantbånd}</td></tr>
-<tr class="gap" style="height: 20px;"></tr>
-
-<tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Stjerner</td></tr>
-<tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.BETRÆK.Stjerner === 'NONE' || selectedOptions.BETRÆK.Stjerner === 'None' ? 'Ingen' : selectedOptions.BETRÆK.Stjerner}</td></tr>
-
-        <tr class="gap" style="height: 20px;"></tr>
+        ${!shouldHideSelectors?`
+          
+          <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Topkant</td></tr>
+   <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.BETRÆK.Topkant === 'NONE' || selectedOptions.BETRÆK.Topkant === 'None' ? 'Ingen' : selectedOptions.BETRÆK.Topkant}</td></tr>
+   <tr class="gap" style="height: 20px;"></tr>
+   
+   <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Kantbånd</td></tr>
+   <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.BETRÆK.Kantbånd === 'NONE' || selectedOptions.BETRÆK.Kantbånd === 'None' ? 'Ingen' : selectedOptions.BETRÆK.Kantbånd}</td></tr>
+   <tr class="gap" style="height: 20px;"></tr>
+   
+   <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Stjerner</td></tr>
+   <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.BETRÆK.Stjerner === 'NONE' || selectedOptions.BETRÆK.Stjerner === 'None' ? 'Ingen' : selectedOptions.BETRÆK.Stjerner}</td></tr>
+   
+           <tr class="gap" style="height: 20px;"></tr>
+          `:``}
         <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Stjerner farve</td></tr>
         <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.KOKARDE.Emblem.name}</td></tr>
         <tr class="gap" style="height: 20px;"></tr>
