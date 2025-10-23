@@ -945,7 +945,7 @@ const capOrderEmail = (orderData) => {
         
     }
     .wrapper {
-  width: 732px;
+  width: 800px;
   
   background-color: #ffffff;
   margin: 0 auto; /* This centers the wrapper */
@@ -970,12 +970,7 @@ const capOrderEmail = (orderData) => {
     margin-right:10px;
     }
     
-    @media only screen and (max-width: 600px) {
-        .package{
-    margin-left:0px;
-    }
     
-      }
     
     
   </style>
@@ -983,7 +978,7 @@ const capOrderEmail = (orderData) => {
 <img src="https://res.cloudinary.com/ds1ogapco/image/upload/v1761063050/01_q0pctl.png" 
      alt="Studentlife caps" 
      style="display: block; margin: 0 auto; border-radius: 0;">
-  <div class="wrapper" style=" width: 732px; background-color: #ffffff; margin: 0 auto;">
+  <div class="wrapper" style=" width: 800px; background-color: #ffffff; margin: 0 auto;">
     <div class="infoBlock" style="position: relative; font-weight: bold; font-size: 18px;">
         
         <div style="background: #f9fafb; padding: 15px 0; border-top: 1px solid #e5e7eb; text-align: center;">
@@ -1006,6 +1001,13 @@ const capOrderEmail = (orderData) => {
     <div class="downgap" style="margin-bottom: 10px;">Husk at tjekke alle detaljer er korrekte, herunder også leveringstid ${leveringstid.toLocaleDateString()}, skolens logo samt skolebroderi. </div>
     <div class="gap" style="height: 20px;"></div>
     <div class="downgap" style="margin-bottom: 10px;">Vi håber at  du kommer til at elske din studenterhue.</div>
+    <div class="gap" style="height: 20px;"></div>
+    <div class="gap" style="height: 20px;"></div>
+    <div class="gap" style="height: 20px;"></div>
+    <div class="gap" style="height: 20px;"></div>
+    <div class="gap" style="height: 20px;"></div>
+    <div class="gap" style="height: 20px;"></div>
+    <div class="gap" style="height: 20px;"></div>
     <div class="gap" style="height: 20px;"></div>
     <div class="gap" style="height: 20px;"></div>
     <div class="downgap" style="margin-bottom: 10px;">Din ordre oplysninger:</div>
