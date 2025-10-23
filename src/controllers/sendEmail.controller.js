@@ -500,7 +500,7 @@ const factoryOrderEmail = (orderData) => {
         <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.STØRRELSE["Vælg størrelse"]}</td></tr> 
         <tr class="gap" style="height: 23px;"></tr>
         <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Foam to adjust the size</td></tr>
-        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.STØRRELSE["Millimeter tilpasningssæt"] === 'Yes' ? 'Ja' : 'Fravalgt'}</td></tr>
+        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.STØRRELSE["Millimeter tilpasningssæt"] === 'Ja' ? 'Ja' : 'Fravalgt'}</td></tr>
         <tr class="gap" style="height: 23px;"></tr>
         <tr class="gap" style="height: 23px;"></tr>
         
@@ -589,7 +589,7 @@ const factoryOrderEmail = (orderData) => {
         <!-- Tilbehør -->
         <tr><th style="font-size: 20px; padding: 10px; text-align: left;">Tilbehør</th></tr>
         <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Silk cushion</td></tr>
-        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.TILBEHØR.Silkepude === 'Yes' ? 'Ja' : 'Fravalgt'}</td></tr>
+        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.TILBEHØR.Silkepude === 'Ja' ? 'Ja' : 'Fravalgt'}</td></tr>
         
         <tr class="gap" style="height: 23px;"></tr>
 
@@ -1174,19 +1174,19 @@ ${!selectedOptions.BRODERI || !selectedOptions.BRODERI.Skolebroderi  ?``:`
 }
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Lyskugle</td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">
-  ${selectedOptions.TILBEHØR.Lyskugle === 'Yes' ? 'Ja' : 'Fravalgt'}
+  ${selectedOptions.TILBEHØR.Lyskugle === 'Ja' ? 'Ja' : 'Fravalgt'}
 </td></tr>
 <tr class="gap" style="height: 20px;"></tr>
 
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Luksus champagneglas</td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">
-  ${selectedOptions.TILBEHØR['Luksus champagneglas'] === 'Yes' ? 'Ja' : 'Fravalgt'}
+  ${selectedOptions.TILBEHØR['Luksus champagneglas'] === 'Ja' ? 'Ja' : 'Fravalgt'}
 </td></tr>
 <tr class="gap" style="height: 20px;"></tr>
 
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Fløjte</td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">
-  ${selectedOptions.TILBEHØR.Fløjte === 'Yes' ? 'Ja' : 'Fravalgt'}
+  ${selectedOptions.TILBEHØR.Fløjte === 'Ja' ? 'Ja' : 'Fravalgt'}
 </td></tr>
 
 <tr class="gap" style="height: 20px;"></tr>
@@ -1198,7 +1198,7 @@ ${!selectedOptions.BRODERI || !selectedOptions.BRODERI.Skolebroderi  ?``:`
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.STØRRELSE["Vælg størrelse"]}</td></tr> 
 <tr class="gap" style="height: 20px;"></tr>
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Millimeter tilpasningssæt</td></tr>
-<tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.STØRRELSE["Millimeter tilpasningssæt"] === 'Yes' ? 'Ja' : 'Fravalgt'}</td></tr>
+<tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.STØRRELSE["Millimeter tilpasningssæt"] === 'Ja' ? 'Ja' : 'Fravalgt'}</td></tr>
 <tr class="gap" style="height: 20px;"></tr>
 <tr class="gap" style="height: 20px;"></tr>
 </table>
@@ -1292,19 +1292,19 @@ ${!selectedOptions.BRODERI || !selectedOptions.BRODERI.Skolebroderi  ?``:`
 
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Hueæske</td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">
-  ${selectedOptions.TILBEHØR.Hueæske === 'Yes' ? 'Ja' : 'Fravalgt'}
+  ${selectedOptions.TILBEHØR.Hueæske === 'Ja' ? 'Ja' : 'Fravalgt'}
 </td></tr>
 <tr class="gap" style="height: 20px;"></tr>
 
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Huekuglepen</td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">
-  ${selectedOptions.TILBEHØR.Huekuglepen === 'Yes' ? 'Ja' : 'Fravalgt'}
+  ${selectedOptions.TILBEHØR.Huekuglepen === 'Ja' ? 'Ja' : 'Fravalgt'}
 </td></tr>
 <tr class="gap" style="height: 20px;"></tr>
 
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Silkepude</td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">
-  ${selectedOptions.TILBEHØR.Silkepude === 'Yes' ? 'Ja' : 'Fravalgt'}
+  ${selectedOptions.TILBEHØR.Silkepude === 'Ja' ? 'Ja' : 'Fravalgt'}
 </td></tr>
 <tr class="gap" style="height: 20px;"></tr>
 
@@ -1316,19 +1316,19 @@ ${!selectedOptions.BRODERI || !selectedOptions.BRODERI.Skolebroderi  ?``:`
 
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Handsker</td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">
-  ${selectedOptions.TILBEHØR.Handsker === 'Yes' ? 'Ja' : 'Fravalgt'}
+  ${selectedOptions.TILBEHØR.Handsker === 'Ja' ? 'Ja' : 'Fravalgt'}
 </td></tr>
 <tr class="gap" style="height: 20px;"></tr>
 
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Stor kuglepen</td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">
-  ${selectedOptions.TILBEHØR["Store kuglepen"] === 'Yes' ? 'Ja' : 'Fravalgt'}
+  ${selectedOptions.TILBEHØR["Store kuglepen"] === 'Ja' ? 'Ja' : 'Fravalgt'}
 </td></tr>
 <tr class="gap" style="height: 20px;"></tr>
 
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Smarttag</td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">
-  ${selectedOptions.TILBEHØR["Smart Tag"] === 'Yes' ? 'Ja' : 'Fravalgt'}
+  ${selectedOptions.TILBEHØR["Smart Tag"] === 'Ja' ? 'Ja' : 'Fravalgt'}
 </td></tr>
 <tr class="gap" style="height: 20px;"></tr>
 
@@ -1340,13 +1340,13 @@ ${!selectedOptions.BRODERI || !selectedOptions.BRODERI.Skolebroderi  ?``:`
 
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Trompet</td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">
-  ${selectedOptions.TILBEHØR.Trompet === 'Yes' ? 'Ja' : 'Fravalgt'}
+  ${selectedOptions.TILBEHØR.Trompet === 'Ja' ? 'Ja' : 'Fravalgt'}
 </td></tr>
 <tr class="gap" style="height: 20px;"></tr>
 
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Bucketpins</td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">
-  ${selectedOptions.TILBEHØR.Bucketpins === 'Yes' ? 'Ja' : 'Fravalgt'}
+  ${selectedOptions.TILBEHØR.Bucketpins === 'Ja' ? 'Ja' : 'Fravalgt'}
 </td></tr>
 
 <tr class="gap" style="height: 20px;"></tr>
@@ -1842,19 +1842,19 @@ ${!selectedOptions.BRODERI || !selectedOptions.BRODERI.Skolebroderi  ?``:`
 }
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Lyskugle</td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">
-  ${selectedOptions.TILBEHØR.Lyskugle === 'Yes' ? 'Ja' : 'Fravalgt'}
+  ${selectedOptions.TILBEHØR.Lyskugle === 'Ja' ? 'Ja' : 'Fravalgt'}
 </td></tr>
 <tr class="gap" style="height: 20px;"></tr>
 
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Luksus champagneglas</td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">
-  ${selectedOptions.TILBEHØR['Luksus champagneglas'] === 'Yes' ? 'Ja' : 'Fravalgt'}
+  ${selectedOptions.TILBEHØR['Luksus champagneglas'] === 'Ja' ? 'Ja' : 'Fravalgt'}
 </td></tr>
 <tr class="gap" style="height: 20px;"></tr>
 
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Fløjte</td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">
-  ${selectedOptions.TILBEHØR.Fløjte === 'Yes' ? 'Ja' : 'Fravalgt'}
+  ${selectedOptions.TILBEHØR.Fløjte === 'Ja' ? 'Ja' : 'Fravalgt'}
 </td></tr>
 
 <tr class="gap" style="height: 20px;"></tr>
@@ -1867,7 +1867,7 @@ ${!selectedOptions.BRODERI || !selectedOptions.BRODERI.Skolebroderi  ?``:`
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.STØRRELSE["Vælg størrelse"]}</td></tr> 
 <tr class="gap" style="height: 20px;"></tr>
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Millimeter tilpasningssæt</td></tr>
-<tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.STØRRELSE["Millimeter tilpasningssæt"] === 'Yes' ? 'Ja' : 'Fravalgt'}</td></tr>
+<tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.STØRRELSE["Millimeter tilpasningssæt"] === 'Ja' ? 'Ja' : 'Fravalgt'}</td></tr>
 <tr class="gap" style="height: 20px;"></tr>
 <tr class="gap" style="height: 20px;"></tr>
 </table>
@@ -1960,19 +1960,19 @@ ${!selectedOptions.BRODERI || !selectedOptions.BRODERI.Skolebroderi  ?``:`
 
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Hueæske</td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">
-  ${selectedOptions.TILBEHØR.Hueæske === 'Yes' ? 'Ja' : 'Fravalgt'}
+  ${selectedOptions.TILBEHØR.Hueæske === 'Ja' ? 'Ja' : 'Fravalgt'}
 </td></tr>
 <tr class="gap" style="height: 20px;"></tr>
 
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Huekuglepen</td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">
-  ${selectedOptions.TILBEHØR.Huekuglepen === 'Yes' ? 'Ja' : 'Fravalgt'}
+  ${selectedOptions.TILBEHØR.Huekuglepen === 'Ja' ? 'Ja' : 'Fravalgt'}
 </td></tr>
 <tr class="gap" style="height: 20px;"></tr>
 
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Silkepude</td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">
-  ${selectedOptions.TILBEHØR.Silkepude === 'Yes' ? 'Ja' : 'Fravalgt'}
+  ${selectedOptions.TILBEHØR.Silkepude === 'Ja' ? 'Ja' : 'Fravalgt'}
 </td></tr>
 <tr class="gap" style="height: 20px;"></tr>
 
@@ -1984,19 +1984,19 @@ ${!selectedOptions.BRODERI || !selectedOptions.BRODERI.Skolebroderi  ?``:`
 
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Handsker</td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">
-  ${selectedOptions.TILBEHØR.Handsker === 'Yes' ? 'Ja' : 'Fravalgt'}
+  ${selectedOptions.TILBEHØR.Handsker === 'Ja' ? 'Ja' : 'Fravalgt'}
 </td></tr>
 <tr class="gap" style="height: 20px;"></tr>
 
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Stor kuglepen</td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">
-  ${selectedOptions.TILBEHØR["Store kuglepen"] === 'Yes' ? 'Ja' : 'Fravalgt'}
+  ${selectedOptions.TILBEHØR["Store kuglepen"] === 'Ja' ? 'Ja' : 'Fravalgt'}
 </td></tr>
 <tr class="gap" style="height: 20px;"></tr>
 
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Smarttag</td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">
-  ${selectedOptions.TILBEHØR["Smart Tag"] === 'Yes' ? 'Ja' : 'Fravalgt'}
+  ${selectedOptions.TILBEHØR["Smart Tag"] === 'Ja' ? 'Ja' : 'Fravalgt'}
 </td></tr>
 <tr class="gap" style="height: 20px;"></tr>
 
@@ -2008,13 +2008,13 @@ ${!selectedOptions.BRODERI || !selectedOptions.BRODERI.Skolebroderi  ?``:`
 
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Trompet</td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">
-  ${selectedOptions.TILBEHØR.Trompet === 'Yes' ? 'Ja' : 'Fravalgt'}
+  ${selectedOptions.TILBEHØR.Trompet === 'Ja' ? 'Ja' : 'Fravalgt'}
 </td></tr>
 <tr class="gap" style="height: 20px;"></tr>
 
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Bucketpins</td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">
-  ${selectedOptions.TILBEHØR.Bucketpins === 'Yes' ? 'Ja' : 'Fravalgt'}
+  ${selectedOptions.TILBEHØR.Bucketpins === 'Ja' ? 'Ja' : 'Fravalgt'}
 </td></tr>
 <tr class="gap" style="height: 20px;"></tr>
     </table>
