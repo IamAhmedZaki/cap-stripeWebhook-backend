@@ -478,13 +478,15 @@ const factoryOrderEmail = (orderData) => {
         <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Stars (Color matches the emblem)</td></tr>
         <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.KOKARDE.Emblem.name}</td></tr>
         <tr class="gap" style="height: 23px;"></tr>
-        <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">School embroidery</td></tr>
-        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.BRODERI.Skolebroderi}</td></tr>
-        <tr class="gap" style="height: 23px;"></tr>
-        <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Color (color of embroidery)</td></tr>
-        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.BRODERI['Skolebroderi farve']}</td></tr>
-        <tr class="gap" style="height: 23px;"></tr>
-      `
+        ${!selectedOptions.BRODERI || !selectedOptions.BRODERI.Skolebroderi  ?``:`
+<tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Skolebroderi  </td></tr>
+<tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.BRODERI.Skolebroderi}</td></tr>
+<tr class="gap" style="height: 20px;"></tr>
+
+<tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Broderiets farve</td></tr>
+<tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.BRODERI['Skolebroderi farve']}</td></tr>
+<tr class="gap" style="height: 20px;"></tr>`
+}`
       : ''
     }
 
@@ -1161,15 +1163,15 @@ ${selectedOptions.EKSTRABETRÆK.Tilvælg === 'Ja' ? `
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Stjerner </td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.KOKARDE.Emblem.name}</td></tr>
 <tr class="gap" style="height: 20px;"></tr>
+${!selectedOptions.BRODERI || !selectedOptions.BRODERI.Skolebroderi  ?``:`
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Skolebroderi  </td></tr>
-<tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.BRODERI.Skolebroderi === ''
-        ? 'Ikke valgt'
-        : selectedOptions.BRODERI.Skolebroderi
-      }</td></tr>
+<tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${!selectedOptions.BRODERI.Skolebroderi}</td></tr>
 <tr class="gap" style="height: 20px;"></tr>
+
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Broderiets farve</td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.BRODERI['Skolebroderi farve']}</td></tr>
-<tr class="gap" style="height: 20px;"></tr>
+<tr class="gap" style="height: 20px;"></tr>`
+}
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Lyskugle</td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">
   ${selectedOptions.TILBEHØR.Lyskugle === 'Yes' ? 'Ja' : 'Fravalgt'}
@@ -1829,15 +1831,15 @@ ${selectedOptions.EKSTRABETRÆK.Tilvælg == 'Ja' ? `
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Stjerner </td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.KOKARDE.Emblem.name}</td></tr>
 <tr class="gap" style="height: 20px;"></tr>
+${!selectedOptions.BRODERI || !selectedOptions.BRODERI.Skolebroderi  ?``:`
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Skolebroderi  </td></tr>
-<tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.BRODERI.Skolebroderi === ''
-        ? 'Ikke valgt'
-        : selectedOptions.BRODERI.Skolebroderi
-      }</td></tr>
+<tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${!selectedOptions.BRODERI.Skolebroderi}</td></tr>
 <tr class="gap" style="height: 20px;"></tr>
+
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Broderiets farve</td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.BRODERI['Skolebroderi farve']}</td></tr>
-<tr class="gap" style="height: 20px;"></tr>
+<tr class="gap" style="height: 20px;"></tr>`
+}
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Lyskugle</td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">
   ${selectedOptions.TILBEHØR.Lyskugle === 'Yes' ? 'Ja' : 'Fravalgt'}
