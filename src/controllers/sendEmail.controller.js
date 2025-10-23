@@ -458,10 +458,10 @@ const factoryOrderEmail = (orderData) => {
         <!-- Extra Cover -->
         <tr><th style="font-size: 20px; padding: 10px; text-align: left;">Extra Cover</th></tr>
         <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Option</td></tr>
-        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.EKSTRABETRÆK.Tilvælg === 'Yes' ? 'Ja' : 'Fravalgt'}</td></tr> 
+        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.EKSTRABETRÆK.Tilvælg === 'Ja' ? 'Ja' : 'Fravalgt'}</td></tr> 
         <tr class="gap" style="height: 23px;"></tr>
         
-          ${selectedOptions.EKSTRABETRÆK.Tilvælg === 'Yes'
+          ${selectedOptions.EKSTRABETRÆK.Tilvælg === 'Ja'
       ? `
         <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Color</td></tr>
         <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.EKSTRABETRÆK.Farve}</td></tr>
@@ -1142,10 +1142,10 @@ ${!selectedOptions.BRODERI || !selectedOptions.BRODERI.Skolebroderi  ?``:`
 <!-- Extra Cover -->
 <tr><th style="font-size: 20px; padding: 10px; text-align: left;">Extra Cover</th></tr>
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Tilvælg </td></tr>
-<tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.EKSTRABETRÆK.Tilvælg === 'Yes' ? 'Ja' : 'Fravalgt'}</td></tr> 
+<tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.EKSTRABETRÆK.Tilvælg === 'Ja' ? 'Ja' : 'Fravalgt'}</td></tr> 
 <tr class="gap" style="height: 20px;"></tr>
 
-${selectedOptions.EKSTRABETRÆK.Tilvælg === 'Yes' ? `
+${selectedOptions.EKSTRABETRÆK.Tilvælg === 'Ja' ? `
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Farve</td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.EKSTRABETRÆK.Farve}</td></tr>
 <tr class="gap" style="height: 20px;"></tr>
@@ -1810,10 +1810,10 @@ ${!selectedOptions.BRODERI || !selectedOptions.BRODERI.Skolebroderi  ?``:`
 <!-- Extra Cover -->
 <tr><th style="font-size: 20px; padding: 10px; text-align: left;">Extra Cover</th></tr>
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Tilvælg </td></tr>
-<tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.EKSTRABETRÆK.Tilvælg == 'Yes' ? 'Ja' : 'Fravalgt'}</td></tr> 
+<tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.EKSTRABETRÆK.Tilvælg == 'Ja' ? 'Ja' : 'Fravalgt'}</td></tr> 
 <tr class="gap" style="height: 20px;"></tr>
 
-${selectedOptions.EKSTRABETRÆK.Tilvælg == 'Yes' ? `
+${selectedOptions.EKSTRABETRÆK.Tilvælg == 'Ja' ? `
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Farve</td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.EKSTRABETRÆK.Farve}</td></tr>
 <tr class="gap" style="height: 20px;"></tr>
