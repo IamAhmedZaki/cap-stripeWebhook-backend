@@ -2254,21 +2254,6 @@ MOMS: ${(totalPrice * 0.20).toFixed(2)} DKK<br>
 <div class="gap" style="height: 20px;"></div>
 
   </div>
-  <div class="gap" style="height: 20px;"></div>
-  <div class="gap" style="height: 20px;"></div>
-  <div class="gap" style="height: 20px;"></div>
-  
-  <div style="font-weight: bold; padding: 17px; font-size: 20px;">
-      
-
-Er du i tvivl om noget? Kundeservice altid klar, hvis du har brug for hjælp.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vi ønsker dig en dejlig dag,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Studentlife 😊
-
-</div>
-<div class="gap" style="height: 20px;"></div>
-  <div class="gap" style="height: 20px;"></div>
-  <div class="gap" style="height: 20px;"></div>
 
   <!-- wrapper end  -->
   </div>
