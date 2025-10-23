@@ -497,10 +497,10 @@ const factoryOrderEmail = (orderData) => {
         <!-- Size -->
         <tr><th style="font-size: 20px; padding: 10px; text-align: left;">Size</th></tr>
         <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Choosen size (Size)</td></tr>
-        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.STØRRELSE["Millimeter tilpasningssæt"] === 'Yes' ? 'Ja' : 'Fravalgt'}</td></tr> 
+        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.STØRRELSE["Vælg størrelse"]}</td></tr> 
         <tr class="gap" style="height: 23px;"></tr>
         <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Foam to adjust the size</td></tr>
-        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.STØRRELSE["Vælg størrelse"]}</td></tr>
+        <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.STØRRELSE["Millimeter tilpasningssæt"] === 'Yes' ? 'Ja' : 'Fravalgt'}</td></tr>
         <tr class="gap" style="height: 23px;"></tr>
         <tr class="gap" style="height: 23px;"></tr>
         
