@@ -1347,9 +1347,9 @@ ${!selectedOptions.FOER || !selectedOptions.FOER['Silk Type']  ?``:`
 <tr class="gap" style="height: 20px;"></tr>
 
 ${selectedOptions.TILBEHØR['Premium æske']?`
-  <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Hueæske</td></tr>
+  <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Premium æske</td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">
-  ${selectedOptions.TILBEHØR.Hueæske}
+  ${selectedOptions.TILBEHØR['Premium æske']}
 </td></tr>
 <tr class="gap" style="height: 20px;"></tr>
   `:``
