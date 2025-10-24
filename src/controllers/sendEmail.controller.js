@@ -2376,17 +2376,29 @@ MOMS: 20% of the total price DKK (vat)
 
 const sendCapEmail = async (req, res) => {
   try {
-    const {
-      customerDetails,
-      selectedOptions,
-      totalPrice,
-      currency,
-      orderNumber,
-      orderDate,
-      email,
-      packageName,
-      program
-    } = req.body;
+    // const {
+    //   customerDetails,
+    //   selectedOptions,
+    //   totalPrice,
+    //   currency,
+    //   orderNumber,
+    //   orderDate,
+    //   email,
+    //   packageName,
+    //   program
+    // } = req.body;
+
+
+    let selectedOptions={"KOKARDE":{"Emblem":{"name":"Sølv","value":"Sølv","color":"#E5E7EB"},"Kokarde":"Signature","Roset farve":{"name":"Rød","value":"#DC2626","img":"/studentlife/assets/laalgold-DxLb1det.png"},"Type":"Halvmåne Sølv"},"UDDANNELSESBÅND":{"Broderi farve":"Sølv","Broderi foran":"تحية فلسطين","Hagerem":"Sort med sorteknuder","Hagerem Materiale":"Blank hagerem","Huebånd":"STX","Knap farve":"Sølv","Materiale":"BOMULD","år":"Ingen"},"BRODERI":{"Broderifarve":"Sølv","Navne broderi":"Abedalrahem Salameh","Skolebroderi":"Nørrebro Gymnasium","Skolebroderi farve":"Hvid"},"BETRÆK":{"Farve":"Sort","Kantbånd":"INGEN","Stjerner":"INGEN","Topkant":"INGEN","Flagbånd":"Nej"},"SKYGGE":{"Materiale":"Med kant","Skyggebånd":"INGEN","Skyggegravering Line 1":"Ummi wa abi Allah yjazeekom","Skyggegravering Line 2":"Fatema fik mig hertil i love u","Skyggegravering Line 3":"Abdo, Kimo og tala elsker jer","Type":"Blank"},"FOER":{"Farve":"Hvid","Foer":"Viskose","Sløjfe":"Sort","Svederem":"Læder"},"EKSTRABETRÆK":{"Tilvælg":"Ja","Farve":"Hvid","Topkant":"INGEN","Kantbånd":"INGEN","Stjerner":"INGEN","Flagbånd":"Nej"},"TILBEHØR":{"Bucketpins":"Fravalgt","Ekstra korkarde":"Fravalgt","Fløjte":"Ja","Handsker":"Ja","Huekuglepen":"Ja","Hueæske":"Premium æske","Luksus champagneglas":"Ja","Lyskugle":"Fravalgt","Premium æske":"Sort velour","Silkepude":"Ja","Smart Tag":"Fravalgt","Store kuglepen":"Ja","Trompet":"Ja","Lille Flag":"Ja","Lille Flag Text":"palæstina"},"STØRRELSE":{"Millimeter tilpasningssæt":"Fravalgt","Vælg størrelse":57.5}}
+    let totalPrice=1439
+    let customerDetails={"firstName":"Abedalrahem","lastName":"hussen salameh ","email":"Abdulsa220@gmail.com","phone":"93886606","Skolenavn":"Abedalrahem","address":"mjølnerparken","city":"København","postalCode":"2200","country":"Denmark","notes":"kan jeg muligvis få et billede af den før i sender den for at sikre mig at den er som den skal være? og skal være helt sikker på i er klare over at mit lille flag skal være palæstina","deliverToSchool":true}
+    let currency='DKK'
+    let orderNumber='CAP-2025-10-23T21:53:27.086Z'
+    let orderDate='2025-10-23 21:53:27.086'
+    // let email="Abdulsa220@gmail.com"
+    let email="mahmedzaki670@gmail.com"
+    let packageName='luksus'
+    let program='stx'
 
     // Validate required fields
     if (!customerDetails || !selectedOptions || !email) {
@@ -2621,17 +2633,28 @@ const stripeWebhook = async (req, res) => {
 };
 
 const emailTester = async (req, res) => {
-    const {
-      customerDetails,
-      selectedOptions,
-      totalPrice,
-      currency,
-      orderNumber,
-      orderDate,
-      email,
-      packageName,
-      program
-    } = req.body;
+    // const {
+    //   customerDetails,
+    //   selectedOptions,
+    //   totalPrice,
+    //   currency,
+    //   orderNumber,
+    //   orderDate,
+    //   email,
+    //   packageName,
+    //   program
+    // } = req.body;
+
+    let selectedOptions={"KOKARDE":{"Emblem":{"name":"Sølv","value":"Sølv","color":"#E5E7EB"},"Kokarde":"Signature","Roset farve":{"name":"Rød","value":"#DC2626","img":"/studentlife/assets/laalgold-DxLb1det.png"},"Type":"Halvmåne Sølv"},"UDDANNELSESBÅND":{"Broderi farve":"Sølv","Broderi foran":"تحية فلسطين","Hagerem":"Sort med sorteknuder","Hagerem Materiale":"Blank hagerem","Huebånd":"STX","Knap farve":"Sølv","Materiale":"BOMULD","år":"Ingen"},"BRODERI":{"Broderifarve":"Sølv","Navne broderi":"Abedalrahem Salameh","Skolebroderi":"Nørrebro Gymnasium","Skolebroderi farve":"Hvid"},"BETRÆK":{"Farve":"Sort","Kantbånd":"INGEN","Stjerner":"INGEN","Topkant":"INGEN","Flagbånd":"Nej"},"SKYGGE":{"Materiale":"Med kant","Skyggebånd":"INGEN","Skyggegravering Line 1":"Ummi wa abi Allah yjazeekom","Skyggegravering Line 2":"Fatema fik mig hertil i love u","Skyggegravering Line 3":"Abdo, Kimo og tala elsker jer","Type":"Blank"},"FOER":{"Farve":"Hvid","Foer":"Viskose","Sløjfe":"Sort","Svederem":"Læder"},"EKSTRABETRÆK":{"Tilvælg":"Ja","Farve":"Hvid","Topkant":"INGEN","Kantbånd":"INGEN","Stjerner":"INGEN","Flagbånd":"Nej"},"TILBEHØR":{"Bucketpins":"Fravalgt","Ekstra korkarde":"Fravalgt","Fløjte":"Ja","Handsker":"Ja","Huekuglepen":"Ja","Hueæske":"Premium æske","Luksus champagneglas":"Ja","Lyskugle":"Fravalgt","Premium æske":"Sort velour","Silkepude":"Ja","Smart Tag":"Fravalgt","Store kuglepen":"Ja","Trompet":"Ja","Lille Flag":"Ja","Lille Flag Text":"palæstina"},"STØRRELSE":{"Millimeter tilpasningssæt":"Fravalgt","Vælg størrelse":57.5}}
+    let totalPrice=1439
+    let customerDetails={"firstName":"Abedalrahem","lastName":"hussen salameh ","email":"Abdulsa220@gmail.com","phone":"93886606","Skolenavn":"Abedalrahem","address":"mjølnerparken","city":"København","postalCode":"2200","country":"Denmark","notes":"kan jeg muligvis få et billede af den før i sender den for at sikre mig at den er som den skal være? og skal være helt sikker på i er klare over at mit lille flag skal være palæstina","deliverToSchool":true}
+    let currency='DKK'
+    let orderNumber='CAP-2025-10-23T21:53:27.086Z'
+    let orderDate='2025-10-23 21:53:27.086'
+    // let email="Abdulsa220@gmail.com"
+    let email="mahmedzaki670@gmail.com"
+    let packageName='luksus'
+    let program='stx'
 
   try {
     // const event = stripe.webhooks.constructEvent(req.body, sig, process.env.STRIPE_WEBHOOK_SECRET);
@@ -2791,7 +2814,7 @@ module.exports = {
         
 //        <!-- Embroidery on frontside -->
 //        ${
-//          !selectedOptions.UDDANNELSESBÅND["Broderi foran"] 
+        //  !selectedOptions.UDDANNELSESBÅND["Broderi foran"] 
 //          ? `
          
 //          `
