@@ -1986,9 +1986,11 @@ ${!selectedOptions.BRODERI || !selectedOptions.BRODERI.Skolebroderi  ?``:`
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.SKYGGE.Type}</td></tr> 
 <tr class="gap" style="height: 20px;"></tr>
 ${selectedOptions.SKYGGE.Type==='Glimmer'?`
+       `:`
         <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Material </td></tr>
         <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.SKYGGE.Materiale}</td></tr>
-        <tr class="gap" style="height: 23px;"></tr>`:''
+        <tr class="gap" style="height: 23px;"></tr>`
+        
         }
 <tr><td class="subheading" style="font-weight: bold; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">Skyggebånd</td></tr>
 <tr><td class="value" style="font-size: 18px; background-color: #ffffff; text-align: left; padding: 9px; font-size: 16px;">${selectedOptions.SKYGGE.Skyggebånd}</td></tr>
