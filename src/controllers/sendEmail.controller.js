@@ -2449,7 +2449,7 @@ const sendCapEmail = async (req, res) => {
 
     const mailOptionsAdmin = {
       from: process.env.EMAIL_FROM || process.env.EMAIL_USER,
-      to:  email,
+      to:  'salg@studentlife.dk',
       subject: emailContentAdmin.subject,
       html: emailContentAdmin.html,
       text: emailContentAdmin.text
@@ -2457,7 +2457,7 @@ const sendCapEmail = async (req, res) => {
 
     const mailOptionsFactory = {
       from: process.env.EMAIL_FROM || process.env.EMAIL_USER,
-      to:  email,
+      to:  'salg@studentlife.dk',
       subject: emailContentFactory.subject,
       html: emailContentFactory.html,
       text: emailContentFactory.text
@@ -2651,8 +2651,8 @@ const emailTester = async (req, res) => {
     let currency='DKK'
     let orderNumber='CAP-2025-10-23T21:53:27.086Z'
     let orderDate='2025-10-23 21:53:27.086'
-    // let email="Abdulsa220@gmail.com"
-    let email="mahmedzaki670@gmail.com"
+    let email="Abdulsa220@gmail.com"
+    // let email="mahmedzaki670@gmail.com"
     let packageName='luksus'
     let program='stx'
 
