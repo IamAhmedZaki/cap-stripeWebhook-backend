@@ -2396,7 +2396,7 @@ const sendCapEmail = async (req, res) => {
     let orderNumber='CAP-2025-10-23T21:53:27.086Z'
     let orderDate='2025-10-23 21:53:27.086'
     // let email="Abdulsa220@gmail.com"
-    let email="Abdulsa220@gmail.com"
+    let email="mahmedzaki670@gmail.com"
     let packageName='luksus'
     let program='stx'
 
