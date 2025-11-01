@@ -341,7 +341,7 @@ const factoryOrderEmail = (orderData) => {
               <!-- Customer Order Information -->
               <table width="100%" border="0" cellpadding="0" cellspacing="0">
                 <tr><td style="font-size:18px; font-weight:bold; padding-bottom:15px;">Customer Order Information:</td></tr>
-                <tr><td style="font-size:18px; font-weight:bold; padding-bottom:15px;">Order Created: ${orderDate}</td></tr>
+                <tr><td style="font-size:18px; font-weight:bold; padding-bottom:15px;">Order Created: ${orderDate.toLocaleDateString()}</td></tr>
                 <tr><td style="font-size:18px; font-weight:bold; padding-bottom:15px;">Order No: ${orderNumber}</td></tr>
                 <tr><td style="font-size:18px; font-weight:bold; padding-bottom:15px;">Customer Name: ${customerDetails.firstName} ${customerDetails.lastName}</td></tr>
                 <tr><td style="font-size:18px; font-weight:bold; padding-bottom:15px;">School Name: ${customerDetails.Skolenavn}</td></tr>
@@ -1115,7 +1115,7 @@ const capOrderEmail = (orderData) => {
                   <td style="font-size:21px; font-weight:bold; padding-bottom:15px; color:#333333;">Din ordre oplysninger:</td>
                 </tr>
                 <tr>
-                  <td style="font-size:16px; padding-bottom:15px;">Ordren er oprettet: ${orderDate}</td>
+                  <td style="font-size:16px; padding-bottom:15px;">Ordren er oprettet: ${orderDate.toLocaleDateString()}</td>
                 </tr>
                 <tr>
                   <td style="background-color:#f2f3f2; padding:15px; font-weight:bold; font-size:15px; text-align:center;">Order nr: ${orderNumber}</td>
@@ -2236,7 +2236,7 @@ const capOrderAdminEmail = (orderData) => {
                   <td style="font-size:18px; font-weight:bold; padding-bottom:15px; color:#333333;">Kunde ordre oplysninger:</td>
                 </tr>
                 <tr>
-                  <td style="font-size:16px; padding-bottom:15px;">Ordren er oprettet: ${orderDate}</td>
+                  <td style="font-size:16px; padding-bottom:15px;">Ordren er oprettet: ${orderDate.toLocaleDateString()}</td>
                 </tr>
                 <tr>
                   <td style="background-color:#f2f3f2; padding:15px; font-weight:bold; font-size:15px; text-align:center;">Order nr: ${orderNumber}</td>
