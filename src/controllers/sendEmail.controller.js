@@ -344,9 +344,10 @@ const factoryOrderEmail = (orderData) => {
     kosmetolog: 'Pink',
     pædagog: 'Dark Purple',
     pau: 'Orange',
-    ernæringsassistent: 'Yellow'
+    ernæringsassistent: 'Yellow',
+    Sort: 'Black'
   };
-  const programColor = programColorMap[program] || program;
+  const programColor = programColorMap[selectedOptions.UDDANNELSESBÅND?.Huebånd] || program;
   const formatValue = (value) => {
     if (typeof value === 'object' && value !== null) {
       if (value.name) return value.name;
@@ -437,12 +438,6 @@ const factoryOrderEmail = (orderData) => {
                   <td style="padding:30px;">
                     <table width="100%" border="0" cellpadding="0" cellspacing="0">
                       <tr><td style="font-weight:bold; font-size:18px; padding-bottom:10px;">${packageName}</td></tr>
-                      // <tr>
-                      //   <td style="font-size:16px;">
-                      //     <span style="font-weight:bold; margin-right:5px;">Price:</span>
-                      //     <span>${totalPrice} DKK</span>
-                      //   </td>
-                      // </tr>
                     </table>
                   </td>
                 </tr>
