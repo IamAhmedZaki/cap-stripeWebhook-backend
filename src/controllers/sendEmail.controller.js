@@ -1811,11 +1811,19 @@ const capOrderEmail = (orderData) => {
                                 </table>
                               </td>
                             </tr>
-                            ${!selectedOptions.EKSTRABETRÆK.Stjerner === "INGEN" ? `` : `
                             <tr>
                               <td style="border-bottom:1px solid #cdcdcd; padding:10px 0;">
                                 <table width="100%" border="0" cellpadding="0" cellspacing="0">
                                   <tr><td style="font-size:14px; text-transform:uppercase; padding-bottom:5px;">Stjerner</td></tr>
+                                  <tr><td style="font-size:16px;">${selectedOptions.BETRÆK.Stjerner === 'NONE' || selectedOptions.BETRÆK.Stjerner === 'None' ? 'Ingen' : selectedOptions.BETRÆK.Stjerner}</td></tr>
+                                </table>
+                              </td>
+                            </tr>
+                            ${selectedOptions.BETRÆK.Stjerner === "INGEN" ? `` : `
+                            <tr>
+                              <td style="border-bottom:1px solid #cdcdcd; padding:10px 0;">
+                                <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                                  <tr><td style="font-size:14px; text-transform:uppercase; padding-bottom:5px;">Stjerner farve</td></tr>
                                   <tr><td style="font-size:16px;">${selectedOptions.KOKARDE.Emblem.name}</td></tr>
                                 </table>
                               </td>
@@ -2932,11 +2940,19 @@ const capOrderAdminEmail = (orderData) => {
                                 </table>
                               </td>
                             </tr>
-                            ${!selectedOptions.EKSTRABETRÆK.Stjerner === "INGEN" ? `` : `
                             <tr>
                               <td style="border-bottom:1px solid #cdcdcd; padding:10px 0;">
                                 <table width="100%" border="0" cellpadding="0" cellspacing="0">
                                   <tr><td style="font-size:14px; text-transform:uppercase; padding-bottom:5px;">Stjerner</td></tr>
+                                  <tr><td style="font-size:16px;">${selectedOptions.BETRÆK.Stjerner === 'NONE' || selectedOptions.BETRÆK.Stjerner === 'None' ? 'Ingen' : selectedOptions.BETRÆK.Stjerner}</td></tr>
+                                </table>
+                              </td>
+                            </tr>
+                            ${selectedOptions.BETRÆK.Stjerner === "INGEN" ? `` : `
+                            <tr>
+                              <td style="border-bottom:1px solid #cdcdcd; padding:10px 0;">
+                                <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                                  <tr><td style="font-size:14px; text-transform:uppercase; padding-bottom:5px;">Stjerner farve</td></tr>
                                   <tr><td style="font-size:16px;">${selectedOptions.KOKARDE.Emblem.name}</td></tr>
                                 </table>
                               </td>
