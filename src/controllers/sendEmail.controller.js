@@ -86,7 +86,7 @@ const translateValue = (value) => {
     'Sort med glimmer': 'Black Glitter',
 
     // Brim
-    'Blank': 'Plain',
+    'Blank': 'Blank',
     'Shiny': 'Shiny',
     'Glimmer': 'Glitter',
     'Uden kant': 'Without Edge',
