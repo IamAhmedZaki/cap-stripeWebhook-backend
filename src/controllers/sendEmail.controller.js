@@ -464,6 +464,12 @@ const factoryOrderEmail = (orderData) => {
                             </tr>
                             <tr>
                               <td style="border-bottom:1px solid #cdcdcd; padding:10px 0;">
+                                <div style="font-size:14px; text-transform:uppercase; margin-bottom:5px;">Buttons Color</div>
+                                <div style="font-size:16px;">${t(selectedOptions.UDDANNELSESBÅND?.['Knap farve'])}</div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td style="border-bottom:1px solid #cdcdcd; padding:10px 0;">
                                 <div style="font-size:14px; text-transform:uppercase; margin-bottom:5px;">Material</div>
                                 <div style="font-size:16px;">${t(selectedOptions.UDDANNELSESBÅND?.Materiale)}</div>
                               </td>
@@ -547,12 +553,6 @@ const factoryOrderEmail = (orderData) => {
                                 <div style="font-size:16px;">${t(selectedOptions.BRODERI?.['Skolebroderi farve']) || 'Not Chosen'}</div>
                               </td>
                             </tr>`}
-                            <tr>
-                              <td style="border-bottom:1px solid #cdcdcd; padding:10px 0;">
-                                <div style="font-size:14px; text-transform:uppercase; margin-bottom:5px;">Buttons Color</div>
-                                <div style="font-size:16px;">${t(selectedOptions.UDDANNELSESBÅND?.['Knap farve'])}</div>
-                              </td>
-                            </tr>
                             <tr>
                               <td style="padding-top:10px;">
                                 <div style="font-size:14px; text-transform:uppercase; margin-bottom:5px;">Year</div>
