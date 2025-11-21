@@ -826,7 +826,7 @@ const factoryOrderEmail = (orderData) => {
                             </tr>
                             <tr>
                               <td style="padding-top:10px;">
-                                <div style="font-size:14px; text-transform:uppercase; margin-bottom:5px;">Embroidery Color</div>
+                                <div style="font-size:14px; text-transform:uppercase; margin-bottom:5px;">School Embroidery Color</div>
                                 <div style="font-size:16px;">${t(selectedOptions.BRODERI?.['Skolebroderi farve'])}</div>
                               </td>
                             </tr>`}
@@ -1841,7 +1841,7 @@ const capOrderEmail = (orderData) => {
                             <tr>
                               <td style="border-bottom:1px solid #cdcdcd; padding:10px 0;">
                                 <table width="100%" border="0" cellpadding="0" cellspacing="0">
-                                  <tr><td style="font-size:14px; text-transform:uppercase; padding-bottom:5px;">Broderiets farve</td></tr>
+                                  <tr><td style="font-size:14px; text-transform:uppercase; padding-bottom:5px;">Skolebroderi farve</td></tr>
                                   <tr><td style="font-size:16px;">${selectedOptions.BRODERI['Skolebroderi farve']}</td></tr>
                                 </table>
                               </td>
@@ -2970,7 +2970,7 @@ const capOrderAdminEmail = (orderData) => {
                             <tr>
                               <td style="border-bottom:1px solid #cdcdcd; padding:10px 0;">
                                 <table width="100%" border="0" cellpadding="0" cellspacing="0">
-                                  <tr><td style="font-size:14px; text-transform:uppercase; padding-bottom:5px;">Broderiets farve</td></tr>
+                                  <tr><td style="font-size:14px; text-transform:uppercase; padding-bottom:5px;">Skolebroderi farve</td></tr>
                                   <tr><td style="font-size:16px;">${selectedOptions.BRODERI['Skolebroderi farve']}</td></tr>
                                 </table>
                               </td>
